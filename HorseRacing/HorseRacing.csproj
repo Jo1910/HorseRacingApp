@@ -230,6 +230,8 @@
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\CreateHorse.cshtml" />
+    <Content Include="Views\Home\ShowHorse.cshtml" />
+    <Content Include="Views\Home\EditHorse.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
