@@ -52,6 +52,7 @@ namespace HorseRacing.Controllers
             {
                 horseList.Add(new Horse()
                 {
+                    Id = horse.Id,
                     Name = horse.Name,
                     DateOfBirth = horse.DateOfBirth,
                     DamId = horse.DamId,
@@ -113,6 +114,7 @@ namespace HorseRacing.Controllers
             Horse horse = (from h in db.Horses
                            where h.Id == hrs.Id
                            select h).FirstOrDefault();
+            horse.Id = hrs.Id;
             horse.Name = hrs.Name;
             horse.DateOfBirth = hrs.DateOfBirth;
             horse.DamId = hrs.DamId;
@@ -126,6 +128,25 @@ namespace HorseRacing.Controllers
 
             return RedirectToAction("ShowHorse");
 
+        }
+
+        // Delete a row - horse table
+
+        [HttpGet]
+        public ActionResult DeleteHorse(int? id)
+        {
+            Horse horse = db.Horses.Find(id);
+            return View(horse);
+                
+        }
+
+        [HttpPost]
+        public ActionResult DeleteHorse(int id)
+        {
+            Horse horse = db.Horses.Find(id);
+            db.Horses.Remove(horse);
+            db.SaveChanges();
+            return RedirectToAction("ShowHorse");
         }
 
         public ActionResult About()
