@@ -11,10 +11,15 @@ namespace HorseRacing
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Colour
     {
+        
         public int Id { get; set; }
+
+        [Display(Name = "Colour")]
+        [StringLength(50)]
         public string Name { get; set; }
     }
 }

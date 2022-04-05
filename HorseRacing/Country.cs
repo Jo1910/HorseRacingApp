@@ -11,10 +11,13 @@ namespace HorseRacing
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Country
     {
         public int Id { get; set; }
+
+        [StringLength(100)]
         public string Name { get; set; }
     }
 }

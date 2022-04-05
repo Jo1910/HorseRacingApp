@@ -11,18 +11,43 @@ namespace HorseRacing
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Horse
     {
         public int Id { get; set; }
+
+        [Required(ErrorMessage = "Name is required.")]
+        [StringLength(50)]
         public string Name { get; set; }
+
+        [Required(ErrorMessage = "Date of birth is required.")]
+        [Display(Name = "Date Of Birth")]
         public System.DateTime DateOfBirth { get; set; }
+
+        [Display(Name = "Dam Id")]
         public Nullable<int> DamId { get; set; }
+
+        [Display(Name = "Sire Id")]
+
         public Nullable<int> SireId { get; set; }
+
+        [Display(Name = "Colour Id")]
         public Nullable<int> ColourId { get; set; }
+
+        [Required(ErrorMessage = "Category is required.")]
+        [Display(Name="Category Id")]
         public int CategoryId { get; set; }
+
+        [Required(ErrorMessage = "Gender is required.")]
+        [Display(Name="Gender Id")]
         public int GenderId { get; set; }
+
+        [Required(ErrorMessage = "Country is required.")]
+        [Display(Name = "Country Id")]
         public int CountryId { get; set; }
+
+        [Display(Name = "Acqusition Id")]
         public Nullable<int> AcqusitionId { get; set; }
     }
 }
