@@ -1,4 +1,4 @@
-﻿@model IEnumerable<HorseRacing.Horse>
+﻿@model IEnumerable<HorseRacing.ViewModels.Horses.HorseListVM>
 
 @{
     ViewBag.Title = "ShowHorse";
@@ -7,7 +7,7 @@
 <h2>ShowHorse</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "CreateHorse")
 </p>
 <table class="table">
     <tr>
@@ -15,67 +15,32 @@
             @Html.DisplayNameFor(model => model.Name)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateOfBirth)
+            @Html.DisplayNameFor(model => model.CountryName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DamId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SireId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ColourId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CategoryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GenderId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CountryId)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.AcqusitionId)
+            @Html.DisplayNameFor(model => model.GenderName)
         </th>
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateOfBirth)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DamId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SireId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ColourId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GenderId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CountryId)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.AcqusitionId)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "EditHorse", new { id=item.Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
-            @Html.ActionLink("Delete", "DeleteHorse", new { id=item.Id })
-        </td>
-    </tr>
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Name)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.CountryName)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.GenderName)
+    </td>
+
+    <td>
+        @Html.ActionLink("Edit", "EditHorse", new { id = item.Id }) |
+        @Html.ActionLink("Details", "ShowOneHorse", new { id = item.Id }) |
+        @Html.ActionLink("Delete", "DeleteHorse", new { id = item.Id })
+    </td>
+</tr>
 }
 
 </table>

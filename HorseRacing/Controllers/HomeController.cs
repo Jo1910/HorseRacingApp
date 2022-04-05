@@ -1,4 +1,6 @@
-﻿using System;
+﻿using HorseRacing.Models;
+using HorseRacing.ViewModels.Horses;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +10,15 @@ namespace HorseRacing.Controllers
 {
     public class HomeController : Controller
     {
-        HorseRacingAppDBEntities db = new HorseRacingAppDBEntities();
+        private readonly ApplicationContext db = new ApplicationContext();
         public ActionResult Index()
         {
+
+            var r = db.Horses
+                .Include("Country")
+                .Take(20)
+                .ToList();
+
             return View();
         }
 
@@ -36,36 +44,56 @@ namespace HorseRacing.Controllers
             horse.CountryId = h.CountryId;
             horse.AcqusitionId = h.AcqusitionId;
             db.Horses.Add(horse);
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
             return RedirectToAction("Index");
         }
 
         // Read data
-        public ActionResult ShowHorse()
+        public ActionResult ShowHorse(int? pageNumber = 0)
         {
-            IList<Horse> horseList = new List<Horse>();
-
-            var query = from h in db.Horses select h;
-            var data = query.ToList();
-
-            foreach(var horse in data)
-            {
-                horseList.Add(new Horse()
+            
+             
+            var query = db.Horses
+                .Include("Country")
+                .Include("Gender")
+                .OrderBy(m => m.Name)
+                .Skip((10 * pageNumber??0))
+                .Take(10)
+                .Select(m => new HorseListVM
                 {
-                    Id = horse.Id,
-                    Name = horse.Name,
-                    DateOfBirth = horse.DateOfBirth,
-                    DamId = horse.DamId,
-                    SireId = horse.SireId,
-                    ColourId = horse.ColourId,
-                    CategoryId = horse.CategoryId,
-                    GenderId = horse.GenderId,
-                    CountryId = horse.CountryId,
-                    AcqusitionId = horse.AcqusitionId,
+                    Id = m.Id,
+                    Name = m.Name,
+                    CountryName = m.Country.Name,
+                    GenderName = m.Gender.Name
+                })
+                .ToList();
 
-                }); 
-            }
-            return View(horseList);
+            return View(query);
+        }
+
+        public ActionResult ShowOneHorse(int id)
+        {
+            var query = db.Horses
+                .Include("Country")
+                .Include("Gender")
+                .Where(m => m.Id == id)
+                .Select(m => new HorseListVM
+                {
+                    Id = m.Id,
+                    Name = m.Name,
+                    CountryName = m.Country.Name,
+                    GenderName = m.Gender.Name
+                }).FirstOrDefault();
+
+            return View(query);
+                
         }
 
         // Update data - horse table
