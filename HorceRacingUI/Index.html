@@ -1,0 +1,32 @@
+﻿<!DOCTYPE html>
+<html ng-app="horseApp">
+<head>
+    <meta charset="utf-8" />
+    <title>Horse Racing App</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.2/angular.js"></script>
+</head>
+<body ng-cloak>
+    <h2>List of horses:</h2>
+
+    {{1 + 2}}
+    <hr />
+    <div ng-controller="horseController">
+    <table border="1">
+        <tr>
+            <th>Horse Id</th>
+            <th>Horse Name</th>
+            <th>Horse Country</th>
+            <th>Horse Gender</th>
+        </tr>
+        <tr ng-repeat="x in getHorseRecords">
+            <td>{{x.Id}}</td>
+            <td>{{x.Name}}</td>
+            <td>{{x.ColourName}}</td>
+            <td>{{x.GenderName}}</td>
+        </tr>
+    </table>
+    </div>
+
+   <script src="/AppModule.js"></script>
+</body>
+</html>

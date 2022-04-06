@@ -14,12 +14,13 @@ namespace HorseRacing.Controllers
     {
         private readonly ApplicationContext db = new ApplicationContext();
         // GET api/<controller>
-        [Route("~/api/GetAll")]
+        //[Route("~/api/GetAll")]
         [HttpGet]
         public IHttpActionResult GetAll(int ? pageNumber = 0)
         {
             var query = db.Horses
                 .Include("Country")
+                .Include("Gender")
                 .OrderBy(x => x.Name)
                 .Skip(10 * pageNumber ?? 0)
                 .Take(10)
@@ -35,12 +36,13 @@ namespace HorseRacing.Controllers
         }
 
         // GET api/<controller>/5
-        [Route("~/api/Get/id")]
+        //[Route("~/api/Get/id")]
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
             var query = db.Horses
                 .Include("Country")
+                .Include("Gender")
                 .Where(x => x.Id == id)
                 .Select(x => new HorseListVM
                 {
