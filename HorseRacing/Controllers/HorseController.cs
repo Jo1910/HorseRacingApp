@@ -6,15 +6,17 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 
 namespace HorseRacing.Controllers
 {
-    //[RoutePrefix("api/horses")]
+    //[RoutePrefix("api/Horse")]
+    //[EnableCors(origins:"*", headers:"*", methods:"*")]
+    [DisableCors]
     public class HorseController : ApiController
     {
         private readonly ApplicationContext db = new ApplicationContext();
         // GET api/<controller>
-        //[Route("~/api/GetAll")]
         [HttpGet]
         public IHttpActionResult GetAll(int ? pageNumber = 0)
         {
@@ -28,7 +30,8 @@ namespace HorseRacing.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    CountryName = x.Country.Name
+                    CountryName = x.Country.Name,
+                    GenderName = x.Gender.Name
                 })
                 .ToList();
            
@@ -36,7 +39,6 @@ namespace HorseRacing.Controllers
         }
 
         // GET api/<controller>/5
-        //[Route("~/api/Get/id")]
         [HttpGet]
         public IHttpActionResult Get(int id)
         {
@@ -48,7 +50,8 @@ namespace HorseRacing.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
-                    CountryName = x.Country.Name
+                    CountryName = x.Country.Name,
+                    GenderName = x.Gender.Name
                 }).FirstOrDefault();
 
             return Ok(query);

@@ -1,22 +1,25 @@
-﻿var app = angular.module("horseApp", []);
+﻿var app = angular.module("horseApp", ['ngRoute'])
+    .config(function ($routeProvider) {
+        $routeProvider.when('/horseRacing',
+            {
+                templateUrl: 'templates/horse-racing-app-component.html',
+                controller: 'Controllers/horseController'
+            });
+    });
 
-app.controller("horseController", function ($scope, $http) {
+        //app.controller("horseController", function ($scope, $http) {
 
-    $scope.title = "Title";
-    //$http({
-    //    method: 'GET',
-    //    url: 'https://localhost:44366/api/GetAll'
-    //}).then(function (result) {
-    //    $scope.getHorseRecords = result.data;
-    //});
-
-    $http.get("http://localhost:44366/api/Horse")
-        .then(function (response) {
-            console.log(response.data);
-
-            $scope.getHorseRecords = response.data;
+        //    $scope.title = "Hellooo";
+        //    $scope.horses = [];
+        //    $http.get("https://localhost:44366/api/Horse").then(function (result) {
+        //        console.log(result);
+        //        //lower camel
+        //        $scope.horses = result.data;
+        //    });
 
 
-        });
 
-});
+        //});
+
+ /*   });*/
+   

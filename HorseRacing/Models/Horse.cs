@@ -13,10 +13,10 @@ namespace HorseRacing.Models
         public System.DateTime DateOfBirth { get; set; }
         public Nullable<int> DamId { get; set; }
         public Nullable<int> SireId { get; set; }
-        public Nullable<int> ColourId { get; set; }
+        public int ColourId { get; set; }
         public int CategoryId { get; set; }
         public int GenderId { get; set; }
-        public int CountryId { get; set; }
+        public int? CountryId { get; set; }
         public Nullable<int> AcqusitionId { get; set; }
 
         [ForeignKey("CountryId")]
