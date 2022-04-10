@@ -1,0 +1,43 @@
+﻿<h2>Create horse</h2>
+
+<form>
+    <div>
+        <input type="text" class="form-control" ng-model="horse.Name" placeholder="Horse Name">
+
+    </div>
+    <div>
+        <input type="date" class="form-control" ng-model="horse.DateOfBirth" placeholder="Date Of Birth">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.DamId" placeholder="Dam Id">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.SireId" placeholder="Sire Id">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.ColourId" placeholder="Colour Id">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.CategoryId" placeholder="Category Id">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.GenderId" placeholder="Gender Id">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.CountryId" placeholder="Country Id">
+
+    </div>
+    <div>
+        <input type="number" class="form-control" ng-model="horse.AcquisitionId" placeholder="Acquisition Id">
+
+    </div>
+    <div>
+        <button type="submit" class="btn btn-default" ng-click="insert(horse)">Save</button>
+    </div>
+</form>

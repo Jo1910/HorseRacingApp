@@ -1,0 +1,11 @@
+﻿.horse-container {
+    background-color: lightcyan;
+    margin: auto;
+    border: 2px solid black;
+    font-size: 20px;
+    padding: 20px;
+}
+
+dd {
+    margin-bottom: 20px;
+}

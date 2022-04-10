@@ -1,23 +1,33 @@
 ﻿<div class="container">
-    <h2>Horse List</h2>
-    <table class="table table-success">
-        <thead>
-            <tr>
-                <th>Horse Id</th>
-                <th>Horse Name</th>
-                <th>Horse Country</th>
-                <th>Horse Gender</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr ng-repeat="x in horses">
-                <td>{{x.Id}}</td>
-                <td>{{x.Name}}</td>
-                <td>{{x.CountryName}}</td>
-                <td>{{x.GenderName}}</td>
-            </tr>
-        </tbody>
-    </table>
-    <horse-details></horse-details>
+
+    <div ng-if="vm.horses == null">
+        No horses
+    </div>
+    <div ng-if="vm.horses != null">
+        <table class="table table-success table-bordered">
+            <thead>
+                <tr>
+                    <th>Horse Id</th>
+                    <th>Horse Name</th>
+                    <th>Horse Country</th>
+                    <th>Horse Gender</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="x in vm.horses">
+                    <td>{{x.Id}}</td>
+                    <td><a ui-sref="horse ({horseId: x.Id})">{{x.Name}}</a></td>
+                    <td>{{x.CountryName}}</td>
+                    <td>{{x.GenderName}}</td>
+                </tr>
+            </tbody>
+        </table>
+
+
+    </div>
+
+    <div>
+        <a ui-sref="create">Create new horse</a>
+    </div>
 
 </div>

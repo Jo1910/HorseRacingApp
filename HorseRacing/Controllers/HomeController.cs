@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using EntityFramework.Extensions;
 
 namespace HorseRacing.Controllers
 {
@@ -33,26 +34,8 @@ namespace HorseRacing.Controllers
         [HttpPost]
         public ActionResult CreateHorse(Horse h)
         {
-            Horse horse = new Horse();
-            horse.Name = h.Name;
-            horse.DateOfBirth = h.DateOfBirth;
-            horse.DamId = h.DamId;
-            horse.SireId = h.SireId;
-            horse.ColourId = h.ColourId;
-            horse.CategoryId = h.CategoryId;
-            horse.GenderId = h.GenderId;
-            horse.CountryId = h.CountryId;
-            horse.AcqusitionId = h.AcqusitionId;
-            db.Horses.Add(horse);
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception ex)
-            {
-                throw;
-            }
-            return RedirectToAction("Index");
+             return View(h);
+                   
         }
 
         // Read data
@@ -101,64 +84,50 @@ namespace HorseRacing.Controllers
         [HttpGet]
         public ActionResult EditHorse(int id)
         {
-            //Horse horse = db.Horses.Where(c => c.Id == id)
-            //                       .Select(c => new Horse()
+            //var query = db.Horses.Where(c => c.Id == id)
+
+            //                       .Select(c => new HorseListVM()
             //                       {
             //                           Id = c.Id,
             //                           Name = c.Name,
-            //                           DateOfBirth = c.DateOfBirth,
-            //                           DamId= c.DamId,
-            //                           SireId= c.SireId,
-            //                           ColourId= c.ColourId,
-            //                           CategoryId= c.CategoryId,
-            //                           GenderId = c.GenderId,
-            //                           CountryId= c.CountryId,
-            //                           AcqusitionId= c.AcqusitionId
+            //                           CountryName= c.Country.Name,
+            //                           GenderName= c.Gender.Name
 
             //                       }).SingleOrDefault();
 
-            Horse horse = (from h in db.Horses
-                           where h.Id == id
-                           select h).FirstOrDefault();
-            return View(horse);
+
+
+            //return View(query);
+            return View();
         }
 
         [HttpPost]
         public ActionResult EditHorse(Horse hrs)
         {
-            //Horse horse = db.Horses.Where(x => x.Id == x.Id).Single();
 
-            //horse.Name = h.Name;
-            //horse.DateOfBirth = h.DateOfBirth;
-            //horse.DamId = h.DamId;  
-            //horse.SireId = h.SireId;
-            //horse.ColourId = h.ColourId;
-            //horse.CategoryId = h.CategoryId;
-            //horse.GenderId = h.GenderId;
-            //horse.CountryId = h.CountryId;
-            //horse.AcqusitionId= h.AcqusitionId;
+            ////valid
+            //Horse horse = (from h in db.Horses
+            //               where h.Id == hrs.Id
+            //               select h).FirstOrDefault();
+            //horse.Id = hrs.Id;
+            //horse.Name = hrs.Name;
+            //horse.DateOfBirth = hrs.DateOfBirth;
+            //horse.DamId = hrs.DamId;
+            //horse.SireId = hrs.SireId;
+            //horse.ColourId = hrs.ColourId;
+            //horse.CategoryId = hrs.CategoryId;
+            //horse.GenderId = hrs.GenderId;
+            //horse.CountryId = hrs.CountryId;
+            //horse.AcqusitionId = hrs.AcqusitionId;
+            //db.SaveChanges();
+
             //return RedirectToAction("ShowHorse");
+            ////end valid
 
-            Horse horse = (from h in db.Horses
-                           where h.Id == hrs.Id
-                           select h).FirstOrDefault();
-            horse.Id = hrs.Id;
-            horse.Name = hrs.Name;
-            horse.DateOfBirth = hrs.DateOfBirth;
-            horse.DamId = hrs.DamId;
-            horse.SireId = hrs.SireId;
-            horse.ColourId = hrs.ColourId;
-            horse.CategoryId = hrs.CategoryId;
-            horse.GenderId = hrs.GenderId;
-            horse.CountryId = hrs.CountryId;
-            horse.AcqusitionId = hrs.AcqusitionId;
-            db.SaveChanges();
+            return View();
+         }
 
-            return RedirectToAction("ShowHorse");
-
-        }
-
-        // Delete a row - horse table
+            // Delete a row - horse table
 
         [HttpGet]
         public ActionResult DeleteHorse(int? id)
