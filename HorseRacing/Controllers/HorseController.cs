@@ -57,13 +57,16 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+
+        
+
         // POST api/<controller>
         public void Post([FromBody] string value)
         {
         }
 
-        // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put([FromBody] string value)
         {
         }
 

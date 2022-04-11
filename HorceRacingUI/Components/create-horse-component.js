@@ -3,22 +3,27 @@
 
     angular.module('horseApp').component('create', {
         controllerAs: 'vm',
-        controller: function (horseService) {
+        controller: function (horseService, colourService) {
             var vm = this;
 
-            vm.$onInit = function (horse) {
-                horseService.createHorse(horse)
-                    .then(function () {
-                        horseService.getAllHorses();
+            vm.colours = null;
+
+            vm.$onInit = function () {
+                colourService.getAllColours()
+                    .then(function (colours) {
+                        vm.colours = colours;
+                        console.log(colours);
                     });
             }
 
-            vm.insert = function (horse) {
-                horseService.createHorse(horse)
-                    .then(function () {
-                        horseService.getAllHorses();
-                    })
-            }
+            //vm.$onInit = function (horse) {
+            //    horseService.createHorse(horse)
+            //        .then(function () {
+            //            horseService.getAllHorses();
+            //        });
+            //}
+
+           
         },
 
         templateUrl: '/Templates/create-horse-component.html'

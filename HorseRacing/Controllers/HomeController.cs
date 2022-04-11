@@ -61,6 +61,7 @@ namespace HorseRacing.Controllers
             return View(query);
         }
 
+
         public ActionResult ShowOneHorse(int id)
         {
             var query = db.Horses

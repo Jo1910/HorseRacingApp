@@ -24,6 +24,7 @@
 
             vm.horses = null;
 
+
             vm.$onInit = function () {
                 horseService.getAllHorses().then(function (horses) {
                     vm.horses = horses;

@@ -1,43 +1,35 @@
-﻿<h2>Create horse</h2>
+﻿<div class="container">
 
-<form>
-    <div>
-        <input type="text" class="form-control" ng-model="horse.Name" placeholder="Horse Name">
+    <h2>Create horse</h2>
 
-    </div>
-    <div>
-        <input type="date" class="form-control" ng-model="horse.DateOfBirth" placeholder="Date Of Birth">
+    <form>
+        <div class="mb-3">
+            <label for="horseName" class="form-label">Name</label>
+            <input type="text" class="form-control" id="horseName" ng-model="horse.Name" placeholder="Horse Name">
+        </div>
+        <div class="mb-3">
+            <label for="dateOfBirth" class=" form-label">Date Of Birth</label>
+            <input type="date" class="form-control" id="dateOfBirth" ng-model="horse.DateOfBirth" placeholder="Date Of Birth">
+        </div>
+    
+        <div class="mb-3">
+            <label for="colour" class="form-label">Colour</label>
+            <!--<select ng-repeat="x in vm.colours" class="form-select" aria-label="">
+                <option value="Red">{{x.Name}}</option>
+             </select>-->
 
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.DamId" placeholder="Dam Id">
+            <select>
+                <option ng-repeat="x in vm.colours">{{x.Name}}</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            
+        </div>
+       
+   
+        <div class="mb-3">
+            <button type="submit" class="btn btn-primary" ng-click="insert(horse)">Save</button>
+        </div>
+    </form>
 
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.SireId" placeholder="Sire Id">
-
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.ColourId" placeholder="Colour Id">
-
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.CategoryId" placeholder="Category Id">
-
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.GenderId" placeholder="Gender Id">
-
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.CountryId" placeholder="Country Id">
-
-    </div>
-    <div>
-        <input type="number" class="form-control" ng-model="horse.AcquisitionId" placeholder="Acquisition Id">
-
-    </div>
-    <div>
-        <button type="submit" class="btn btn-default" ng-click="insert(horse)">Save</button>
-    </div>
-</form>
+</div>
