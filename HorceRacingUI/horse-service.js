@@ -7,7 +7,7 @@
 
         // Get all horses
         self.getAllHorses = function () {
-            return $http.get(apiBase + 'Horse')
+            return $http.get(apiBase + 'Horse/GetAll')
                 .then(function (result) {
                     return result.data;
                 });
@@ -16,7 +16,7 @@
 
         // Get horse by id
         self.getHorse = function (horseId) {
-            return $http.get(apiBase + 'Horse/' + horseId)
+            return $http.get(apiBase + 'Horse/Get/' + horseId)
                 .then(function (result) {
                     return result.data;
                 });

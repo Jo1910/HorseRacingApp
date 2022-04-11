@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="category-service.js" />
     <Content Include="colour-service.js" />
     <Content Include="Components\create-horse-component.js" />
     <Content Include="Components\edit-horse-component.js" />

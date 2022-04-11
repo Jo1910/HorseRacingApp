@@ -11,22 +11,25 @@
             <label for="dateOfBirth" class=" form-label">Date Of Birth</label>
             <input type="date" class="form-control" id="dateOfBirth" ng-model="horse.DateOfBirth" placeholder="Date Of Birth">
         </div>
-    
+
         <div class="mb-3">
             <label for="colour" class="form-label">Colour</label>
-            <!--<select ng-repeat="x in vm.colours" class="form-select" aria-label="">
-                <option value="Red">{{x.Name}}</option>
-             </select>-->
+            <button ng-click="vm.getColours()">Colours</button>
 
             <select>
                 <option ng-repeat="x in vm.colours">{{x.Name}}</option>
             </select>
         </div>
+
         <div class="mb-3">
-            
+            <label for="categories" class="form-label">Categories</label>
+            <button ng-click="vm.getCategories()">Categories</button>
+            <select>
+                <option ng-repeat="c in vm.categories">{{c.Name}}</option>
+            </select>
         </div>
-       
-   
+
+
         <div class="mb-3">
             <button type="submit" class="btn btn-primary" ng-click="insert(horse)">Save</button>
         </div>

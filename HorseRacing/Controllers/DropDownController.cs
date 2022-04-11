@@ -41,18 +41,18 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
-        // Get categories dropdown
-        //[HttpGet]
-        //public IHttpActionResult GetCategories()
-        //{
-        //    var query = db.Categories
-        //        .Select(x => new DropDownDataVM
-        //        {
-        //            Id = x.Id,
-        //            Name = x.Name
-        //        }).ToList();
-        //    return Ok(query);
-        //}
+       // Get categories dropdown
+        [HttpGet]
+        public IHttpActionResult GetCategories()
+        {
+            var query = db.Categories
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
 
         // POST api/<controller>
         public void Post([FromBody] string value)

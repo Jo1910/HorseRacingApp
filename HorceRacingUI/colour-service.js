@@ -6,7 +6,7 @@
 
         // Get all colours
         self.getAllColours = function () {
-            return $http.get(apiBase + 'DropDown')
+            return $http.get(apiBase + 'DropDown/GetColours')
                 .then(function (result) {
                     return result.data;
                 });

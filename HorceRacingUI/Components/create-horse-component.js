@@ -3,12 +3,13 @@
 
     angular.module('horseApp').component('create', {
         controllerAs: 'vm',
-        controller: function (horseService, colourService) {
+        controller: function (horseService, colourService, categoryService) {
             var vm = this;
 
             vm.colours = null;
+            vm.categories = null;
 
-            vm.$onInit = function () {
+            vm.getColours = function () {
                 colourService.getAllColours()
                     .then(function (colours) {
                         vm.colours = colours;
@@ -16,13 +17,13 @@
                     });
             }
 
-            //vm.$onInit = function (horse) {
-            //    horseService.createHorse(horse)
-            //        .then(function () {
-            //            horseService.getAllHorses();
-            //        });
-            //}
-
+            vm.getCategories = function () {
+                categoryService.getAllCategories()
+                    .then(function (categories) {
+                        vm.categories = categories;
+                        console.log(categories);
+                    });
+            }
            
         },
 
