@@ -1,11 +1,86 @@
-﻿.horse-container {
-    background-color: lightcyan;
+﻿body {
+    background-color: rgba(19, 22, 66);
+    color: white;
+    font-family: 'Prompt', sans-serif;
+}
+
+h2 {
+    text-align: center;
+    margin-top: 30px;
+}
+
+.horselist-container {
+    
+}
+
+.horse-container {
     margin: auto;
-    border: 2px solid black;
+    border: 2px solid rgb(242, 243, 250);
+    box-shadow: 8px 8px 6px #888888;
     font-size: 20px;
     padding: 20px;
+}
+
+.create-container {
+    width: 60%;
+    margin: 0 auto;
+}
+
+dt {
+    color: #a6a6a6;
 }
 
 dd {
     margin-bottom: 20px;
 }
+
+.navbar {
+    background-color: #0033cc;
+    width: 2000px !important;
+    margin: 0 !important;
+}
+
+table {
+    margin-top: 3rem;
+    box-shadow: 8px 8px 6px #888888;
+}
+
+td {
+    color: rgb(242, 243, 250);
+}
+
+td a {
+    color: rgb(242, 243, 250);
+}
+
+th {
+    font-size: 1.3rem;
+    color: #a6a6a6;
+}
+
+.btn {
+    font-weight: 800;
+    background-color: rgb(242, 243, 250);
+    color: rgba(19, 22, 66);
+}
+
+.btn:hover {
+    background-color: rgb(182, 198, 240);
+       
+}
+
+.buttonContainer {
+    margin-top: 30px;
+}
+
+.createForm {
+    width: 80%;
+}
+
+select {
+    width: 100%;
+    height: 40px;
+    border-radius: 4px;
+}
+
+

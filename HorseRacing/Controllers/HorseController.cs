@@ -21,8 +21,11 @@ namespace HorseRacing.Controllers
         public IHttpActionResult GetAll(int ? pageNumber = 0)
         {
             var query = db.Horses
-                .Include("Country")
+                .Include("Colour")
+                .Include("Category")
                 .Include("Gender")
+                .Include("Country")
+                .Include("Acquisition")
                 .OrderBy(x => x.Name)
                 .Skip(10 * pageNumber ?? 0)
                 .Take(10)
@@ -30,8 +33,14 @@ namespace HorseRacing.Controllers
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    DateOfBirth = x.DateOfBirth,
+                    DamName = x.Name,
+                    SireName = x.Name,
+                    ColourName = x.Colour.Name,
+                    CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
-                    GenderName = x.Gender.Name
+                    GenderName = x.Gender.Name,
+                    AcqusitionName = x.Acqusition.Name,
                 })
                 .ToList();
            
@@ -43,15 +52,24 @@ namespace HorseRacing.Controllers
         public IHttpActionResult Get(int id)
         {
             var query = db.Horses
-                .Include("Country")
+                .Include("Colour")
+                .Include("Category")
                 .Include("Gender")
+                .Include("Country")
+                .Include("Acquisition")
                 .Where(x => x.Id == id)
                 .Select(x => new HorseListVM
                 {
                     Id = x.Id,
                     Name = x.Name,
+                    DateOfBirth = x.DateOfBirth,
+                    DamName = x.Name,
+                    SireName = x.Name,
+                    ColourName = x.Colour.Name,
+                    CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
-                    GenderName = x.Gender.Name
+                    GenderName = x.Gender.Name,
+                    AcqusitionName = x.Acqusition.Name,
                 }).FirstOrDefault();
 
             return Ok(query);

@@ -19,10 +19,21 @@ namespace HorseRacing.Models
         public int? CountryId { get; set; }
         public Nullable<int> AcqusitionId { get; set; }
 
-        [ForeignKey("CountryId")]
-        public Country Country { get; set; }
+       
+
+        [ForeignKey("ColourId")]
+        public Colour Colour { get; set; }
+
+        [ForeignKey("CategoryId")]
+        public Category Category { get; set; }
 
         [ForeignKey("GenderId")]
         public Gender Gender { get; set; }
+
+        [ForeignKey("CountryId")]
+        public Country Country { get; set; }
+
+        [ForeignKey("AcqusitionId")]
+        public Acqusition Acqusition { get; set; }
     }
 }

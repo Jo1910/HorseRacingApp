@@ -19,12 +19,12 @@
             {
                 name: 'home',
                 url: '',
-                template: '<main-component></main-component>'
+                template: '<horse-list></horse-list>'
             },
             {
                 name: 'home2',
                 url: '/',
-                template: '<home></home>'
+                template: '<horse-list></horse-list>'
             },
             {
                 name: 'horses',

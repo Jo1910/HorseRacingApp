@@ -1,25 +1,65 @@
 ﻿<div class="container">
 
-    <h2 class="text-center" style="margin-bottom: 20px;">Horse Details:</h2>
+    <h2>Horse Details:</h2>
 
+    <div>
+        <button ui-sref="edit ({horseId: vm.horse.Id})" class="btn">Edit Horse</button>
+    </div>
 
     <div class="w-50 horse-container">
 
         <dl class="dl-horizontal">
             <dt>
-                Horse Id:
+                Id:
             </dt>
             <dd>
                 {{vm.horse.Id}}
             </dd>
             <dt>
-                Horse Name:
+                Name:
             </dt>
             <dd>
                 {{vm.horse.Name}}
             </dd>
             <dt>
-                Horse Country:
+                Date Of Birth:
+            </dt>
+            <dd>
+                {{vm.horse.DateOfBirth}}
+            </dd>
+
+            <dt>
+                Dam:
+            </dt>
+            <dd>
+                {{vm.horse.DamName}}
+            </dd>
+            <dt>
+                Sire:
+            </dt>
+            <dd>
+                {{vm.horse.SireName}}
+            </dd>
+            <dt>
+                Colour:
+            </dt>
+            <dd>
+                {{vm.horse.ColourName}}
+            </dd>
+            <dt>
+                Category:
+            </dt>
+            <dd>
+                {{vm.horse.CategoryName}}
+            </dd>
+            <dt>
+                Gender:
+            </dt>
+            <dd>
+                {{vm.horse.GenderName}}
+            </dd>
+            <dt>
+                Country:
             </dt>
             <dd style="font-style:italic;" ng-if="vm.horse.CountryName == null">
                 Unknown
@@ -28,17 +68,15 @@
                 {{vm.horse.CountryName}}
             </dd>
             <dt>
-                Horse Gender:
+                Acqusition type:
             </dt>
             <dd>
-                {{vm.horse.GenderName}}
+                {{vm.horse.AcqusitionName}}
             </dd>
 
         </dl>
 
     </div>
 
-    <div>
-        <a ui-sref="edit ({horseId: vm.horse.Id})">Edit Horse</a>
-    </div>
+
 </div>

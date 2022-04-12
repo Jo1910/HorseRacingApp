@@ -1,24 +1,43 @@
 ﻿<div class="container">
 
+    <h2>List Of Horses</h2>
+
+    <div class="buttonContainer">
+        <button ui-sref="create" class="btn">Create New Horse</button>
+    </div>
+
     <div ng-if="vm.horses == null">
         No horses
     </div>
     <div ng-if="vm.horses != null">
-        <table class="table table-success table-bordered">
+        <table class="table  table-bordered">
             <thead>
                 <tr>
-                    <th>Horse Id</th>
-                    <th>Horse Name</th>
-                    <th>Horse Country</th>
-                    <th>Horse Gender</th>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Date Of Birth</th>
+                    <th>Dam</th>
+                    <th>Sire</th>
+                    <th>Colour</th>
+                    <th>Category</th>
+                    <th>Gender</th>
+                    <th>Country</th>
+                    <th>Acqusition Type</th>
+                    
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="x in vm.horses">
                     <td>{{x.Id}}</td>
                     <td><a ui-sref="horse ({horseId: x.Id})">{{x.Name}}</a></td>
-                    <td>{{x.CountryName}}</td>
+                    <td>{{x.DateOfBirth}}</td>
+                    <td>{{x.DamName}}</td>
+                    <td>{{x.SireName}}</td>
+                    <td>{{x.ColourName}}</td>
+                    <td>{{x.CategoryName}}</td>
                     <td>{{x.GenderName}}</td>
+                    <td>{{x.CountryName}}</td>
+                    <td>{{x.AcqusitionName}}</td>
                 </tr>
             </tbody>
         </table>
@@ -26,8 +45,6 @@
 
     </div>
 
-    <div>
-        <a ui-sref="create">Create new horse</a>
-    </div>
+
 
 </div>

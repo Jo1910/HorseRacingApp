@@ -1,38 +1,70 @@
 ﻿<div class="container">
+    <div class="create-container">
 
-    <h2>Create horse</h2>
+    <h2>Create Horse</h2>
 
-    <form>
+    <form class="createForn">
+        <!-- Name -->
         <div class="mb-3">
             <label for="horseName" class="form-label">Name</label>
             <input type="text" class="form-control" id="horseName" ng-model="horse.Name" placeholder="Horse Name">
         </div>
+
+        <!-- Date of birth -->
         <div class="mb-3">
-            <label for="dateOfBirth" class=" form-label">Date Of Birth</label>
+            <label for="dateOfBirth" class="form-label">Date Of Birth</label>
             <input type="date" class="form-control" id="dateOfBirth" ng-model="horse.DateOfBirth" placeholder="Date Of Birth">
         </div>
 
+        <!-- Colours -->
         <div class="mb-3">
             <label for="colour" class="form-label">Colour</label>
-            <button ng-click="vm.getColours()">Colours</button>
 
-            <select>
-                <option ng-repeat="x in vm.colours">{{x.Name}}</option>
+            
+            <select ng-click="vm.getColours()">
+                <option value="" ng-repeat="x in vm.colours">{{x.Name}}</option>
             </select>
         </div>
 
+        <!-- Categories -->
         <div class="mb-3">
-            <label for="categories" class="form-label">Categories</label>
-            <button ng-click="vm.getCategories()">Categories</button>
-            <select>
-                <option ng-repeat="c in vm.categories">{{c.Name}}</option>
+            <label for="category" class="form-label">Category</label>
+
+            <select ng-click="vm.getCategories()">
+                <option value="" ng-repeat="x in vm.categories">{{x.Name}}</option>
             </select>
         </div>
 
+        <!-- Genders -->
+        <div class="mb-3">
+            <label for="gender" class="form-label">Gender</label>
+
+            <select ng-click="vm.getGenders()">
+                <option value="" ng-repeat="x in vm.genders">{{x.Name}}</option>
+            </select>
+        </div>
+
+        <!-- Countries -->
+        <div class="mb-3">
+            <label for="country" class="form-label">Country</label>
+
+            <select ng-click="vm.getCountries()">
+                <option value="" ng-repeat="x in vm.countries">{{x.Name}}</option>
+            </select>
+        </div>
+
+        <!-- Acqusitions -->
+        <div class="mb-3">
+            <label for="acqusition" class="form-label">Acqusition Type</label>
+
+            <select ng-click="vm.getAcqusitions()">
+                <option value="" ng-repeat="x in vm.acqusitions">{{x.Name}}</option>
+            </select>
+        </div>
 
         <div class="mb-3">
             <button type="submit" class="btn btn-primary" ng-click="insert(horse)">Save</button>
         </div>
     </form>
-
+   </div>
 </div>

@@ -54,6 +54,44 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+        // Get genders dropdown
+
+        [HttpGet]
+        public IHttpActionResult GetGenders()
+        {
+            var query = db.Genders
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
+
+        // Get acqusitions dropdown
+        public IHttpActionResult GetAcqusitions()
+        {
+            var query = db.Acqusitions
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
+
+        // Get countries dropdown
+        public IHttpActionResult GetCountries()
+        {
+            var query = db.Countries
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
+
         // POST api/<controller>
         public void Post([FromBody] string value)
         {
