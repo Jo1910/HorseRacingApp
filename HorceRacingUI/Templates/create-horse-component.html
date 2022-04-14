@@ -3,7 +3,7 @@
 
     <h2>Create Horse</h2>
 
-    <form class="createForn">
+    <form class="createForn" autocomplete="off">
         <!-- Name -->
         <div class="mb-3">
             <label for="horseName" class="form-label">Name</label>
@@ -20,9 +20,22 @@
         <div class="mb-3">
             <label for="colour" class="form-label">Colour</label>
 
-            
-            <select ng-click="vm.getColours()">
-                <option value="" ng-repeat="x in vm.colours">{{x.Name}}</option>
+            <select ng-model="vm.selectedColour" ng-options="x.Name for x in vm.colours">
+            </select>
+        </div>
+        <!-- Dam -->
+        <div class="mb-3">
+            <label for="dam" class="form-label">Dam</label>
+
+            <select ng-model="vm.selectedDam" ng-options="x.Name for x in vm.horses">
+            </select>
+        </div>
+
+        <!-- Sire -->
+        <div class="mb-3">
+            <label for="sire" class="form-label">Sire</label>
+
+            <select ng-model="vm.selectedSire" ng-options="x.Name for x in vm.horses">
             </select>
         </div>
 
@@ -30,8 +43,7 @@
         <div class="mb-3">
             <label for="category" class="form-label">Category</label>
 
-            <select ng-click="vm.getCategories()">
-                <option value="" ng-repeat="x in vm.categories">{{x.Name}}</option>
+            <select ng-model="vm.selectedCategories" ng-options="x.Name for x in vm.categories">
             </select>
         </div>
 
@@ -39,8 +51,7 @@
         <div class="mb-3">
             <label for="gender" class="form-label">Gender</label>
 
-            <select ng-click="vm.getGenders()">
-                <option value="" ng-repeat="x in vm.genders">{{x.Name}}</option>
+            <select ng-model="vm.selectedGender" ng-options="x.Name for x in vm.genders">
             </select>
         </div>
 
@@ -48,8 +59,7 @@
         <div class="mb-3">
             <label for="country" class="form-label">Country</label>
 
-            <select ng-click="vm.getCountries()">
-                <option value="" ng-repeat="x in vm.countries">{{x.Name}}</option>
+            <select ng-model="vm.selectedCountry" ng-options="x.Name for x in vm.countries">
             </select>
         </div>
 
@@ -57,8 +67,7 @@
         <div class="mb-3">
             <label for="acqusition" class="form-label">Acqusition Type</label>
 
-            <select ng-click="vm.getAcqusitions()">
-                <option value="" ng-repeat="x in vm.acqusitions">{{x.Name}}</option>
+            <select ng-model="vm.selectedAcqusition" ng-options="x.Name for x in vm.acqusitions">
             </select>
         </div>
 

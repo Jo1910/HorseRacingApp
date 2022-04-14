@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using EntityFramework.Extensions;
+using System.Data.Entity;
 
 namespace HorseRacing.Controllers
 {
@@ -24,18 +25,52 @@ namespace HorseRacing.Controllers
         }
 
         // Create a horse - get data
-        public ActionResult CreateHorse()
+        public ActionResult CreateHorse(int id)
         {
-            Horse horse = new Horse();
+            //Horse horse;
+            //if (id > 0)
+            //{
+            //    var horses = db.Horses.Find();
+            //    horse = horses.FirstOrDefault(h => h.Id == id);
+            //}
+            //else
+            //{
+            //    db.Horses.Create();
+            //}
             return View();
+            //Horse horse = new Horse();
+            //return View();
         }
 
         // Create a horse - post data
         [HttpPost]
         public ActionResult CreateHorse(Horse h)
         {
-             return View(h);
-                   
+            //var query = db.Horses
+            //    .Include("Colour")
+            //    .Include("Category")
+            //    .Include("Gender")
+            //    .Include("Country")
+            //    .Include("Acqusition")
+            //    .Select(x => new HorseListVM
+            //    {
+            //        Name = x.Name,
+            //        DateOfBirth = x.DateOfBirth,
+            //        ColourName = x.Colour.Name,
+            //        CategoryName = x.Category.Name,
+            //        GenderName = x.Gender.Name,
+            //        CountryName = x.Country.Name,
+            //        AcqusitionName = x.Acqusition.Name,
+            //    }).FirstOrDefault();
+            //db.SaveChanges();
+
+            return RedirectToAction("Index");
+
+            //db.Horses.Add(h);
+            //db
+
+
+
         }
 
         // Read data
@@ -85,26 +120,107 @@ namespace HorseRacing.Controllers
         [HttpGet]
         public ActionResult EditHorse(int id)
         {
+
+            HorseListVM vm = db.Horses
+                 .Where(x => x.Id == id)
+                 .Select(x => new HorseListVM()
+                 {
+                     Id = x.Id,
+                     Name = x.Name,
+                     DateOfBirth = x.DateOfBirth,
+                     ColourName = x.Colour.Name,
+                     CategoryName = x.Category.Name,
+                     GenderName = x.Gender.Name,
+                     CountryName = x.Country.Name,
+                     AcqusitionName = x.Acqusition.Name
+                 }).SingleOrDefault();
+            return View(vm);
             //var query = db.Horses.Where(c => c.Id == id)
 
             //                       .Select(c => new HorseListVM()
             //                       {
             //                           Id = c.Id,
             //                           Name = c.Name,
-            //                           CountryName= c.Country.Name,
-            //                           GenderName= c.Gender.Name
+            //                           ColourName = c.Colour.Name,
+            //                           CategoryName = c.Category.Name,
+            //                           GenderName = c.Gender.Name,
+            //                           CountryName = c.Country.Name,
+            //                           AcqusitionName = c.Acqusition.Name,
+
 
             //                       }).SingleOrDefault();
 
 
 
             //return View(query);
-            return View();
+            //return View();
         }
 
         [HttpPost]
         public ActionResult EditHorse(Horse hrs)
         {
+
+            //HorseListVM vm = db.Horses
+            //     .Where(c => c.Id == hrs.Id)
+            //     .Include("Colour")
+            //     .Include("Category")
+            //     .Include("Gender")
+            //     .Include("Country")
+            //     .Include("Acqusition")
+                 
+            //     .Single();
+
+            //vm.Id = hrs.Id;
+            //vm.Name = hrs.Name;
+            //vm.DateOfBirth = hrs.DateOfBirth;
+            //vm.ColourName = hrs.Colour.Name;
+            //vm.CategoryName = hrs.Category.Name;
+            //vm.GenderName = hrs.Gender.Name;
+            //vm.CountryName = hrs.Country.Name;
+            //vm.AcqusitionName = hrs.Acqusition.Name;
+            //db.SaveChanges();
+            //return RedirectToAction("Index");
+
+            //var query = db.Horses
+            //     .Include("Colour")
+            //     .Include("Category")
+            //     .Include("Gender")
+            //     .Include("Country")
+            //     .Include("Acqusition")
+            //    .Where(m => m.Id == hrs.Id)
+            //    .Select(m => new HorseListVM
+            //    {
+            //        Id = m.Id,
+            //        Name = m.Name,
+            //        DateOfBirth = m.DateOfBirth,
+            //        ColourName = m.Colour.Name,
+            //        CategoryName = m.Category.Name, 
+            //        GenderName = m.Gender.Name,
+            //        CountryName = m.Country.Name,
+            //        AcqusitionName = m.Acqusition.Name
+            //    }).Single();
+
+            var newhorse = new Horse()
+            {
+                Id = hrs.Id,
+                
+            };
+
+            db.Horses.Add(newhorse);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex) 
+            {
+                throw (ex);
+            }
+
+            return RedirectToAction("Index");
+            //return View(query);
+
+
+
 
             ////valid
             //Horse horse = (from h in db.Horses
@@ -125,8 +241,7 @@ namespace HorseRacing.Controllers
             //return RedirectToAction("ShowHorse");
             ////end valid
 
-            return View();
-         }
+        }
 
             // Delete a row - horse table
 
@@ -142,7 +257,7 @@ namespace HorseRacing.Controllers
         public ActionResult DeleteHorse(int id)
         {
             Horse horse = db.Horses.Find(id);
-            db.Horses.Remove(horse);
+            //db.Horses.Remove(id);
             db.SaveChanges();
             return RedirectToAction("ShowHorse");
         }

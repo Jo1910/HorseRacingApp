@@ -1,20 +1,11 @@
 ﻿(function () {
     'use strict';
 
-    // var app = angular.module('horseApp', ['ngRoute']);
-
-    // app.config(function ($routeProvider) {
-    //     $routeProvider.when('/', {
-    //         templateUrl: '/App/Templates/horse-list-component.html',
-    //         controller: 'horseController'
-    //     });
-    // });
-
     var app = angular.module('horseApp', ['ui.router']);
 
     app.value('apiBase', 'https://localhost:44366/api/')
 
-    app.config(function ($stateProvider) {
+    app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         var states = [
             {
                 name: 'home',
@@ -40,7 +31,6 @@
                     }
                 },
                 template: '<horse horse-id="$resolve.horseId"></horse>',
-                // params: { horseId: null }
             },
             {
                 name: 'edit',
@@ -60,11 +50,13 @@
 
         ];
 
-        
+        //$locationProvider.html5Mode(true);
+
         states.forEach(function (state) {
             $stateProvider.state(state);
         });
 
     });
+    
 
 })();

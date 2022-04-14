@@ -78,6 +78,7 @@
     <Content Include="Components\navigation-component.js" />
     <Content Include="css\img\horse.jpg" />
     <Content Include="css\site.css" />
+    <Content Include="dropdown-service.js" />
     <Content Include="horse-service.js" />
     <Content Include="Index.html" />
     <Content Include="Templates\create-horse-component.html" />

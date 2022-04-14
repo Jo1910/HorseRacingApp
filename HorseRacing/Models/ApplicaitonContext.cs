@@ -19,5 +19,6 @@
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Horse> Horses { get; set; }
 
+        
     }
 }
