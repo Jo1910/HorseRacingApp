@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('horseApp').factory('horseService', function (apiBase, $http) {
+    angular.module('horseApp').factory('horseService', function (apiBase, $http, $resource) {
 
         var self = this;
 

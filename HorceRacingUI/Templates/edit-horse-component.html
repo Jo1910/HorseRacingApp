@@ -1,8 +1,48 @@
-﻿<div>
+﻿
+<div>
+    <form name="horseForm">
     <h2>Edit Horse</h2>
     <div>
-        <input type="text" name="name" ng-model={{horse.Name}}>
+        <input type="text" name="name" ng-model="vm.horse.Id">
     </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.Name">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.DateOfBirth">
+
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.DamName">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.SireName">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.ColourName">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.GenderName">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.CountryName">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.CategoryName">
+    </div>
+    <div>
+        <input type="text" name="name" ng-model="vm.horse.AcquisitionName">
+    </div>
+    </form>
+    <!--<button class="btn btn-primary"
+            ng-click="updateHorse()">
+        Save
+    </button>-->
+
+    <button class="btn btn-default"
+            style="width:70px"
+            ng-click="vm.cancel(horseForm)">
+        Cancel
+    </button>
 </div>
 
-heloooo

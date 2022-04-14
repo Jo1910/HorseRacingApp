@@ -40,7 +40,7 @@
                         return $stateParams.horseId;
                     }
                 },
-                template: '<edit horse-id="$resolve.horseId></edit>'
+                template: '<edit horse-id="$resolve.horseId"></edit>'
             },
             {
                 name: 'create',

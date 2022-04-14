@@ -11,7 +11,8 @@ using System.Web.Http.Cors;
 namespace HorseRacing.Controllers
 {
     //[RoutePrefix("api/Horse")]
-    //[EnableCors(origins:"*", headers:"*", methods:"*")]
+
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     [DisableCors]
     public class HorseController : ApiController
     {
@@ -49,7 +50,7 @@ namespace HorseRacing.Controllers
 
         // GET api/<controller>/5
         [HttpGet]
-        public IHttpActionResult Get(int id)
+        public IHttpActionResult Get(int? id)
         {
             var query = db.Horses
                 .Include("Colour")
@@ -79,13 +80,29 @@ namespace HorseRacing.Controllers
         
 
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public void Post([FromBody] Horse horse)
         {
+            db.Horses.Add(horse);
+            db.SaveChanges();
         }
 
         [HttpPut]
-        public void Put([FromBody] string value)
+        public void Put(int id, [FromBody] Horse horse)
         {
+            var query = db.Horses.FirstOrDefault(x => x.Id == id);
+
+            query.Id = id;
+            query.Name = horse.Name;
+            query.DateOfBirth = horse.DateOfBirth;
+            query.DamId = horse.DamId;
+            query.SireId = horse.SireId;
+            query.ColourId = horse.ColourId;
+            query.CategoryId = horse.CategoryId;
+            query.CountryId = horse.CountryId;  
+            query.GenderId = horse.GenderId;
+            query.AcqusitionId = horse.AcqusitionId;
+
+            db.SaveChanges();
         }
 
         // DELETE api/<controller>/5
