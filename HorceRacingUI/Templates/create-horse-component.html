@@ -1,79 +1,94 @@
 ﻿<div class="container">
     <div class="create-container">
 
-    <h2>Create Horse</h2>
+        <h2>Create Horse</h2>
 
-    <form class="createForn" autocomplete="off">
-        <!-- Name -->
-        <div class="mb-3">
-            <label for="horseName" class="form-label">Name</label>
-            <input type="text" class="form-control" id="horseName" ng-model="horse.Name" placeholder="Horse Name">
-        </div>
+        <form class="createForm" autocomplete="off">
+            <!-- Name -->
+            <div class="mb-3">
+                <label for="horseName" class="form-label">Name</label>
+                <input type="text" class="form-control" id="horseName" ng-model="vm.selectedName" placeholder="Horse Name">
+            </div>
+            vm: {{vm.selectedName}}
 
-        <!-- Date of birth -->
-        <div class="mb-3">
-            <label for="dateOfBirth" class="form-label">Date Of Birth</label>
-            <input type="date" class="form-control" id="dateOfBirth" ng-model="horse.DateOfBirth" placeholder="Date Of Birth">
-        </div>
+            <!-- Date of birth -->
+            <div class="mb-3">
+                <label for="dateOfBirth" class="form-label">Date Of Birth</label>
+                <input type="date" class="form-control" id="dateOfBirth" ng-model="vm.selectedDate" placeholder="Date Of Birth">
+            </div>
+            vm: {{vm.selectedDate}}
 
-        <!-- Colours -->
-        <div class="mb-3">
-            <label for="colour" class="form-label">Colour</label>
+            <!-- Colours -->
+            <div class="mb-3">
+                <label for="colour" class="form-label">Colour</label>
 
-            <select ng-model="vm.selectedColour" ng-options="x.Name for x in vm.colours">
-            </select>
-        </div>
-        <!-- Dam -->
-        <div class="mb-3">
-            <label for="dam" class="form-label">Dam</label>
+                <select ng-model="vm.selectedColourId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.colours">
+                </select>
+            </div>
+            vm: {{vm.selectedColourId}}
+            <!-- Dam -->
+            <div class="mb-3">
+                <label for="dam" class="form-label">Dam</label>
 
-            <select ng-model="vm.selectedDam" ng-options="x.Name for x in vm.horses">
-            </select>
-        </div>
+                <select ng-model="vm.selectedDamId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.horses">
+                </select>
+            </div>
+            vm: {{vm.selectedDamId}}
 
-        <!-- Sire -->
-        <div class="mb-3">
-            <label for="sire" class="form-label">Sire</label>
+            <!-- Sire -->
+            <div class="mb-3">
+                <label for="sire" class="form-label">Sire</label>
 
-            <select ng-model="vm.selectedSire" ng-options="x.Name for x in vm.horses">
-            </select>
-        </div>
+                <select ng-model="vm.selectedSireId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.horses">
+                </select>
+            </div>
+            vm: {{vm.selectedSireId}}
 
-        <!-- Categories -->
-        <div class="mb-3">
-            <label for="category" class="form-label">Category</label>
 
-            <select ng-model="vm.selectedCategories" ng-options="x.Name for x in vm.categories">
-            </select>
-        </div>
+            <!-- Categories -->
+            <div class="mb-3">
+                <label for="category" class="form-label">Category</label>
 
-        <!-- Genders -->
-        <div class="mb-3">
-            <label for="gender" class="form-label">Gender</label>
+                <select ng-model="vm.selectedCategoryId" ng-options="x.Id as x.Name for x in vm.categories">
+                </select>
+            </div>
+            vm: {{vm.selectedCategoriesId}}
 
-            <select ng-model="vm.selectedGender" ng-options="x.Name for x in vm.genders">
-            </select>
-        </div>
 
-        <!-- Countries -->
-        <div class="mb-3">
-            <label for="country" class="form-label">Country</label>
+            <!-- Genders -->
+            <div class="mb-3">
+                <label for="gender" class="form-label">Gender</label>
 
-            <select ng-model="vm.selectedCountry" ng-options="x.Name for x in vm.countries">
-            </select>
-        </div>
+                <select ng-model="vm.selectedGenderId" ng-options="x.Id as x.Name for x in vm.genders">
+                </select>
+            </div>
+            vm: {{vm.selectedGenderId}}
 
-        <!-- Acqusitions -->
-        <div class="mb-3">
-            <label for="acqusition" class="form-label">Acqusition Type</label>
 
-            <select ng-model="vm.selectedAcqusition" ng-options="x.Name for x in vm.acqusitions">
-            </select>
-        </div>
+            <!-- Countries -->
+            <div class="mb-3">
+                <label for="country" class="form-label">Country</label>
 
-        <div class="mb-3">
-            <button type="submit" class="btn btn-primary" ng-click="insert(horse)">Save</button>
-        </div>
-    </form>
-   </div>
+                <select ng-model="vm.selectedCountryId" ng-options="x.Id as x.Name for x in vm.countries">
+                </select>
+            </div>
+            vm: {{vm.selectedCountryId}}
+
+
+            <!-- Acqusitions -->
+            <div class="mb-3">
+                <label for="acqusition" class="form-label">Acqusition Type</label>
+
+                <select ng-model="vm.selectedAcquisitionId" ng-options="x.Id as x.Name for x in vm.acqusitions">
+                </select>
+            </div>
+            vm: {{vm.selectedAcquisitionId}}
+
+
+            <div class="mb-3">
+                <button type="submit" class="btn btn-primary" ng-click="vm.postdata()">Save</button>
+            </div>
+        </form>
+       {{vm.message}}
+    </div>
 </div>

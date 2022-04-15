@@ -3,23 +3,74 @@
 
     angular.module('horseApp').component('create', {
         controllerAs: 'vm',
-        controller: function (horseService, dropdownService) {
+        controller: function (horseService, dropdownService, $http, apiBase) {
             var vm = this;
 
             vm.colours = null;
             vm.categories = null;
             vm.genders = null;
             vm.countries = null;
-            vm.acqusitions = null;
+            vm.acquisitions = null;
             vm.horses = null;
 
-            vm.selectedColour = null;
-            vm.selectedCategories = null;
-            vm.selectedGenders = null
-            vm.selectedCountries = null;
-            vm.selectedAcqusitions = null;
-            vm.selectedDam = null
-            vm.selectedSire = null;
+            vm.selectedName = null;
+            vm.selectedDate = null;
+            vm.selectedDamId = null;
+            vm.selectedSireId = null;
+            vm.selectedColourId = null;
+            vm.selectedCategoryId = null;
+            vm.selectedGenderId = null
+            vm.selectedCountryId = null;
+            vm.selectedAcquisitionId = null;
+            
+
+            vm.postdata = function (name, dateOfBirth, damId, sireId,
+                colourId, categoryId, genderId, countryId,
+                acquisitionId) {
+
+                var data = {
+                    name: vm.selectedName,
+                    dateOfBirth: vm.selectedDate,
+                    damId: vm.selectedDamId,
+                    sireId: vm.selectedSireId,
+                    colourId: vm.selectedColourId,
+                    categoryId: vm.selectedCategoryId,
+                    genderId: vm.selectedGenderId,
+                    countryId: vm.selectedCountryId,
+                    acquisitionId: vm.selectedAcquisitionId
+                }
+
+                //$http.post(apiBase + 'Horse/Post', data)
+                //    .then(function (response) {
+                //        console.log(response);
+                //    });
+
+                $http({
+                    method: 'POST',
+                    url: apiBase + 'Horse/Post',
+                    data: data,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded',
+                        'key': '123'
+                    }
+                }).then(function (response) {
+                    console.log(response);
+                })
+
+            }
+
+            //vm.submit = function (data) {
+            //    horseService.createHorse(data)
+            //        .then(function () {
+            //            vm.message = "... Save Complete";
+            //        });
+            //};
+
+            //vm.submit = function (data) {
+            //    return $http.post(apiBase + 'Horse/Post', data)
+            //        .then(function (result) {
+            //            return result.data;
+            //        })
 
             dropdownService.getAllColours()
                 .then(function (colours) {
@@ -56,6 +107,11 @@
                     vm.acqusitions = acqusitions;
                     console.log(acqusitions);
                 });
+
+           
+           
+
+        
 
             //vm.getHorses = function () {
             //    horseService.getAllHorses()

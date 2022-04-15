@@ -82,16 +82,41 @@ namespace HorseRacing.Controllers
         // POST api/<controller>
         public void Post([FromBody] Horse horse)
         {
-            db.Horses.Add(horse);
-            db.SaveChanges();
+            var horseToAdd = new Horse()
+            {
+                Name = horse.Name, 
+                DateOfBirth=horse.DateOfBirth,
+                DamId = horse.Id,
+                SireId = horse.SireId,
+                ColourId = horse.ColourId,
+                CategoryId = horse.CategoryId,
+                CountryId = horse.CountryId,
+                GenderId = horse.GenderId,
+                AcqusitionId = horse.AcqusitionId
+
+            };
+            db.Horses.Add(horseToAdd);
+
+            try
+            {
+                db.SaveChanges();
+
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         [HttpPut]
         public void Put(int id, [FromBody] Horse horse)
         {
+            // select * from Horses h where h.id = id
             var query = db.Horses.FirstOrDefault(x => x.Id == id);
-
-            query.Id = id;
+            if(query == null)
+            {
+                throw new Exception("Horse does not exist.");
+            }
             query.Name = horse.Name;
             query.DateOfBirth = horse.DateOfBirth;
             query.DamId = horse.DamId;
@@ -102,7 +127,15 @@ namespace HorseRacing.Controllers
             query.GenderId = horse.GenderId;
             query.AcqusitionId = horse.AcqusitionId;
 
-            db.SaveChanges();
+            try
+            {
+                db.SaveChanges();
+
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // DELETE api/<controller>/5

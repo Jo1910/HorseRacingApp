@@ -9,7 +9,6 @@
         controller: function (horseService) {
             var vm = this;
 
-            vm.horse = null;
 
             vm.$onInit = function () {
                 if (vm.horseId) {
@@ -17,18 +16,20 @@
                         .then(function (horse) {
                             vm.horse = horse;
                             vm.originalHorse = angular.copy(horse);
+                            if (vm.horse.Id) {
+                                vm.title = "Edit: " + vm.horse.Name;
+                            }
+                            else {
+                                vm.title = "New Horse";
+                            }
                             console.log(horse);
                         });
+                    
                 }
+               
             }
             
-            if (vm.horse && vm.horse.Id) {
-                vm.title = "Edit: " + vm.horse.Name;
-            }
-            else {
-                vm.title = "New Horse";
-            }
-
+           // Cancel form editing
             vm.cancel = function (editForm) {
                 editForm.$setPristine();
                 vm.horse = angular.copy(vm.originalHorse);

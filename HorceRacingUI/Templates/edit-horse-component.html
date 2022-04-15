@@ -1,7 +1,8 @@
 ﻿
 <div>
     <form name="horseForm">
-    <h2>Edit Horse</h2>
+    <h2>{{vm.title}}</h2>
+
     <div>
         <input type="text" name="name" ng-model="vm.horse.Id">
     </div>
@@ -14,12 +15,17 @@
     </div>
     <div>
         <input type="text" name="name" ng-model="vm.horse.DamName">
+
     </div>
+
     <div>
         <input type="text" name="name" ng-model="vm.horse.SireName">
     </div>
     <div>
-        <input type="text" name="name" ng-model="vm.horse.ColourName">
+        <!--<input type="text" name="name" ng-model="vm.horse.ColourName">-->
+        <select ng-model="vm.horse.ColourName" ng-options="x.Name for x in vm.colours">
+        </select>
+
     </div>
     <div>
         <input type="text" name="name" ng-model="vm.horse.GenderName">
@@ -34,10 +40,10 @@
         <input type="text" name="name" ng-model="vm.horse.AcquisitionName">
     </div>
     </form>
-    <!--<button class="btn btn-primary"
+    <button class="btn btn-primary"
             ng-click="updateHorse()">
         Save
-    </button>-->
+    </button>
 
     <button class="btn btn-default"
             style="width:70px"
@@ -45,4 +51,5 @@
         Cancel
     </button>
 </div>
+
 

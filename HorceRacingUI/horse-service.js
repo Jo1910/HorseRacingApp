@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('horseApp').factory('horseService', function (apiBase, $http, $resource) {
+    angular.module('horseApp').factory('horseService', function (apiBase, $http) {
 
         var self = this;
 
@@ -24,7 +24,14 @@
 
         // Create horse
         self.createHorse = function (horse) {
-            return $http.post(apiBase + 'Horse/', horse)
+            return $http.post(apiBase + 'Horse/Post', JSON.stringify())
+                .then(function (result) {
+                    return result.data;
+                })
+        }
+
+        self.createHorse = function (horse) {
+            return $http.post(apiBase + 'Horse/Post', horse)
                 .then(function (result) {
                     return result.data;
                 })
