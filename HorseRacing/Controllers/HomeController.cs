@@ -117,7 +117,7 @@ namespace HorseRacing.Controllers
 
         // Update data - horse table
 
-        [HttpGet]
+        [HttpPut]
         public ActionResult EditHorse(int id)
         {
 
@@ -132,9 +132,9 @@ namespace HorseRacing.Controllers
                      CategoryName = x.Category.Name,
                      GenderName = x.Gender.Name,
                      CountryName = x.Country.Name,
-                     AcqusitionName = x.Acqusition.Name
+                     AcquisitionName = x.Acquisition.Name
                  }).SingleOrDefault();
-            return View(vm);
+            return View();
             //var query = db.Horses.Where(c => c.Id == id)
 
             //                       .Select(c => new HorseListVM()
@@ -157,90 +157,34 @@ namespace HorseRacing.Controllers
         }
 
         [HttpPost]
-        public ActionResult EditHorse(Horse hrs)
+        public ActionResult EditHorse(Horse horse)
         {
 
-            //HorseListVM vm = db.Horses
-            //     .Where(c => c.Id == hrs.Id)
-            //     .Include("Colour")
-            //     .Include("Category")
-            //     .Include("Gender")
-            //     .Include("Country")
-            //     .Include("Acqusition")
-                 
-            //     .Single();
-
-            //vm.Id = hrs.Id;
-            //vm.Name = hrs.Name;
-            //vm.DateOfBirth = hrs.DateOfBirth;
-            //vm.ColourName = hrs.Colour.Name;
-            //vm.CategoryName = hrs.Category.Name;
-            //vm.GenderName = hrs.Gender.Name;
-            //vm.CountryName = hrs.Country.Name;
-            //vm.AcqusitionName = hrs.Acqusition.Name;
-            //db.SaveChanges();
-            //return RedirectToAction("Index");
-
-            //var query = db.Horses
-            //     .Include("Colour")
-            //     .Include("Category")
-            //     .Include("Gender")
-            //     .Include("Country")
-            //     .Include("Acqusition")
-            //    .Where(m => m.Id == hrs.Id)
-            //    .Select(m => new HorseListVM
-            //    {
-            //        Id = m.Id,
-            //        Name = m.Name,
-            //        DateOfBirth = m.DateOfBirth,
-            //        ColourName = m.Colour.Name,
-            //        CategoryName = m.Category.Name, 
-            //        GenderName = m.Gender.Name,
-            //        CountryName = m.Country.Name,
-            //        AcqusitionName = m.Acqusition.Name
-            //    }).Single();
-
-            var newhorse = new Horse()
+            var query = db.Horses.FirstOrDefault(x => x.Id == horse.Id);
+            if (query == null)
             {
-                Id = hrs.Id,
-                
-            };
+                throw new Exception("Horse does not exist.");
+            }
+            query.Name = horse.Name;
+            query.DateOfBirth = horse.DateOfBirth;
+            query.DamId = horse.DamId;
+            query.SireId = horse.SireId;
+            query.ColourId = horse.ColourId;
+            query.CategoryId = horse.CategoryId;
+            query.CountryId = horse.CountryId;
+            query.GenderId = horse.GenderId;
+            query.AcquisitionId = horse.AcquisitionId;
 
-            db.Horses.Add(newhorse);
             try
             {
                 db.SaveChanges();
+
             }
-            catch (Exception ex) 
+            catch (Exception ex)
             {
-                throw (ex);
+                throw ex;
             }
-
-            return RedirectToAction("Index");
-            //return View(query);
-
-
-
-
-            ////valid
-            //Horse horse = (from h in db.Horses
-            //               where h.Id == hrs.Id
-            //               select h).FirstOrDefault();
-            //horse.Id = hrs.Id;
-            //horse.Name = hrs.Name;
-            //horse.DateOfBirth = hrs.DateOfBirth;
-            //horse.DamId = hrs.DamId;
-            //horse.SireId = hrs.SireId;
-            //horse.ColourId = hrs.ColourId;
-            //horse.CategoryId = hrs.CategoryId;
-            //horse.GenderId = hrs.GenderId;
-            //horse.CountryId = hrs.CountryId;
-            //horse.AcqusitionId = hrs.AcqusitionId;
-            //db.SaveChanges();
-
-            //return RedirectToAction("ShowHorse");
-            ////end valid
-
+            return View();
         }
 
             // Delete a row - horse table

@@ -16,6 +16,6 @@ namespace HorseRacing.ViewModels.Horses
         public string CategoryName { get; set; }
         public string GenderName { get; set; }
         public string CountryName { get; set; }
-        public string AcqusitionName { get; set; }
+        public string AcquisitionName { get; set; }
     }
 }

@@ -6,11 +6,12 @@
             horseId: '<',
         },
         controllerAs: 'vm',
-        controller: function (horseService) {
+        controller: function (horseService, $state) {
             var vm = this;
-
+            vm.date = '20140313T00:00:00';
             vm.horse = null;
 
+            // function to get a horse by Id
             vm.$onInit = function () {
                 if (vm.horseId) {
                     horseService.getHorse(vm.horseId)
@@ -19,6 +20,20 @@
                             console.log(horse);
                         });
                 }
+            }
+
+            // function to delete a horse
+            vm.deleteHorse = function () {
+                if (vm.horseId) {
+                    window.alert("Are you sure you want to delete this horse?");
+                    horseService.deleteHorse(vm.horseId)
+                        .then(function () {
+                            $state.go("horses");
+                            console.log("Row deleted.");
+                        });
+
+                }
+
             }
         },
 

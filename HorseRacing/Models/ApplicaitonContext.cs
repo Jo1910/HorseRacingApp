@@ -12,7 +12,7 @@
             this.Configuration.LazyLoadingEnabled = false;
         }
 
-        public virtual DbSet<Acqusition> Acqusitions { get; set; }
+        public virtual DbSet<Acquisition> Acquisitions { get; set; }
         public virtual DbSet<Category> Categories { get; set; }
         public virtual DbSet<Colour> Colours { get; set; }
         public virtual DbSet<Country> Countries { get; set; }

@@ -74,6 +74,7 @@
     <Content Include="Components\horse-component.js" />
     <Content Include="Components\horse-list-component.js" />
     <Content Include="Components\main-component.js" />
+    <Content Include="Components\manage-horse.js" />
     <Content Include="Components\navbar-component.js" />
     <Content Include="Components\navigation-component.js" />
     <Content Include="css\img\horse.jpg" />
@@ -87,6 +88,7 @@
     <Content Include="Templates\horse-component.html" />
     <Content Include="Templates\horse-list-component.html" />
     <Content Include="Templates\main-component.html" />
+    <Content Include="Templates\manage-horse.html" />
     <Content Include="Templates\navbar-component.html" />
     <Content Include="Templates\navigation-component.html" />
     <Content Include="Web.config" />

@@ -6,6 +6,7 @@
         <button ui-sref="create" class="btn">Create New Horse</button>
     </div>
 
+
     <div ng-if="vm.horses == null">
         No horses
     </div>
@@ -23,21 +24,20 @@
                     <th>Gender</th>
                     <th>Country</th>
                     <th>Acqusition Type</th>
-                    
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="x in vm.horses">
                     <td>{{x.Id}}</td>
                     <td><a ui-sref="horse ({horseId: x.Id})">{{x.Name}}</a></td>
-                    <td>{{x.DateOfBirth}}</td>
+                    <td ng-bind="vm.date | date:'MM/dd/yyyy'">{{x.DateOfBirth}}</td>
                     <td>{{x.DamName}}</td>
                     <td>{{x.SireName}}</td>
                     <td>{{x.ColourName}}</td>
                     <td>{{x.CategoryName}}</td>
                     <td>{{x.GenderName}}</td>
                     <td>{{x.CountryName}}</td>
-                    <td>{{x.AcqusitionName}}</td>
+                    <td>{{x.AcquisitionName}}</td>
                 </tr>
             </tbody>
         </table>

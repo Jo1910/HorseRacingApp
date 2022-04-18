@@ -38,8 +38,8 @@
         }
 
         // Get all acqusitions
-        self.getAllAcqusitions = function () {
-            return $http.get(apiBase + 'Dropdown/GetAcqusitions')
+        self.getAllAcquisitions = function () {
+            return $http.get(apiBase + 'Dropdown/GetAcquisitions')
                 .then(function (result) {
                     return result.data;
                 });

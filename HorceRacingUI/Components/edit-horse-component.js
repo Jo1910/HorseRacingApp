@@ -9,7 +9,6 @@
         controller: function (horseService) {
             var vm = this;
 
-
             vm.$onInit = function () {
                 if (vm.horseId) {
                     horseService.getHorse(vm.horseId)
@@ -34,15 +33,19 @@
                 editForm.$setPristine();
                 vm.horse = angular.copy(vm.originalHorse);
             };
+           
 
 
-             // update - put
-             //vm.submit = function (horse) {
-             //    horseService.updateHorse(horse)
-             //        .then(function () {
-             //            vm.getAllHorses();
-             //        })
-             //}
+
+            //  update - put
+             vm.submit = function (horse) {
+                 horseService.updateHorse(horse)
+                     .then(function () {
+                         vm.getAllHorses();
+                     })
+            }
+
+           
         },
         templateUrl: '/Templates/edit-horse-component.html'
 

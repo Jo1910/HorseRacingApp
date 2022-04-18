@@ -10,7 +10,9 @@ using System.Web.Http.Cors;
 
 namespace HorseRacing.Controllers
 {
-    [DisableCors]
+    //[DisableCors]
+    [EnableCorsAttribute("*", "*", "*")]
+
     public class DropDownController : ApiController
     {
         private readonly ApplicationContext db = new ApplicationContext();
@@ -69,9 +71,10 @@ namespace HorseRacing.Controllers
         }
 
         // Get acqusitions dropdown
-        public IHttpActionResult GetAcqusitions()
+        [HttpGet]
+        public IHttpActionResult GetAcquisitions()
         {
-            var query = db.Acqusitions
+            var query = db.Acquisitions
                 .Select(x => new DropDownDataVM
                 {
                     Id = x.Id,
@@ -81,6 +84,7 @@ namespace HorseRacing.Controllers
         }
 
         // Get countries dropdown
+        [HttpGet]
         public IHttpActionResult GetCountries()
         {
             var query = db.Countries

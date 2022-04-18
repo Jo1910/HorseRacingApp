@@ -3,10 +3,15 @@
     <h2>Horse Details:</h2>
 
     <div>
-        <button ui-sref="edit ({horseId: vm.horse.Id})" class="btn">Edit Horse</button>
+        <button ui-sref="edit ({horseId: vm.horse.Id})" class="btn btn-edit">Edit Horse</button>
+    </div>
+    <div>
+        <button type="submit" ng-click="vm.deleteHorse()" class="btn btn-danger btn-delete">Delete Horse</button>
     </div>
 
+
     <div class="w-50 horse-container">
+
 
         <dl class="dl-horizontal">
             <dt>
@@ -24,7 +29,7 @@
             <dt>
                 Date Of Birth:
             </dt>
-            <dd>
+            <dd ng-bind="vm.date | date:'MM/dd/yyyy'">
                 {{vm.horse.DateOfBirth}}
             </dd>
 
@@ -68,13 +73,14 @@
                 {{vm.horse.CountryName}}
             </dd>
             <dt>
-                Acqusition type:
+                Acquisition type:
             </dt>
             <dd>
-                {{vm.horse.AcqusitionName}}
+                {{vm.horse.AcquisitionName}}
             </dd>
 
         </dl>
+
 
     </div>
 

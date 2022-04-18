@@ -13,7 +13,8 @@ namespace HorseRacing.Controllers
     //[RoutePrefix("api/Horse")]
 
     //[EnableCors(origins: "*", headers: "*", methods: "*")]
-    [DisableCors]
+    //[DisableCors]
+    [EnableCorsAttribute("*", "*", "*")]
     public class HorseController : ApiController
     {
         private readonly ApplicationContext db = new ApplicationContext();
@@ -41,7 +42,7 @@ namespace HorseRacing.Controllers
                     CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
                     GenderName = x.Gender.Name,
-                    AcqusitionName = x.Acqusition.Name,
+                    AcquisitionName = x.Acquisition.Name,
                 })
                 .ToList();
            
@@ -70,14 +71,14 @@ namespace HorseRacing.Controllers
                     CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
                     GenderName = x.Gender.Name,
-                    AcqusitionName = x.Acqusition.Name,
+                    AcquisitionName = x.Acquisition.Name,
                 }).FirstOrDefault();
 
             return Ok(query);
         }
 
 
-        
+
 
         // POST api/<controller>
         public void Post([FromBody] Horse horse)
@@ -86,13 +87,13 @@ namespace HorseRacing.Controllers
             {
                 Name = horse.Name, 
                 DateOfBirth=horse.DateOfBirth,
-                DamId = horse.Id,
+                DamId = horse.DamId,
                 SireId = horse.SireId,
                 ColourId = horse.ColourId,
                 CategoryId = horse.CategoryId,
                 CountryId = horse.CountryId,
                 GenderId = horse.GenderId,
-                AcqusitionId = horse.AcqusitionId
+                AcquisitionId = horse.AcquisitionId
 
             };
             db.Horses.Add(horseToAdd);
@@ -125,7 +126,7 @@ namespace HorseRacing.Controllers
             query.CategoryId = horse.CategoryId;
             query.CountryId = horse.CountryId;  
             query.GenderId = horse.GenderId;
-            query.AcqusitionId = horse.AcqusitionId;
+            query.AcquisitionId = horse.AcquisitionId;
 
             try
             {
@@ -141,6 +142,19 @@ namespace HorseRacing.Controllers
         // DELETE api/<controller>/5
         public void Delete(int id)
         {
+            Horse horse = db.Horses.Find(id);
+            if(horse != null)
+            {
+                try
+                {
+                    db.Horses.Remove(horse);
+                    db.SaveChanges();
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+            }
         }
     }
 }

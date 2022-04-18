@@ -17,7 +17,7 @@ namespace HorseRacing.Models
         public int CategoryId { get; set; }
         public int GenderId { get; set; }
         public int? CountryId { get; set; }
-        public Nullable<int> AcqusitionId { get; set; }
+        public Nullable<int> AcquisitionId { get; set; }
 
        
 
@@ -33,7 +33,7 @@ namespace HorseRacing.Models
         [ForeignKey("CountryId")]
         public Country Country { get; set; }
 
-        [ForeignKey("AcqusitionId")]
-        public Acqusition Acqusition { get; set; }
+        [ForeignKey("AcquisitionId")]
+        public Acquisition Acquisition { get; set; }
     }
 }

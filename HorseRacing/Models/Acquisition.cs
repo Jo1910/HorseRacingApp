@@ -4,8 +4,8 @@ namespace HorseRacing.Models
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations.Schema;
 
-    [Table("Acqusition")]
-    public partial class Acqusition
+    [Table("Acquisition")]
+    public partial class Acquisition
     {
         public int Id { get; set; }
         public string Name { get; set; }

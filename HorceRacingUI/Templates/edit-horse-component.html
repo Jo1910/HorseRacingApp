@@ -22,16 +22,14 @@
         <input type="text" name="name" ng-model="vm.horse.SireName">
     </div>
     <div>
-        <!--<input type="text" name="name" ng-model="vm.horse.ColourName">-->
-        <select ng-model="vm.horse.ColourName" ng-options="x.Name for x in vm.colours">
-        </select>
-
+        <input type="text" name="name" ng-model="vm.horse.ColourName">
     </div>
     <div>
         <input type="text" name="name" ng-model="vm.horse.GenderName">
     </div>
     <div>
         <input type="text" name="name" ng-model="vm.horse.CountryName">
+       
     </div>
     <div>
         <input type="text" name="name" ng-model="vm.horse.CategoryName">
@@ -41,7 +39,7 @@
     </div>
     </form>
     <button class="btn btn-primary"
-            ng-click="updateHorse()">
+            ng-click="vm.submit(horse)">
         Save
     </button>
 
@@ -51,5 +49,4 @@
         Cancel
     </button>
 </div>
-
 

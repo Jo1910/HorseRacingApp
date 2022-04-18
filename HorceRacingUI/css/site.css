@@ -64,6 +64,11 @@ th {
     color: rgba(19, 22, 66);
 }
 
+.btn-edit, .btn-delete {
+    width: 140px;
+    margin: 20px;
+}
+
 .btn:hover {
     background-color: rgb(182, 198, 240);
        

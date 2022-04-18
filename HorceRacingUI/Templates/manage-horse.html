@@ -9,12 +9,14 @@
                 <label for="horseName" class="form-label">Name</label>
                 <input type="text" class="form-control" id="horseName" ng-model="vm.selectedName" placeholder="Horse Name">
             </div>
+            vm: {{vm.selectedName}}
 
             <!-- Date of birth -->
             <div class="mb-3">
                 <label for="dateOfBirth" class="form-label">Date Of Birth</label>
                 <input type="date" class="form-control" id="dateOfBirth" ng-model="vm.selectedDate" placeholder="Date Of Birth">
             </div>
+            vm: {{vm.selectedDate}}
 
             <!-- Colours -->
             <div class="mb-3">
@@ -23,6 +25,7 @@
                 <select ng-model="vm.selectedColourId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.colours">
                 </select>
             </div>
+            vm: {{vm.selectedColourId}}
             <!-- Dam -->
             <div class="mb-3">
                 <label for="dam" class="form-label">Dam</label>
@@ -30,7 +33,7 @@
                 <select ng-model="vm.selectedDamId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.horses">
                 </select>
             </div>
-            <!--vm: {{vm.selectedDamId}}-->
+            vm: {{vm.selectedDamId}}
 
             <!-- Sire -->
             <div class="mb-3">
@@ -39,7 +42,7 @@
                 <select ng-model="vm.selectedSireId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.horses">
                 </select>
             </div>
-            <!--vm: {{vm.selectedSireId}}-->
+            vm: {{vm.selectedSireId}}
 
 
             <!-- Categories -->
@@ -49,6 +52,7 @@
                 <select ng-model="vm.selectedCategoryId" ng-options="x.Id as x.Name for x in vm.categories">
                 </select>
             </div>
+            vm: {{vm.selectedCategoriesId}}
 
 
             <!-- Genders -->
@@ -58,6 +62,7 @@
                 <select ng-model="vm.selectedGenderId" ng-options="x.Id as x.Name for x in vm.genders">
                 </select>
             </div>
+            vm: {{vm.selectedGenderId}}
 
 
             <!-- Countries -->
@@ -67,6 +72,7 @@
                 <select ng-model="vm.selectedCountryId" ng-options="x.Id as x.Name for x in vm.countries">
                 </select>
             </div>
+            vm: {{vm.selectedCountryId}}
 
 
             <!-- Acqusitions -->
@@ -76,12 +82,13 @@
                 <select ng-model="vm.selectedAcquisitionId" ng-options="x.Id as x.Name for x in vm.acquisitions">
                 </select>
             </div>
+            vm: {{vm.selectedAcquisitionId}}
 
 
             <div class="mb-3">
-                <button type="submit" class="btn btn-primary" ng-click="vm.saveHorse()" ui-sref="horses">Save</button>
+                <button type="submit" class="btn btn-primary" ng-click="vm.submit()" ui-sref="horses">Save</button>
             </div>
         </form>
-       {{vm.message}}
+        {{vm.message}}
     </div>
 </div>
