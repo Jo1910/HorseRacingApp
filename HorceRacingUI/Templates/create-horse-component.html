@@ -3,59 +3,106 @@
 
         <h2>Create Horse</h2>
 
-        <form class="createForm" autocomplete="off">
-            <!-- Name -->
-            <div class="mb-3">
-                <label for="horseName" class="form-label">Name</label>
-                <input type="text" class="form-control" id="horseName" ng-model="vm.selectedName" placeholder="Horse Name">
+        <form name="horseForm" autocomplete="off" novalidate>
+            <div class="form-group"
+                 ng-class="{'has-error':createForm.horseName.$invalid &&
+                                      createForm.horseName.$dirty}">
+                <!-- Name -->
+                <label for="horseName" class="form-label">Name*</label>
+
+                <div class="mb-3">
+                    <input type="text"
+                           name="horseName"
+                           class="form-control"
+                           id="horseName"
+                           ng-model="vm.horse.Name"
+                           placeholder="Horse Name"
+                           required
+                           ng-minlength="2"
+                           ng-maxlength="50">
+                </div>
+                <span class="has-error">
+                    <span ng-show="horseForm.horseName.$error.required">
+                       Horse name is required.
+                    </span>
+                    <span ng-show="horseForm.horseName.$error.minlength">
+                       Horse name must be at least 2 characters.
+                    </span>
+                    <span ng-show="horseForm.horseName.$error.maxlength">
+                       Horse name cannot exceed 50 characters in length.
+                    </span>
+                </span>
             </div>
 
             <!-- Date of birth -->
-            <div class="mb-3">
-                <label for="dateOfBirth" class="form-label">Date Of Birth</label>
-                <input type="date" class="form-control" id="dateOfBirth" ng-model="vm.selectedDate" placeholder="Date Of Birth">
+            <div class="form-group"
+                 ng-class="{'has-error': horseForm.horseDateOfBirth.$invalid &&
+                                         horseForm.horseDateOfBirth.$dirty}">
+                <label for="dateOfBirth" class="form-label">Date Of Birth*</label>
+
+                <div class="mb-3">
+                    <input type="date" 
+                           name="horseDateOfBirth" 
+                           class="form-control" 
+                           id="dateOfBirth" 
+                           ng-model="vm.horse.DateOfBirth" 
+                           placeholder="Date Of Birth"
+                           required
+                           >
+                </div>
+                <span class="has-error">
+                    <span ng-show="horseForm.horseDateOfBirth.$invalid">
+                        Date of birth is required.
+                    </span>
+                    <span ng-show="horseForm.horseDateOfBirth.$invalid">
+
+                    </span>
+                </span>
             </div>
 
             <!-- Colours -->
             <div class="mb-3">
-                <label for="colour" class="form-label">Colour</label>
-
-                <select ng-model="vm.selectedColourId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.colours">
+                <label for="colour" class="form-label">Colour*</label>
+                <select name="colour" ng-model="vm.horse.ColourId" ng-options="x.Id as x.Name for x in vm.colours">
                 </select>
             </div>
+            
             <!-- Dam -->
             <div class="mb-3">
                 <label for="dam" class="form-label">Dam</label>
 
-                <select ng-model="vm.selectedDamId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.horses">
+                <select ng-model="vm.horse.DamId"  ng-options="x.Id as x.Name for x in vm.dams">
                 </select>
             </div>
             <!--vm: {{vm.selectedDamId}}-->
-
             <!-- Sire -->
             <div class="mb-3">
                 <label for="sire" class="form-label">Sire</label>
 
-                <select ng-model="vm.selectedSireId" ng-value="{{x.Id}}" ng-options="x.Id as x.Name for x in vm.horses">
+                <select ng-model="vm.horse.SireId" ng-options="x.Id as x.Name for x in vm.sires">
                 </select>
             </div>
+
             <!--vm: {{vm.selectedSireId}}-->
 
 
             <!-- Categories -->
             <div class="mb-3">
-                <label for="category" class="form-label">Category</label>
+                <label for="category" class="form-label">Category*</label>
 
-                <select ng-model="vm.selectedCategoryId" ng-options="x.Id as x.Name for x in vm.categories">
+                <select ng-model="vm.horse.CategoryId" ng-options="x.Id as x.Name for x in vm.categories">
                 </select>
             </div>
 
 
+
+
+
             <!-- Genders -->
             <div class="mb-3">
-                <label for="gender" class="form-label">Gender</label>
+                <label for="gender" class="form-label">Gender*</label>
 
-                <select ng-model="vm.selectedGenderId" ng-options="x.Id as x.Name for x in vm.genders">
+                <select ng-model="vm.horse.GenderId" ng-options="x.Id as x.Name for x in vm.genders">
                 </select>
             </div>
 
@@ -64,7 +111,7 @@
             <div class="mb-3">
                 <label for="country" class="form-label">Country</label>
 
-                <select ng-model="vm.selectedCountryId" ng-options="x.Id as x.Name for x in vm.countries">
+                <select ng-model="vm.horse.CountryId" ng-options="x.Id as x.Name for x in vm.countries">
                 </select>
             </div>
 
@@ -73,7 +120,7 @@
             <div class="mb-3">
                 <label for="acquisition" class="form-label">Acquisition Type</label>
 
-                <select ng-model="vm.selectedAcquisitionId" ng-options="x.Id as x.Name for x in vm.acquisitions">
+                <select ng-model="vm.horse.AcquisitionId" ng-options="x.Id as x.Name for x in vm.acquisitions">
                 </select>
             </div>
 
@@ -82,6 +129,8 @@
                 <button type="submit" class="btn btn-primary" ng-click="vm.saveHorse()" ui-sref="horses">Save</button>
             </div>
         </form>
+       
        {{vm.message}}
     </div>
+
 </div>

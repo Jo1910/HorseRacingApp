@@ -29,8 +29,8 @@
             <dt>
                 Date Of Birth:
             </dt>
-            <dd ng-bind="vm.date | date:'MM/dd/yyyy'">
-                {{vm.horse.DateOfBirth}}
+            <dd>
+                {{vm.horse.DateOfBirth | date: "dd-MM-yyyy"}}
             </dd>
 
             <dt>

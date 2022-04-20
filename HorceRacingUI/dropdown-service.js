@@ -5,6 +5,22 @@
 
         var self = this;
 
+        // Get all dams
+        self.getAllDams = function () {
+            return $http.get(apiBase + 'Horse/GetAll')
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
+        //Get all sires
+        self.getAllSires = function () {
+            return $http.get(apiBase + 'Horse/GetAll')
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
         // Get all colours
         self.getAllColours = function () {
             return $http.get(apiBase + 'DropDown/GetColours')

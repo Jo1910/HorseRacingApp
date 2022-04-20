@@ -24,7 +24,7 @@
 
         // Create horse - post method
         self.createHorse = function (horse) {
-            return $http.post(apiBase + 'Horse/Post', horse)
+            return $http.post(apiBase + 'Horse/', horse)
                 .then(function (result) {
                     return result.data;
                 })
@@ -32,7 +32,8 @@
 
         // Update horse - put method
         self.updateHorse = function (horse) {
-            return $http.put(apiBase + 'Horse/', horse)
+            console.log(horse);
+            return $http.put(apiBase + 'Horse/?id='+horse.Id, horse)
                 .then(function (result) {
                     return result.data;
                 });

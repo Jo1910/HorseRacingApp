@@ -36,8 +36,8 @@ namespace HorseRacing.Controllers
                     Id = x.Id,
                     Name = x.Name,
                     DateOfBirth = x.DateOfBirth,
-                    DamName = x.Name,
-                    SireName = x.Name,
+                    DamName = x.Dam.Name,
+                    SireName = x.Sire.Name,
                     ColourName = x.Colour.Name,
                     CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
@@ -65,14 +65,15 @@ namespace HorseRacing.Controllers
                     Id = x.Id,
                     Name = x.Name,
                     DateOfBirth = x.DateOfBirth,
-                    DamName = x.Name,
-                    SireName = x.Name,
+                    DamName = x.Dam.Name,
+                    SireName = x.Sire.Name,
                     ColourName = x.Colour.Name,
                     CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
                     GenderName = x.Gender.Name,
                     AcquisitionName = x.Acquisition.Name,
                 }).FirstOrDefault();
+        
 
             return Ok(query);
         }
@@ -81,6 +82,7 @@ namespace HorseRacing.Controllers
 
 
         // POST api/<controller>
+        [HttpPost]
         public void Post([FromBody] Horse horse)
         {
             var horseToAdd = new Horse()
@@ -112,7 +114,6 @@ namespace HorseRacing.Controllers
         [HttpPut]
         public void Put(int id, [FromBody] Horse horse)
         {
-            // select * from Horses h where h.id = id
             var query = db.Horses.FirstOrDefault(x => x.Id == id);
             if(query == null)
             {

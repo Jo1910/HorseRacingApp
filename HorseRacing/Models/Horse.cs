@@ -1,6 +1,8 @@
 namespace HorseRacing.Models
 {
     using System;
+    using System.Collections;
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,7 +13,11 @@ namespace HorseRacing.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public System.DateTime DateOfBirth { get; set; }
+
+        //[ForeignKey("DamId")]
         public Nullable<int> DamId { get; set; }
+
+        //[ForeignKey("SireId")]
         public Nullable<int> SireId { get; set; }
         public int ColourId { get; set; }
         public int CategoryId { get; set; }
@@ -19,7 +25,13 @@ namespace HorseRacing.Models
         public int? CountryId { get; set; }
         public Nullable<int> AcquisitionId { get; set; }
 
-       
+        [ForeignKey("DamId")]
+        public Horse Dam { get;set; }
+
+
+        [ForeignKey("SireId")]
+        public Horse Sire { get; set; }
+
 
         [ForeignKey("ColourId")]
         public Colour Colour { get; set; }
@@ -35,5 +47,6 @@ namespace HorseRacing.Models
 
         [ForeignKey("AcquisitionId")]
         public Acquisition Acquisition { get; set; }
+    
     }
 }

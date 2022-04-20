@@ -6,10 +6,10 @@
             horseId: '<',
         },
         controllerAs: 'vm',
-        controller: function (horseService, $state) {
+        controller: function (horseService, $state, $filter) {
             var vm = this;
-            vm.date = '20140313T00:00:00';
             vm.horse = null;
+
 
             // function to get a horse by Id
             vm.$onInit = function () {

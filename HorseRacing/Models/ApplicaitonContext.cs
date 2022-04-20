@@ -19,6 +19,19 @@
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Horse> Horses { get; set; }
 
-        
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Horse>()
+                .HasOptional(h => h.Dam)
+                .WithMany()
+                .HasForeignKey(d => d.DamId);
+
+            modelBuilder.Entity<Horse>()
+                .HasOptional(h => h.Sire)
+                .WithMany()
+                .HasForeignKey(s => s.SireId);
+
+            base.OnModelCreating(modelBuilder);
+        }
     }
 }

@@ -3,8 +3,8 @@
 
     var app = angular.module('horseApp', ['ui.router']);
 
-    app.value('apiBase', 'https://localhost:44366/api/')
-    
+    app.value('apiBase', 'https://localhost:44366/api/');
+
 
     app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         var states = [

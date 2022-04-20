@@ -3,60 +3,44 @@
 
     angular.module('horseApp').component('create', {
         bindings: {
-            horseId: '<',
+            //horseId: '<',
         },
         controllerAs: 'vm',
         controller: function (horseService, dropdownService, $state) {
-            
+
 
             var vm = this;
 
-            vm.colours = null;
-            vm.categories = null;
-            vm.genders = null;
-            vm.countries = null;
-            vm.acquisitions = null;
-            vm.horses = null;
-          
+            vm.horse = {};
 
-            vm.horseId = 0;
+            vm.colours = [];
+            vm.categories = [];
+            vm.genders = [];
+            vm.countries = [];
+            vm.acquisitions = [];
+            vm.horses = [];
+            vm.dams = [];
+            vm.sires = [];
 
-            vm.selectedName = null;
-            vm.selectedDate = null;
-            vm.selectedDamId = null;
-            vm.selectedSireId = null;
-            vm.selectedColourId = null;
-            vm.selectedCategoryId = null;
-            vm.selectedGenderId = null
-            vm.selectedCountryId = null;
-            vm.selectedAcquisitionId = null;
 
-            vm.saveHorse = function () {
-                var data = {
-                    Name: vm.selectedName,
-                    DateOfBirth: vm.selectedDate,
-                    DamId: vm.selectedDamId,
-                    SireId: vm.selectedSireId,
-                    ColourId: vm.selectedColourId,
-                    CategoryId: vm.selectedCategoryId,
-                    GenderId: vm.selectedGenderId,
-                    CountryId: vm.selectedCountryId,
-                    AcquisitionId: vm.selectedAcquisitionId
-                };
-
-                             
-                var saveData = horseService.saveHorseData(data);
-                saveData.then(function (response) {
-                    console.log(response);
-                    window.alert("Data saved.");
-                    $state.reload();
-                }, function (error) {
-                    console.log("Something went wrong.")
-                });
-
-                               
+            vm.saveHorse = function (horse) {
+                horseService.saveHorseData(vm.horse)
+                    .then(function () {
+                        $state.reload();
+                    })
             }
 
+            dropdownService.getAllSires()
+                .then(function (sires) {
+                    vm.sires = sires;
+                    console.log(sires);
+                });
+
+            dropdownService.getAllDams()
+                .then(function (dams) {
+                    vm.dams = dams;
+                    console.log(dams);
+                });
 
             dropdownService.getAllColours()
                 .then(function (colours) {
