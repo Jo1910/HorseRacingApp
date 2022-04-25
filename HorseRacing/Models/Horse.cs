@@ -11,18 +11,24 @@ namespace HorseRacing.Models
     {
         [Key]
         public int Id { get; set; }
-        public string Name { get; set; }
-        public System.DateTime DateOfBirth { get; set; }
 
-        //[ForeignKey("DamId")]
+        [Required(ErrorMessage = "Please enter a name.")]
+        public string Name { get; set; }
+
+        [Required(ErrorMessage = "Please select a date")]
+        public System.DateTime DateOfBirth { get; set; }
+   
         public Nullable<int> DamId { get; set; }
 
-        //[ForeignKey("SireId")]
         public Nullable<int> SireId { get; set; }
+
+        [Required(ErrorMessage = "Please select a colour.")]
         public int ColourId { get; set; }
         public int CategoryId { get; set; }
+
+        [Required(ErrorMessage = "Please select a gender.")]
         public int GenderId { get; set; }
-        public int? CountryId { get; set; }
+        public Nullable<int> CountryId { get; set; }
         public Nullable<int> AcquisitionId { get; set; }
 
         [ForeignKey("DamId")]
@@ -40,6 +46,7 @@ namespace HorseRacing.Models
         public Category Category { get; set; }
 
         [ForeignKey("GenderId")]
+        [Required(ErrorMessage = "Please select a gender.")]
         public Gender Gender { get; set; }
 
         [ForeignKey("CountryId")]

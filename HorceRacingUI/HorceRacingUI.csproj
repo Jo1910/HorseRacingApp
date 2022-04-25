@@ -79,8 +79,9 @@
     <Content Include="Components\navigation-component.js" />
     <Content Include="css\img\horse.jpg" />
     <Content Include="css\site.css" />
-    <Content Include="dropdown-service.js" />
-    <Content Include="horse-service.js" />
+    <Content Include="Scripts\date.js" />
+    <Content Include="Services\dropdown-service.js" />
+    <Content Include="Services\horse-service.js" />
     <Content Include="Index.html" />
     <Content Include="Templates\create-horse-component.html" />
     <Content Include="Templates\edit-horse-component.html" />
@@ -98,6 +99,7 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+    <Content Include="Scripts\date.js.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

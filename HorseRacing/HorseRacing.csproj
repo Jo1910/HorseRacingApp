@@ -159,6 +159,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\MaximumAge.cs" />
+    <Compile Include="Helpers\MinimumAge.cs" />
     <Compile Include="Models\Acquisition.cs" />
     <Compile Include="Models\ApplicaitonContext.cs" />
     <Compile Include="Models\Category.cs" />
@@ -167,7 +169,10 @@
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Horse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Horses\CreateHorseVM.cs" />
     <Compile Include="ViewModels\Horses\DropDownDataVM.cs" />
+    <Compile Include="ViewModels\Horses\EditHorseVM.cs" />
+    <Compile Include="ViewModels\Horses\GetEditVM.cs" />
     <Compile Include="ViewModels\Horses\HorseListVM.cs" />
   </ItemGroup>
   <ItemGroup>

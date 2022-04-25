@@ -18,7 +18,6 @@
         public virtual DbSet<Country> Countries { get; set; }
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Horse> Horses { get; set; }
-
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Horse>()

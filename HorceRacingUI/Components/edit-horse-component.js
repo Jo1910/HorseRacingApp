@@ -9,22 +9,24 @@
         controller: function (horseService, dropdownService) {
             var vm = this;
 
-            //vm.editForm = {};
 
-            //vm.horse = {};
+            vm.horse = {};
 
-            //vm.colours = [];
-            //vm.categories = [];
-            //vm.genders = [];
-            //vm.countries = [];
-            //vm.acquisitions = [];
-            //vm.horses = [];
-            //vm.dams = [];
-            //vm.sires = [];
+            vm.horse.DateOfBirth = new Date(vm.horse.DateOfBirth);
+
+            //vm.horse.dateOfBirth = $filter('date')(vm.horse.DateOfBirth, 'yyyy-MM-dd');
+            vm.colours = [];
+            vm.categories = [];
+            vm.genders = [];
+            vm.countries = [];
+            vm.acquisitions = [];
+            vm.horses = [];
+            vm.dams = [];
+            vm.sires = [];
 
             vm.$onInit = function () {
                 if (vm.horseId) {
-                    horseService.getHorse(vm.horseId)
+                    horseService.getEditHorse(vm.horseId)
                         .then(function (horse) {
                             vm.horse = horse;
                             vm.originalHorse = angular.copy(horse);
@@ -101,12 +103,30 @@
 
 
             //  update - put
+            //vm.submit = function (horse) {
+            //    horseService.updateHorse(vm.horse)
+            //        .then(function () {
+            //            horseService.getHorse(vm.horseId);
+            //        });
+            //};
+
             vm.submit = function (horse) {
                 horseService.updateHorse(vm.horse)
                     .then(function () {
-                        vm.getAllHorses();
+                        horseService.getHorse(vm.horseId)
+                    }, function (error) {
+                        console.log(error);
+                        if (error.data.ModelState) {
+                            vm.errors = [];
+                            for (var key in error.data.ModelState) {
+                                for (var i = 0; i < error.data.ModelState[key].length; i++) {
+                                    vm.errors.push(error.data.ModelState[key][i]);
+                                }
+                            }
+                            return vm.errors;
+                        }
                     });
-            };
+            }
 
            
         },

@@ -13,7 +13,14 @@ namespace HorseRacing.App_Start
         {
             config.MapHttpAttributeRoutes();
 
-            config.EnableCors();
+            var cors = new EnableCorsAttribute(
+                "https://localhost:44391,https://localhost:44366",
+                "Origin, X_Requested-With, Content-Type, Accept, Authorization, Cache-Control, If-Modified-Since, Pragma",
+                "GET, PUT, POST, DELETE, OPTIONS"
+                );
+
+
+            config.EnableCors(cors);
 
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",

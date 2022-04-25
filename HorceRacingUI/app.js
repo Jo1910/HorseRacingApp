@@ -1,11 +1,23 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular.module('horseApp', ['ui.router']);
+    var app = angular.module('horseApp', ['ui.router', 'ui.bootstrap']);
 
     app.value('apiBase', 'https://localhost:44366/api/');
 
+    app.directive('date', function (dateFilter) {
+        return {
+            require: 'ngModel',
+            link: function (scope, elm, attrs, ctrl) {
+                var dateFormat = attrs['date'] || 'dd-MM-yyyy';
 
+                ctrl.$formatters.unshift(function (modelValue) {
+                    return dateFilter(modelValue, dateFormat);
+                });
+            }
+        }
+    });
+   
     app.config(function ($stateProvider, $locationProvider, $urlRouterProvider) {
         var states = [
             {

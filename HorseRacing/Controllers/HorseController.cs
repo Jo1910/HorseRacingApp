@@ -1,4 +1,5 @@
 ﻿using HorseRacing.Models;
+using HorseRacing.ViewModels;
 using HorseRacing.ViewModels.Horses;
 using System;
 using System.Collections.Generic;
@@ -14,7 +15,8 @@ namespace HorseRacing.Controllers
 
     //[EnableCors(origins: "*", headers: "*", methods: "*")]
     //[DisableCors]
-    [EnableCorsAttribute("*", "*", "*")]
+    //[EnableCorsAttribute("*", "*", "*")]
+    //[EnableCorsAttribute("*", "*", "GET, PUT, POST, DELETE, OPTIONS")]
     public class HorseController : ApiController
     {
         private readonly ApplicationContext db = new ApplicationContext();
@@ -50,16 +52,41 @@ namespace HorseRacing.Controllers
         }
 
         // GET api/<controller>/5
+        //[HttpGet]
+        //public IHttpActionResult Get(int? id)
+        //{
+        //    var query = db.Horses
+        //        .Include("Colour")
+        //        .Include("Category")
+        //        .Include("Gender")
+        //        .Include("Country")
+        //        .Include("Acquisition")
+        //        .Select(x => new HorseListVM
+        //        {
+        //            Id = x.Id,
+        //            Name = x.Name,
+        //            DateOfBirth = x.DateOfBirth,
+        //            DamName = x.Dam.Name,
+        //            SireName = x.Sire.Name,
+        //            ColourName = x.Colour.Name,
+        //            CategoryName = x.Category.Name,
+        //            CountryName = x.Country.Name,
+        //            GenderName = x.Gender.Name,
+        //            AcquisitionName = x.Acquisition.Name
+        //        }).FirstOrDefault(x => x.Id == id);
+        
+        //    return Ok(query);
+        //}
+
         [HttpGet]
         public IHttpActionResult Get(int? id)
         {
-            var query = db.Horses
+                 var query = db.Horses
                 .Include("Colour")
                 .Include("Category")
                 .Include("Gender")
                 .Include("Country")
                 .Include("Acquisition")
-                .Where(x => x.Id == id)
                 .Select(x => new HorseListVM
                 {
                     Id = x.Id,
@@ -71,24 +98,91 @@ namespace HorseRacing.Controllers
                     CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
                     GenderName = x.Gender.Name,
-                    AcquisitionName = x.Acquisition.Name,
-                }).FirstOrDefault();
-        
+                    AcquisitionName = x.Acquisition.Name
+                }).FirstOrDefault(x => x.Id == id);
+            if( query == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(query);
+
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetEdit(int? id)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var query = db.Horses
+                .Include("Colour")
+                .Include("Category")
+                .Include("Gender")
+                .Include("Country")
+                .Include("Aquisition")
+                .Select(x => new EditHorseVM
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    DateOfBirth = x.DateOfBirth,
+                    DamId = x.DamId,
+                    SireId = x.SireId,
+                    ColourId = x.ColourId,
+                    CategoryId = x.CategoryId,
+                    CountryId = x.CountryId,
+                    GenderId = x.GenderId,
+                    AcquisitionId = x.AcquisitionId
+                }).FirstOrDefault(x => x.Id == id);
 
             return Ok(query);
         }
 
 
-
-
         // POST api/<controller>
+        //[HttpPost]
+        //public void Post([FromBody] CreateHorseVM horse)
+        //{
+
+        //    var horseToAdd = new Horse()
+        //    {
+        //        Name = horse.Name,
+        //        DateOfBirth = horse.DateOfBirth,
+        //        DamId = horse.DamId,
+        //        SireId = horse.SireId,
+        //        ColourId = horse.ColourId,
+        //        CategoryId = horse.CategoryId,
+        //        CountryId = horse.CountryId,
+        //        GenderId = horse.GenderId,
+        //        AcquisitionId = horse.AcquisitionId
+        //    };
+        //    db.Horses.Add(horseToAdd);
+
+        //    try
+        //    {
+        //        db.SaveChanges();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+
+        //}
+
+
+
         [HttpPost]
-        public void Post([FromBody] Horse horse)
+        public IHttpActionResult Post([FromBody] CreateHorseVM horse)
         {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
             var horseToAdd = new Horse()
             {
-                Name = horse.Name, 
-                DateOfBirth=horse.DateOfBirth,
+                Name = horse.Name,
+                DateOfBirth = horse.DateOfBirth,
                 DamId = horse.DamId,
                 SireId = horse.SireId,
                 ColourId = horse.ColourId,
@@ -96,9 +190,74 @@ namespace HorseRacing.Controllers
                 CountryId = horse.CountryId,
                 GenderId = horse.GenderId,
                 AcquisitionId = horse.AcquisitionId
-
             };
             db.Horses.Add(horseToAdd);
+
+            try
+            {
+                var newHorse = db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            
+            return Created<Horse>(Request.RequestUri + horseToAdd.Id.ToString(), horseToAdd);
+            
+        }
+
+        //[HttpPut]
+        //public void Put([FromBody] EditHorseVM horse)
+        //{
+        //    var query = db.Horses.FirstOrDefault(x => x.Id == horse.Id);
+        //    if (query == null)
+        //    {
+        //        throw new Exception("Horse does not exist.");
+        //    }
+        //    query.Id = horse.Id;
+        //    query.Name = horse.Name;
+        //    query.DateOfBirth = horse.DateOfBirth;
+        //    query.DamId = horse.DamId;
+        //    query.SireId = horse.SireId;
+        //    query.ColourId = horse.ColourId;
+        //    query.CategoryId = horse.CategoryId;
+        //    query.CountryId = horse.CountryId;  
+        //    query.GenderId = horse.GenderId;
+        //    query.AcquisitionId = horse.AcquisitionId;
+
+        //    try
+        //    {
+        //        db.SaveChanges();
+
+        //    }
+        //    catch(Exception ex)
+        //    {
+        //        throw ex;
+        //    }
+        //}
+
+        [HttpPut] 
+        public IHttpActionResult Put([FromBody] EditHorseVM horse)
+        {
+            if(!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+            var query = db.Horses.FirstOrDefault(x => x.Id == horse.Id);
+            if (query == null)
+            {
+                throw new Exception("Horse does not exist.");
+            }
+            query.Id = horse.Id;
+            query.Name = horse.Name;
+            query.DateOfBirth = horse.DateOfBirth;
+            query.DamId = horse.DamId;
+            query.SireId = horse.SireId;
+            query.ColourId = horse.ColourId;
+            query.CategoryId = horse.CategoryId;
+            query.CountryId = horse.CountryId;
+            query.GenderId = horse.GenderId;
+            query.AcquisitionId = horse.AcquisitionId;
 
             try
             {
@@ -109,36 +268,9 @@ namespace HorseRacing.Controllers
             {
                 throw ex;
             }
+            return Ok();
         }
 
-        [HttpPut]
-        public void Put(int id, [FromBody] Horse horse)
-        {
-            var query = db.Horses.FirstOrDefault(x => x.Id == id);
-            if(query == null)
-            {
-                throw new Exception("Horse does not exist.");
-            }
-            query.Name = horse.Name;
-            query.DateOfBirth = horse.DateOfBirth;
-            query.DamId = horse.DamId;
-            query.SireId = horse.SireId;
-            query.ColourId = horse.ColourId;
-            query.CategoryId = horse.CategoryId;
-            query.CountryId = horse.CountryId;  
-            query.GenderId = horse.GenderId;
-            query.AcquisitionId = horse.AcquisitionId;
-
-            try
-            {
-                db.SaveChanges();
-
-            }
-            catch(Exception ex)
-            {
-                throw ex;
-            }
-        }
 
         // DELETE api/<controller>/5
         public void Delete(int id)

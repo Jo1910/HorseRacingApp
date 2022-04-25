@@ -21,14 +21,41 @@
             vm.horses = [];
             vm.dams = [];
             vm.sires = [];
+            vm.message = '';
+
+            var today = new Date();
+            var mAge = 6;
+            vm.maxAge = new Date(today.getFullYear() - mAge, today.getMonth, today.getDate());
+             
+            //vm.saveHorse = function (horse) {
+            //    horseService.createHorse(vm.horse)
+            //        .then(function () {
+            //            $state.reload();
+            //        });                
+            //}
 
 
             vm.saveHorse = function (horse) {
-                horseService.saveHorseData(vm.horse)
+                horseService.createHorse(vm.horse)
                     .then(function () {
-                        $state.reload();
-                    })
+                        $state.go("horses");
+                    }, function (error) {
+                        console.log(error.data.ModelState);
+                           if (error.data.ModelState) {
+                            vm.errors = [];
+                            for (var key in error.data.ModelState) {
+                                for (var i = 0; i < error.data.ModelState[key].length; i++) {
+                                    vm.errors.push(error.data.ModelState[key][i]);
+                                }
+                            }
+                            return vm.errors;
+                        }
+                       
+                    });
+                   
             }
+
+           
 
             dropdownService.getAllSires()
                 .then(function (sires) {

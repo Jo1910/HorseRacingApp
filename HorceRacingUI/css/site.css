@@ -88,4 +88,8 @@ select {
     border-radius: 4px;
 }
 
+.text-muted {
+    opacity: 0.5;
+}
+
 
