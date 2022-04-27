@@ -24,6 +24,20 @@
             vm.dams = [];
             vm.sires = [];
 
+            // Ui bootstrap datepicker
+            vm.today = function () {
+                vm.horse.DateOfBirth = new Date();
+            }
+            vm.dateFormat = "MM/dd/yyyy";
+            vm.today();
+            vm.showCalendar = function ($event) {
+                vm.showDatepicker = true;
+            };
+            vm.showDatepicker = false;
+            var maxDate = new Date();
+            vm.max = maxDate;
+
+            // get horse to edit
             vm.$onInit = function () {
                 if (vm.horseId) {
                     horseService.getEditHorse(vm.horseId)

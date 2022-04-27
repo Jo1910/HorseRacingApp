@@ -11,7 +11,7 @@ namespace HorseRacing.Models
     {
         public int Id { get; set; }
 
-        [Required(ErrorMessage = "Please select a gender")]
         public string Name { get; set; }
     }
 }
+

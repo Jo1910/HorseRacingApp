@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    var app = angular.module('horseApp', ['ui.router', 'ui.bootstrap']);
+    var app = angular.module('horseApp', ['ui.router', 'ui.bootstrap', 'ngAnimate']);
 
     app.value('apiBase', 'https://localhost:44366/api/');
 

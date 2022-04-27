@@ -14,17 +14,28 @@
             </div>-->
             <!--Name-->
             <div class="form-group">
+                <label for="name" class="form-label">Name*</label>
                 <div class="mb-3">
-                    <label for="name" class="form-label">Name*</label>
                     <input type="text" class="form-control" name="name" ng-model="vm.horse.Name" />
                 </div>
             </div>
             <!--Date of birth-->
             <div class="form-group">
-                <div class="mb-3">
-                    <label for="dateOfBirth" class="form-label">Date Of Birth*</label>
-                    <input type="date" format-time date-input class="form-control" date='yyyy-MM-dd' name="dateOfBirth" ng-model="vm.horse.DateOfBirth"  />
-                    <!--<uib-datepicker ng-model="vm.horse.DateOfBirth" datepicker-options="inlineOptions"></uib-datepicker>-->
+                <label for="dateOfBirth" class="form-label">Date Of Birth*</label>
+                <div class="mb-3" input-group>
+                    <!--<input type="date" class="form-control" date="dd-MM-yyyy" name="dateofbirth" ng-model="vm.horse.DateOfBirth"  />-->
+                    <input type="text" class="form-control"
+                           uib-datepicker-popup="{{vm.dateFormat}}" 
+                           ng-model="vm.horse.DateOfBirth" 
+                           datepicker-options="vm.calendarControl.dateOptions" 
+                           is-open="vm.showDatepicker" 
+                           max={{vm.max}}
+                           min-date="vm.minDate"/>
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.showCalendar($event)">
+                            <i class="fa fa-calendar"></i>
+                        </button>
+                    </span>
                 </div>
             </div>
             <!--Dam-->

@@ -161,6 +161,7 @@
     </Compile>
     <Compile Include="Helpers\MaximumAge.cs" />
     <Compile Include="Helpers\MinimumAge.cs" />
+    <Compile Include="Helpers\InvalidDate.cs" />
     <Compile Include="Models\Acquisition.cs" />
     <Compile Include="Models\ApplicaitonContext.cs" />
     <Compile Include="Models\Category.cs" />

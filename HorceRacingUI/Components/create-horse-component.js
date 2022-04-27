@@ -23,9 +23,9 @@
             vm.sires = [];
             vm.message = '';
 
-            var today = new Date();
-            var mAge = 6;
-            vm.maxAge = new Date(today.getFullYear() - mAge, today.getMonth, today.getDate());
+            //var today = new Date();
+            //var mAge = 6;
+            //vm.maxAge = new Date(today.getFullYear() - mAge, today.getMonth, today.getDate());
              
             //vm.saveHorse = function (horse) {
             //    horseService.createHorse(vm.horse)

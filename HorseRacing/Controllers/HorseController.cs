@@ -175,7 +175,7 @@ namespace HorseRacing.Controllers
         [HttpPost]
         public IHttpActionResult Post([FromBody] CreateHorseVM horse)
         {
-            if(!ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
@@ -201,9 +201,9 @@ namespace HorseRacing.Controllers
             {
                 throw ex;
             }
-            
+
             return Created<Horse>(Request.RequestUri + horseToAdd.Id.ToString(), horseToAdd);
-            
+
         }
 
         //[HttpPut]

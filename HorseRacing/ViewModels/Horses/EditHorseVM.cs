@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HorseRacing.Helpers;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +15,10 @@ namespace HorseRacing.ViewModels.Horses
         [Required(ErrorMessage = "Please enter a name.")]
         public string Name { get; set; }
 
-        [DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        //[DataType(DataType.Date), DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
+        //[InvalidDate(ErrorMessage = "The date is not in the correct format.")]
+        [MinimumAge(2, ErrorMessage = "Minimum age is 2.")]
+        [MaximumAge(10, ErrorMessage = "Maximum age is 10.")]
         [Required(ErrorMessage = "Please select a date of birth.")]
         public DateTime DateOfBirth { get; set; }
 
@@ -27,7 +31,9 @@ namespace HorseRacing.ViewModels.Horses
 
         [Required(ErrorMessage = "Please select a category.")]
         public int CategoryId { get; set; }
+
         public Nullable<int> CountryId { get; set; }
+
 
         [Required(ErrorMessage = "Please select a gender.")]
         public int GenderId { get; set; }
