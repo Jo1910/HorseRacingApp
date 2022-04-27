@@ -1,8 +1,14 @@
-﻿body {
+﻿
+
+body {
     background-color: rgba(19, 22, 66);
     color: white;
     font-family: 'Prompt', sans-serif;
+    overflow: hidden;
 }
+
+/*Navbar*/
+
 
 h2 {
     text-align: center;

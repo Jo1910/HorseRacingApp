@@ -23,12 +23,12 @@
             {
                 name: 'home',
                 url: '',
-                template: '<horse-list></horse-list>'
+                template: '<home></home>'
             },
             {
                 name: 'home2',
                 url: '/',
-                template: '<horse-list></horse-list>'
+                template: '<home></home>'
             },
             {
                 name: 'horses',

@@ -1,9 +1,29 @@
-﻿<nav class="navbar">
-    <div class="container">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">
-                <img alt="Brand" src="/css/img/horse.jpg">
-            </a>
-        </div>
-    </div>
+﻿<nav class="res-navbar">
+    <span class="res-open-slide">
+        <a href="#" ng-click="vm.openMenu()">
+            <i class="fa fa-bars fa-2x"></i>
+        </a>
+    </span>
+
+    <ul class="res-navbar-nav">
+        <li><a ui-sref="home">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a ui-sref="horses">Horses</a></li>
+        <li><a href="#">Admin</a></li>
+    </ul>
+
 </nav>
+
+<!-- Side menu -->
+<div class="res-side-nav" id="res-side-menu">
+    <a href="#" class="btn-close" ng-click="vm.closeMenu()">&times;</a>
+    <a href="#">Home</a>
+    <a href="#">About</a>
+    <a href="#">Horses</a>
+    <a href="#">Admin</a>
+</div>
+
+<div id="main">
+    <h1>Welcome...</h1>
+</div>
+

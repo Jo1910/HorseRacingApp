@@ -68,6 +68,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="app.js" />
+    <Content Include="Components\Admin\admin-dashboard.js" />
     <Content Include="Components\create-horse-component.js" />
     <Content Include="Components\edit-horse-component.js" />
     <Content Include="Components\home-component.js" />
@@ -78,11 +79,14 @@
     <Content Include="Components\navbar-component.js" />
     <Content Include="Components\navigation-component.js" />
     <Content Include="css\img\horse.jpg" />
+    <Content Include="css\navbar.css" />
     <Content Include="css\site.css" />
     <Content Include="Scripts\date.js" />
+    <Content Include="Scripts\main.js" />
     <Content Include="Services\dropdown-service.js" />
     <Content Include="Services\horse-service.js" />
     <Content Include="Index.html" />
+    <Content Include="Templates\Admin\admin-dashboard.html" />
     <Content Include="Templates\create-horse-component.html" />
     <Content Include="Templates\edit-horse-component.html" />
     <Content Include="Templates\home-component.html" />
