@@ -1,0 +1,31 @@
+﻿<div>
+    <navbar></navbar>
+    <div class="container">
+        <div ng-if="vm.horses == null" class="genders-container">
+            No horses
+        </div>
+        <div ng-if="vm.horses != null" class="genders-container">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Horse Name</th>
+                        <th>Gender Id</th>
+                        <th>Gender Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="x in vm.horses">
+                        <td>{{x.Name}}</td>
+                        <td>{{x.GenderId}}</td>
+                        <td>{{x.GenderName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a class="waves-effect waves-light btn-small btn-back" ui-sref="admin"><i class="fa-solid fa-lock-keyhole"></i>Back to Admin</a>
+        </div>
+       
+    </div>
+</div>

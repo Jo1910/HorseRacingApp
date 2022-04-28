@@ -1,5 +1,5 @@
 ﻿.res-navbar {
-    background-color: darkblue;
+    background-color: #f5b06c;
     overflow: hidden;
     height: 65px;
     width: 100%;
@@ -7,22 +7,21 @@
 
     .res-navbar a {
         float: left;
-        color: white;
+        color: #0d2a54;
         display: block;
         text-align: center;
-        padding: 14px 16px;
         text-decoration: none;
-        font-size: 1rem;
+        font-size: 1.2rem;
     }
 
     .res-navbar ul {
-        margin: 8px 0 0 0;
-        list-style: none;
+       list-style: none;
+       font-size: 24px;
     }
 
     .res-navbar a:hover {
-        background-color: #ddd;
-        color: #000;
+        background-color: #0d2a54;
+        color: white;
     }
 
 .fa-bars {

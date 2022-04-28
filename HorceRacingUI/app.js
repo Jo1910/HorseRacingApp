@@ -31,6 +31,16 @@
                 template: '<home></home>'
             },
             {
+                name: 'admin',
+                url: '/admin',
+                template: '<admin></admin>'
+            },
+            {
+                name: 'gender',
+                url: '/gender',
+                template: '<gender></gender>'
+            },
+            {
                 name: 'horses',
                 url: '/horses',
                 template: '<horse-list></horse-list>'

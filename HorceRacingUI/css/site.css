@@ -4,19 +4,18 @@ body {
     background-color: rgba(19, 22, 66);
     color: white;
     font-family: 'Prompt', sans-serif;
-    overflow: hidden;
 }
-
-/*Navbar*/
-
 
 h2 {
     text-align: center;
     margin-top: 30px;
 }
 
-.horselist-container {
-    
+.first-container {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
 }
 
 .horse-container {
@@ -24,6 +23,15 @@ h2 {
     border: 2px solid rgb(242, 243, 250);
     box-shadow: 8px 8px 6px #888888;
     font-size: 20px;
+    padding: 20px;
+}
+
+.horses-table {
+    padding: 20px;
+    width: 100%;
+}
+
+.horses-table tr {
     padding: 20px;
 }
 

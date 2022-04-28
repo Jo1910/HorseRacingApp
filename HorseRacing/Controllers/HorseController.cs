@@ -44,7 +44,7 @@ namespace HorseRacing.Controllers
                     CategoryName = x.Category.Name,
                     CountryName = x.Country.Name,
                     GenderName = x.Gender.Name,
-                    AcquisitionName = x.Acquisition.Name,
+                    AcquisitionName = x.Acquisition.Name
                 })
                 .ToList();
            

@@ -153,6 +153,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DropDownController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\HorseController.cs" />
@@ -170,6 +171,7 @@
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Horse.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Admin\ShowGendersVM.cs" />
     <Compile Include="ViewModels\Horses\CreateHorseVM.cs" />
     <Compile Include="ViewModels\Horses\DropDownDataVM.cs" />
     <Compile Include="ViewModels\Horses\EditHorseVM.cs" />

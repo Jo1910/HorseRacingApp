@@ -5,6 +5,9 @@
         controllerAs: 'vm',
         controller: function () {
             var vm = this;
-        }
-    })
+
+        },
+
+        templateUrl: '/Templates/Admin/admin-dashboard.html'
+    });
 })();
