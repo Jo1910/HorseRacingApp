@@ -5,12 +5,10 @@ using System.Web;
 
 namespace HorseRacing.ViewModels.Admin
 {
-    public class ShowGendersVM
+    public class CreateGenderVM
     {
         public int Id { get; set; }
-
-        public string GenderName { get; set; }
-
-        public string SexName { get; set; }
+        public string Name { get; set; }
+        public int SexId { get; set; }
     }
 }

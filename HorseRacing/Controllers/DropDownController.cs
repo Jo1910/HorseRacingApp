@@ -17,20 +17,42 @@ namespace HorseRacing.Controllers
     {
         private readonly ApplicationContext db = new ApplicationContext();
 
-        //// GET api/<controller>
-        //public IEnumerable<string> Get()
-        //{
-        //    return new string[] { "value1", "value2" };
-        //}
 
-        // GET api/<controller>/5
-        public string Get(int id)
+        // Get sires dropdown
+        [HttpGet]
+        public IHttpActionResult GetSires()
         {
-            return "value";
+            var query = db.Horses
+                .Include("Gender")
+                .Where(x => x.Gender.SexId == 1)
+                .OrderBy(x => x.Name)
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                }).ToList();
+            return Ok(query);
         }
 
-        // Get colours dropdown
 
+        // Get dames dropdown
+        [HttpGet]
+        public IHttpActionResult GetDams()
+        {
+            var query = db.Horses
+                .Include("Gender")
+                .Where(x => x.Gender.SexId == 2)
+                .OrderBy(x => x.Name)
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
+
+
+        // Get colours dropdown
         [HttpGet]
         public IHttpActionResult GetColours()
         {
@@ -43,7 +65,8 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
-       // Get categories dropdown
+
+        // Get categories dropdown
         [HttpGet]
         public IHttpActionResult GetCategories()
         {
@@ -56,8 +79,8 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
-        // Get genders dropdown
 
+        // Get genders dropdown
         [HttpGet]
         public IHttpActionResult GetGenders()
         {
@@ -69,6 +92,7 @@ namespace HorseRacing.Controllers
                 }).ToList();
             return Ok(query);
         }
+
 
         // Get acqusitions dropdown
         [HttpGet]
@@ -83,11 +107,25 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+
         // Get countries dropdown
         [HttpGet]
         public IHttpActionResult GetCountries()
         {
             var query = db.Countries
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
+
+
+        [HttpGet]
+        public IHttpActionResult GetSexes()
+        {
+            var query = db.Sexes
                 .Select(x => new DropDownDataVM
                 {
                     Id = x.Id,

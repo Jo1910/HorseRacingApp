@@ -170,7 +170,10 @@
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Horse.cs" />
+    <Compile Include="Models\Sex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Admin\CreateGenderVM.cs" />
+    <Compile Include="ViewModels\Admin\GetGenderVM.cs" />
     <Compile Include="ViewModels\Admin\ShowGendersVM.cs" />
     <Compile Include="ViewModels\Horses\CreateHorseVM.cs" />
     <Compile Include="ViewModels\Horses\DropDownDataVM.cs" />

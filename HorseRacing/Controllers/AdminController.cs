@@ -18,33 +18,58 @@ namespace HorseRacing.Controllers
         [HttpGet]
         public IHttpActionResult ShowGenders(int? pageNumber = 0)
         {
-            var query = db.Horses
-                        .Include("Gender")
+            var query = db.Genders
+                        .Include("Sex")
                         .OrderBy(x => x.Name)
                         .Skip(10 * pageNumber ?? 0)
                         .Take(10)
                         .Select(x => new ShowGendersVM
                         {
-                            GenderId = x.Gender.Id,
-                            GenderName = x.Gender.Name,
-                            Name = x.Name
+                            Id = x.Id,
+                            GenderName = x.Name,
+                            SexName = x.Sex.Name
                         }).ToList();
             return Ok(query);
         }
-        public IEnumerable<string> Get()
+
+        [HttpGet]
+        public IHttpActionResult GetGender(int? id)
         {
-            return new string[] { "value1", "value2" };
+            var query = db.Genders
+                .Include("Sex")
+                .Select(x => new ShowGendersVM
+                {
+                    Id = x.Id,
+                    GenderName = x.Name,
+                    SexName = x.Sex.Name
+                }).FirstOrDefault(x => x.Id == id);
+            if(query == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(query);
         }
 
-        // GET api/<controller>/5
-        public string Get(int id)
-        {
-            return "value";
-        }
-
+        
         // POST api/<controller>
-        public void Post([FromBody] string value)
+        public void Post([FromBody] CreateGenderVM gender)
         {
+            var newGender = new Gender()
+            {
+                Id = gender.Id,
+                Name = gender.Name,
+                SexId = gender.SexId
+            };
+            db.Genders.Add(newGender);
+            try
+            {
+                db.SaveChanges();
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // PUT api/<controller>/5

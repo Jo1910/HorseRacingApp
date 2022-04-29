@@ -1,0 +1,32 @@
+﻿<div>
+    <navbar></navbar>
+    <div class="container">
+        <div>
+            <a class="waves-effect waves-light btn-small btn-back" ui-sref="createGender"><i class="fa-solid fa-lock-keyhole"></i>Create New Gender</a>
+        </div>
+        <div ng-if="vm.genders == null" class="genders-container">
+            No genders
+        </div>
+        <div ng-if="vm.genders != null" class="genders-container">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Gender Name</th>
+                        <th>Sex Name</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr ng-repeat="x in vm.genders">
+                        <td><a ui-sref="gender ({genderId: x.GenderId})">{{x.GenderName}}</a></td>
+                        <td>{{x.SexName}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div>
+            <a class="waves-effect waves-light btn-small btn-back" ui-sref="admin"><i class="fa-solid fa-lock-keyhole"></i>Back to Admin</a>
+        </div>
+
+    </div>
+</div>

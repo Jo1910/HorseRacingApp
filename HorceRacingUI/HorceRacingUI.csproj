@@ -69,7 +69,10 @@
   <ItemGroup>
     <Content Include="app.js" />
     <Content Include="Components\Admin\admin-dashboard.js" />
-    <Content Include="Components\Admin\gender-component.js" />
+    <Content Include="Components\Admin\Gender\create-gender-component.js" />
+    <Content Include="Components\Admin\Gender\edit-gender-component.js" />
+    <Content Include="Components\Admin\Gender\gender-component.js" />
+    <Content Include="Components\Admin\Gender\gender-list-component.js" />
     <Content Include="Components\create-horse-component.js" />
     <Content Include="Components\edit-horse-component.js" />
     <Content Include="Components\home-component.js" />
@@ -92,7 +95,10 @@
     <Content Include="Services\horse-service.js" />
     <Content Include="Index.html" />
     <Content Include="Templates\Admin\admin-dashboard.html" />
-    <Content Include="Templates\Admin\gender-component.html" />
+    <Content Include="Templates\Admin\Gender\create-gender-component.html" />
+    <Content Include="Templates\Admin\Gender\edit-gender-component.html" />
+    <Content Include="Templates\Admin\Gender\gender-component.html" />
+    <Content Include="Templates\Admin\Gender\gender-list-component.html" />
     <Content Include="Templates\create-horse-component.html" />
     <Content Include="Templates\edit-horse-component.html" />
     <Content Include="Templates\home-component.html" />

@@ -36,9 +36,23 @@
                 template: '<admin></admin>'
             },
             {
+                name: 'genders',
+                url: 'admin/genders',
+                template: '<gender-list></gender-list>'
+            },
+            {
                 name: 'gender',
-                url: '/gender',
-                template: '<gender></gender>'
+                url: '/admin/gender/{genderId}',
+                resolve: {
+                    genderId: function ($stateParams) {
+                        return $stateParams.genderId;
+                    }
+                }
+            },
+            {
+                name: 'createGender',
+                url: 'admin/gender/create',
+                template: '<create-gender></create-gender>'
             },
             {
                 name: 'horses',
@@ -57,7 +71,7 @@
             },
             {
                 name: 'edit',
-                url: '/edit/{horseId}',
+                url: '/horse/edit/{horseId}',
                 resolve: {
                     horseId: function ($stateParams) {
                         return $stateParams.horseId;
@@ -67,7 +81,7 @@
             },
             {
                 name: 'create',
-                url: '/create',
+                url: '/horse/create',
                 template: '<create></create>'
             },
             {

@@ -8,7 +8,6 @@
         controllerAs: 'vm',
         controller: function (horseService, dropdownService, $state) {
 
-
             var vm = this;
 
             vm.horse = {};

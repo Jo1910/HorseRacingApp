@@ -1,0 +1,34 @@
+﻿<div>
+    <navbar></navbar>
+    <div class="container">
+        <div class="row">
+            <form class="col s12 genderForm">
+                <div class="row">
+                    <!-- Gender name -->
+                    <div class="input-field col s12">
+                        <input style="color:white;" placeholder="Gender" id="gender" type="text" class="validate" 
+                               ng-model="vm.gender.Name"/>
+                    </div>
+                    {{vm.gender.Name}}
+                    <!-- Sex Name -->
+                    <div class="col s12">
+                        <select class="browser-default"
+                                id="sex"
+                                ng-model="vm.gender.SexId"
+                                ng-options="x.Id as x.Name for x in vm.sexes">
+                            <option value="" selected>-- Select Sex --</option>
+                        </select>
+                    </div>
+                    <div class="col s12">
+                        <button style="margin-top: 20px;"
+                                type="submit"
+                                class="btn waves-effect waves-light"
+                                ng-click="vm.saveGender()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

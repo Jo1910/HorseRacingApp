@@ -7,7 +7,7 @@
 
         // Get all dams
         self.getAllDams = function () {
-            return $http.get(apiBase + 'Horse/GetAll')
+            return $http.get(apiBase + 'DropDown/GetDams')
                 .then(function (result) {
                     return result.data;
                 });
@@ -15,7 +15,7 @@
 
         //Get all sires
         self.getAllSires = function () {
-            return $http.get(apiBase + 'Horse/GetAll')
+            return $http.get(apiBase + 'DropDown/GetSires')
                 .then(function (result) {
                     return result.data;
                 });
@@ -56,6 +56,14 @@
         // Get all acqusitions
         self.getAllAcquisitions = function () {
             return $http.get(apiBase + 'Dropdown/GetAcquisitions')
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
+        // Get all sexes
+        self.getAllSexes = function () {
+            return $http.get(apiBase + 'Dropdown/GetSexes')
                 .then(function (result) {
                     return result.data;
                 });

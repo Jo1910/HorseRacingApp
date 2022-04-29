@@ -5,9 +5,26 @@
 
         var self = this;
 
-        //Show genders
+        // Create gender
+        self.createGender = function () {
+            return $http.post(apiBase + 'Admin/Post', gender)
+                .then(function (result) {
+                    console.log(result)
+                    return result.data;
+                });
+        }
+
+        // Show genders
         self.showGenders = function () {
             return $http.get(apiBase + 'Admin/ShowGenders')
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
+        // Get gender
+        self.getGender = function () {
+            return $http.get(apiBase + 'Admin/GetGender')
                 .then(function (result) {
                     return result.data;
                 });
