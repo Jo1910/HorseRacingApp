@@ -1,106 +1,39 @@
 ﻿<div>
-    <navbar></navbar>
-<div class="container">
+  <navbar></navbar>
+  <div class="container">
+      <div class="row">
+          <div class="col l6 m6 s12 collection-container">
+              <ul class="collection with-header indigo-text">
+                  <li class="collection-header indigo-text"><h4>Horse Details</h4></li>
+                  <li class="collection-item"><span class="title-span">Id: </span>{{vm.horse.Id}}</li>
+                  <li class="collection-item"><span class="title-span">Name: </span>{{vm.horse.Name}}</li>
+                  <li class="collection-item"><span class="title-span">Date of Birth: </span>{{vm.horse.DateOfBirth | date: "dd-MM-yyyy" }}</li>
+                  <li class="collection-item"><span class="title-span">Dam: </span>{{vm.horse.DamName}}</li>
+                  <li class="collection-item"><span class="title-span">Sire: </span>{{vm.horse.SireName}}</li>
+                  <li class="collection-item"><span class="title-span">Colour: </span>{{vm.horse.ColourName}}</li>
+                  <li class="collection-item"><span class="title-span">Category: </span>{{vm.horse.CategoryName}}</li>
+                  <li class="collection-item"><span class="title-span">Country: </span>{{vm.horse.CountryName}}</li>
+                  <li class="collection-item"><span class="title-span">Acquisition: </span>{{vm.horse.AcquisitionName}}</li>
+              </ul>
+          </div>
 
-    <div>
+          <div class="col l6 m6 s12 button-container">
+              <div class="edit-button">
+                  <a class="btn-large waves-effect waves-light" ui-sref="edit ({horseId: vm.horse.Id})"><i class="fa fa-pencil-square-o"></i>Edit {{vm.horse.Name}}</a>
+              </div>
+              <div class="delete-button">
+                  <a class="btn-large waves-effect waves-light red" ng-click="vm.deleteHorse()"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete {{vm.horse.Name}}</a>
+              </div>
+          </div>
+      </div>
+
+
+    <!--<div>
         <button ui-sref="edit ({horseId: vm.horse.Id})" class="btn btn-edit">Edit Horse</button>
     </div>
     <div>
         <button type="submit" ng-click="vm.deleteHorse()" class="btn btn-danger btn-delete">Delete Horse</button>
-    </div>
+    </div>-->
 
-    <!-- new list -->
-    <div>
-        <ul class="collection with-header teal blue-text text-darken-5">
-            <li class="collection-header blue-text"><h4>Horse Details</h4></li>
-            <li class="collection-item"><span>Id: </span>{{vm.horse.Id}}</li>
-            <li class="collection-item"><span>Name: </span>{{vm.horse.Name}}</li>
-            <li class="collection-item"><span>Date of Birth: </span>{{vm.horse.DateOfBirth | date: "dd-MM-yyyy" }}</li>
-            <li class="collection-item"><span>Dam: </span>{{vm.horse.DamName}}</li>
-            <li class="collection-item"><span>Sire: </span>{{vm.horse.SireName}}</li>
-            <li class="collection-item"><span>Colour: </span>{{vm.horse.ColourName}}</li>
-            <li class="collection-item"><span>Category: </span>{{vm.horse.CategoryName}}</li>
-            <li class="collection-item"><span>Country: </span>{{vm.horse.CountryName}}</li>
-            <li class="collection-item"><span>Acquisition: </span>{{vm.horse.AcquisitionName}}</li>
-        </ul>
-    </div>
-    <!-- end new list -->
-
-
-    <!--<div class="w-50 horse-container">
-
-
-        <dl class="dl-horizontal">
-            <dt>
-                Id:
-            </dt>
-            <dd>
-                {{vm.horse.Id}}
-            </dd>
-            <dt>
-                Name:
-            </dt>
-            <dd>
-                {{vm.horse.Name}}
-            </dd>
-            <dt>
-                Date Of Birth:
-            </dt>
-            <dd>
-                {{vm.horse.DateOfBirth | date: "dd-MM-yyyy"}}
-            </dd>
-
-            <dt>
-                Dam:
-            </dt>
-            <dd>
-                {{vm.horse.DamName}}
-            </dd>
-            <dt>
-                Sire:
-            </dt>
-            <dd>
-                {{vm.horse.SireName}}
-            </dd>
-            <dt>
-                Colour:
-            </dt>
-            <dd>
-                {{vm.horse.ColourName}}
-            </dd>
-            <dt>
-                Category:
-            </dt>
-            <dd>
-                {{vm.horse.CategoryName}}
-            </dd>
-            <dt>
-                Gender:
-            </dt>
-            <dd>
-                {{vm.horse.GenderName}}
-            </dd>
-            <dt>
-                Country:
-            </dt>
-            <dd style="font-style:italic;" ng-if="vm.horse.CountryName == null">
-                Unknown
-            </dd>
-            <dd ng-if="vm.horse.CountryName != null">
-                {{vm.horse.CountryName}}
-            </dd>
-            <dt>
-                Acquisition type:
-            </dt>
-            <dd>
-                {{vm.horse.AcquisitionName}}
-            </dd>
-
-        </dl>-->
-
-
-    <!--</div>-->
-
-
-</div>
+  </div>
 </div>

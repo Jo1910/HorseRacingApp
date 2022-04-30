@@ -10,113 +10,110 @@
             </ul>
         </div>
 
-        <!--new form-->
-
         <div class="row">
             <form class="col s12 horseForm">
                 <div class="row">
                     <!-- Name -->
                     <div class="input-field col s6">
-                        <input class="white-text" placeholder="Name" id="name" type="text" class="validate"
+                        <input class="white-text validate" placeholder="Name" id="name" type="text"
                                ng-model="vm.horse.Name"/>
-                        <!--<label for="name">Name</label>-->
                     </div>
-                    {{vm.horse.Name}}
+
                     <!-- Date of birth -->
                     <div class="input-field col s6">
                         <input type="text" id="dateOfBirth" class="datepicker"
                                ng-model="vm.horse.DateOfBirth"/>
                         <label for="dateOfBirth">Date Of Birth</label>
                     </div>
+
                     <!-- Colours -->
                     <div class="col s6">
-                        <select 
-                            class="browser-default"
-                            id="colour"
-                            ng-model="vm.horse.ColourId"
-                            ng-options="x.Id as x.Name for x in vm.colours">
-                            <option value="" disabled selected>-- Select Colour -- </option>
-
-                        </select>
-                        {{vm.colour.Name}}
                         <label for="colour">Colours</label>
+                        <select class="browser-default"
+                                id="colour"
+                                ng-model="vm.horse.ColourId"
+                                ng-options="x.Id as x.Name for x in vm.colours">
+                            <option value="" disabled selected>-- Select Colour -- </option>
+                        </select>
                     </div>
                     
                     <!-- Dams -->
                     <div class="col s6">
+                        <label for="dam">Dam</label>
                         <select class="browser-default"
                                 id="dam"
                                 ng-model="vm.horse.DamId"
                                 ng-options="x.Id as x.Name for x in vm.dams">
                             <option value="" selected>-- Select Dam --</option>
                         </select>
-                        <label for="dam">Dam</label>
                     </div>
+
                     <!-- Sires -->
                     <div class="col s6">
+                        <label for="sire">Sire</label>
                         <select class="browser-default"
                                 id="sire"
                                 ng-model="vm.horse.SireId"
                                 ng-options="x.Id as x.Name for x in vm.sires">
                             <option value="" selected>-- Select Sire --</option>
-
                         </select>
-                        <label for="sire">Sire</label>
                     </div>
+
                     <!-- Categories -->
                     <div class="col s6">
+                        <label for="category">Category</label>
                         <select class="browser-default"
                                 id="category"
                                 ng-model="vm.horse.CategoryId"
                                 ng-options="x.Id as x.Name for x in vm.categories">
                             <option value="" selected>-- Select Category --</option>
-
                         </select>
-                        <label for="category">Category</label>
                     </div>
+
                     <!-- Genders -->
                     <div class="col s6">
+                        <label for="gender">Gender</label>
                         <select class="browser-default"
                                 id="gender"
                                 ng-model="vm.horse.GenderId"
                                 ng-options="x.Id as x.Name for x in vm.genders">
                             <option value="" selected>-- Select Gender --</option>
-
                         </select>
-
-                        <label for="gender">Gender</label>
                     </div>
+
                     <!-- Countries -->
                     <div class="col s6">
+                        <label for="country">Country</label>
                         <select class="browser-default"
                                 id="country"
                                 ng-model="vm.horse.CountryId"
                                 ng-options="x.Id as x.Name for x in vm.countries">
                             <option value="" selected>-- Select Country --</option>
-
                         </select>
-                        <label for="country">Country</label>
                     </div>
+
                     <!-- Acquisitions -->
                     <div class="col s6">
+                        <label for="acquisition">Acquisition Type</label>
                         <select class="browser-default"
                                 id="acquisition"
                                 ng-model="vm.horse.AcquisitionId"
                                 ng-options="x.Id as x.Name for x in vm.acquisitions">
                             <option value="" selected>-- Select Acquisition Type --</option>
-
                         </select>
-                        <label for="acquisitions">Acquisition</label>
                     </div>
+
+                    <!-- Save Button -->
                     <div class="col s6">
                         <button type="submit"
-                                class="btn waves-effect waves-light"
+                                class="btn-large waves-effect waves-light saveHorse-button"
                                 ng-click="vm.saveHorse()">
                             <!--ui-sref="horses">-->
                             <!--ng-disabled="horseForm.$invalid"-->
                             Save
                         </button>
                     </div>
+
                 </div>
             </form>
         </div>

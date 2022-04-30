@@ -106,5 +106,16 @@ select {
     opacity: 0.5;
 }
 
+.input-field, select {
+    margin-bottom: 20px;
+}
 
-
+.saveHorse-button {
+    position: center;
+    font-size: 20px;
+    font-weight: bold;
+    letter-spacing: 1.3px;
+    text-align: center;
+    margin-top: 15px;
+    margin-left: 20px;
+}

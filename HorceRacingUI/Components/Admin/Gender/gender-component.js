@@ -9,7 +9,7 @@
         controller: function (adminService) {
             var vm = this;
 
-            vm.gender = [];
+            vm.gender = null;
 
             vm.$onInit = function () {
                 if (vm.genderId) {

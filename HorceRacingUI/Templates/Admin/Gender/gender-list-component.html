@@ -11,6 +11,7 @@
             <table class="responsive-table">
                 <thead>
                     <tr>
+                        <th>Gender Id</th>
                         <th>Gender Name</th>
                         <th>Sex Name</th>
                     </tr>
@@ -18,7 +19,8 @@
 
                 <tbody>
                     <tr ng-repeat="x in vm.genders">
-                        <td><a ui-sref="gender ({genderId: x.GenderId})">{{x.GenderName}}</a></td>
+                        <td>{{x.Id}}</td>
+                        <td><a ui-sref="gender ({genderId: x.Id})">{{x.GenderName}}</a></td>
                         <td>{{x.SexName}}</td>
                     </tr>
                 </tbody>

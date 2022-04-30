@@ -23,8 +23,8 @@
         }
 
         // Get gender
-        self.getGender = function () {
-            return $http.get(apiBase + 'Admin/GetGender')
+        self.getGender = function (genderId) {
+            return $http.get(apiBase + 'Admin/GetGender/' + genderId)
                 .then(function (result) {
                     return result.data;
                 });

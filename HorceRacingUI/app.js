@@ -47,7 +47,8 @@
                     genderId: function ($stateParams) {
                         return $stateParams.genderId;
                     }
-                }
+                },
+                template: '<gender gender-id="$resolve.genderId"></gender>'
             },
             {
                 name: 'createGender',

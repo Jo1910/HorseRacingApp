@@ -1,6 +1,23 @@
 ﻿<div>
     <navbar></navbar>
     <div class="container">
-        
+        <div class="row">
+            <div class="col l6 m6 s12 collection-container">
+                <ul class="collection with-header indigo-text">
+                    <li class="collection-header indigo-text"><h4>Gender Details</h4></li>
+                    <li class="collection-item"><span class="title-span">Gender Id:</span>{{vm.gender.Id}}</li>
+                    <li class="collection-item"><span class="title-span">Gender:</span>{{vm.gender.GenderName}}</li>
+                    <li class="collection-item"><span class="title-span">Sex:</span>{{vm.gender.SexName}}</li>
+                </ul>
+            </div>
+            <div class="col l6 m6 s12 button-container">
+                <div class="edit-button">
+                    <a class="btn-large waves-effect waves-light"><i class="fa fa-pencil-square-o"></i>Edit {{vm.gender.GenderName}}</a>
+                </div>
+                <div class="delete-button">
+                    <a class="btn-large waves-effect waves-light red"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete {{vm.gender.GenderName}}</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
