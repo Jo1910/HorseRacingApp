@@ -22,6 +22,8 @@
             vm.sires = [];
             vm.message = '';
 
+            vm.originalHorse = angular.copy(vm.horse);
+
             //var today = new Date();
             //var mAge = 6;
             //vm.maxAge = new Date(today.getFullYear() - mAge, today.getMonth, today.getDate());
@@ -53,6 +55,11 @@
                     });
                    
             }
+
+            vm.cancel = function (horseForm) {
+                horseForm.$setPristine();
+                vm.horse = angular.copy(vm.originalHorse);
+            };
 
             $(document).ready(function () {
                 $('select').formSelect();

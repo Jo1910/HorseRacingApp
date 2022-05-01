@@ -1,7 +1,6 @@
 ﻿<div>
-    <navbar></navbar>
-<div class="container">
-    <div class="create-container">
+   <navbar></navbar>
+     <div class="container">
 
         <h2>Create Horse</h2>
         <div>
@@ -11,34 +10,34 @@
         </div>
 
         <div class="row">
-            <form class="col s12 horseForm">
+            <form class="col s12 horseForm" name="horseForm">
                 <div class="row">
                     <!-- Name -->
-                    <div class="input-field col s6">
+                    <div class="input-field col l6 m6 s12">
                         <input class="white-text validate" placeholder="Name" id="name" type="text"
                                ng-model="vm.horse.Name"/>
                     </div>
 
                     <!-- Date of birth -->
-                    <div class="input-field col s6">
+                    <div class="input-field col l6 m6 s12">
                         <input type="text" id="dateOfBirth" class="datepicker"
                                ng-model="vm.horse.DateOfBirth"/>
                         <label for="dateOfBirth">Date Of Birth</label>
                     </div>
 
                     <!-- Colours -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="colour">Colours</label>
                         <select class="browser-default"
                                 id="colour"
                                 ng-model="vm.horse.ColourId"
                                 ng-options="x.Id as x.Name for x in vm.colours">
-                            <option value="" disabled selected>-- Select Colour -- </option>
+                            <option value="" selected>-- Select Colour -- </option>
                         </select>
                     </div>
                     
                     <!-- Dams -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="dam">Dam</label>
                         <select class="browser-default"
                                 id="dam"
@@ -49,7 +48,7 @@
                     </div>
 
                     <!-- Sires -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="sire">Sire</label>
                         <select class="browser-default"
                                 id="sire"
@@ -60,7 +59,7 @@
                     </div>
 
                     <!-- Categories -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="category">Category</label>
                         <select class="browser-default"
                                 id="category"
@@ -71,7 +70,7 @@
                     </div>
 
                     <!-- Genders -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="gender">Gender</label>
                         <select class="browser-default"
                                 id="gender"
@@ -82,7 +81,7 @@
                     </div>
 
                     <!-- Countries -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="country">Country</label>
                         <select class="browser-default"
                                 id="country"
@@ -93,7 +92,7 @@
                     </div>
 
                     <!-- Acquisitions -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <label for="acquisition">Acquisition Type</label>
                         <select class="browser-default"
                                 id="acquisition"
@@ -104,13 +103,17 @@
                     </div>
 
                     <!-- Save Button -->
-                    <div class="col s6">
+                    <div class="col l6 m6 s12">
                         <button type="submit"
                                 class="btn-large waves-effect waves-light saveHorse-button"
                                 ng-click="vm.saveHorse()">
                             <!--ui-sref="horses">-->
                             <!--ng-disabled="horseForm.$invalid"-->
                             Save
+                        </button>
+                        <button class="btn-large waves-effect waves-light cancelEdit-button blue lighten-5 teal-text"
+                                ng-click="vm.cancel(horseForm)">
+                            Cancel
                         </button>
                     </div>
 
@@ -300,5 +303,4 @@
        
     </div>
 
-</div>
 </div>

@@ -20,6 +20,18 @@
                         });
                 }
             }
+
+            // delete a gender
+            vm.deleteGender = function () {
+                if (vm.genderId) {
+                    window.alert("Are you sure you want to delete this gender?");
+                    adminService.deleteGender(vm.genderId)
+                        .then(function () {
+                            $state.go("genders");
+                            console.log("Row deleted.");
+                        });
+                }
+            }
         },
 
         templateUrl: '/Templates/Admin/Gender/gender-component.html'

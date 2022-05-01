@@ -52,8 +52,18 @@
             },
             {
                 name: 'createGender',
-                url: 'admin/gender/create',
+                url: 'admin/genders/create',
                 template: '<create-gender></create-gender>'
+            },
+            {
+                name: 'editGender',
+                url: 'admin/gender/edit/{genderId}',
+                resolve: {
+                    genderId: function ($stateParams) {
+                        return $stateParams.genderId;
+                    }
+                },
+                template: '<edit-gender gender-id="$resolve.genderId"></edit-gender>'
             },
             {
                 name: 'horses',

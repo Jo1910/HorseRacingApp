@@ -9,7 +9,6 @@
         controller: function (horseService, dropdownService) {
             var vm = this;
 
-
             vm.horse = {};
 
             vm.horse.DateOfBirth = new Date(vm.horse.DateOfBirth);

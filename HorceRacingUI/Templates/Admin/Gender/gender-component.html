@@ -12,10 +12,10 @@
             </div>
             <div class="col l6 m6 s12 button-container">
                 <div class="edit-button">
-                    <a class="btn-large waves-effect waves-light"><i class="fa fa-pencil-square-o"></i>Edit {{vm.gender.GenderName}}</a>
+                    <a class="btn-large waves-effect waves-light" ui-sref="editGender ({genderId: vm.gender.Id})"><i class="fa fa-pencil-square-o"></i>Edit {{vm.gender.GenderName}}</a>
                 </div>
                 <div class="delete-button">
-                    <a class="btn-large waves-effect waves-light red"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete {{vm.gender.GenderName}}</a>
+                    <a class="btn-large waves-effect waves-light red"><i class="fa fa-trash-o" aria-hidden="true" ng-click="vm.deleteGender()"></i>Delete {{vm.gender.GenderName}}</a>
                 </div>
             </div>
         </div>

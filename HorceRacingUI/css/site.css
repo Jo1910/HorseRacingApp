@@ -110,8 +110,7 @@ select {
     margin-bottom: 20px;
 }
 
-.saveHorse-button {
-    position: center;
+.saveHorse-button, .cancelEdit-button {
     font-size: 20px;
     font-weight: bold;
     letter-spacing: 1.3px;
@@ -119,3 +118,4 @@ select {
     margin-top: 15px;
     margin-left: 20px;
 }
+

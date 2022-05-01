@@ -1,10 +1,38 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-</head>
-<body>
-
-</body>
-</html>
+﻿<div>
+    <navbar></navbar>
+    <div class="container">
+        <h2>{{vm.title}}</h2>
+        <div class="row">
+            <form class="col s12 genderForm" name="editGenderForm">
+                <div class="row">
+                    <!-- Gender name -->
+                    <div class="input-field col s12">
+                        <input style="color:white;" placeholder="Gender" id="gender" type="text" class="validate"
+                               ng-model="vm.gender.Name" />
+                    </div>
+                    <!-- Sex Name -->
+                    <div class="col s12">
+                        <select class="browser-default"
+                                id="sex"
+                                ng-model="vm.gender.SexId"
+                                ng-options="x.Id as x.Name for x in vm.sexes">
+                            <option value="" selected>-- Select Sex --</option>
+                        </select>
+                    </div>
+                    <div class="col s12">
+                        <button style="margin-top: 20px;"
+                                type="submit"
+                                class="btn-large waves-effect waves-light saveHorse-button"
+                                ng-click="vm.submit(vm.gender.Id)">
+                            Save
+                        </button>
+                        <button class="btn-large waves-effect waves-light cancelEdit-button blue lighten-5 teal-text"
+                                ng-click="vm.cancel(editGenderForm)">
+                            Cancel
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

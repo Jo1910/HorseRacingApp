@@ -51,8 +51,27 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+        [HttpGet]
+        public IHttpActionResult GetEdit(int? id)
+        {
+            var query = db.Genders 
+                .Include("Sex")
+                .Select(x => new CreateGenderVM
+                {
+                    Id = x.Id,
+                    Name = x.Name,
+                    SexId = x.Sex.Id
+                }).FirstOrDefault(x => x.Id == id);
+            if(query == null)
+            {
+                return NotFound();
+            }
+            return Ok(query);
+        }
+
         
         // POST api/<controller>
+        [HttpPost]
         public void Post([FromBody] CreateGenderVM gender)
         {
             var newGender = new Gender()
@@ -73,13 +92,44 @@ namespace HorseRacing.Controllers
         }
 
         // PUT api/<controller>/5
-        public void Put(int id, [FromBody] string value)
+        [HttpPut]
+        public void Put(int id, [FromBody] CreateGenderVM gender)
         {
+            var query = db.Genders.FirstOrDefault(x => x.Id == gender.Id);
+            if(query == null)
+            {
+                throw new Exception("Gender does not exist.");
+            }
+            query.Id = gender.Id;
+            query.Name = gender.Name;
+            query.SexId = gender.SexId;
+
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
         }
 
         // DELETE api/<controller>/5
+        //[HttpDelete]
         public void Delete(int id)
         {
+            Gender gender = db.Genders.Find(id);
+            if(gender != null)
+            {
+                try
+                {
+                    db.Genders.Remove(gender);
+                }
+                catch (Exception ex)
+                {
+                    throw (ex);
+                }
+            }
         }
     }
 }

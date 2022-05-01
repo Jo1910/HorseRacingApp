@@ -55,17 +55,7 @@
                     return result.data;
                 });
         }
-
-
-
-        //// Save horse - post method
-        //self.saveHorseData = function (data) {
-        //    return $http({
-        //        method: 'post',
-        //        data: data,
-        //        url: apiBase + 'Horse/Post'
-        //    });
-        //}       
+   
 
         // Delete horse - delete method
         self.deleteHorse = function (horseId) {
