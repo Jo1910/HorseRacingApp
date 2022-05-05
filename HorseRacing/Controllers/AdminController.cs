@@ -115,7 +115,7 @@ namespace HorseRacing.Controllers
         }
 
         // DELETE api/<controller>/5
-        //[HttpDelete]
+        [HttpDelete]
         public void Delete(int id)
         {
             Gender gender = db.Genders.Find(id);

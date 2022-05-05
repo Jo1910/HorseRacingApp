@@ -6,7 +6,7 @@
             horseId: '<',
         },
         controllerAs: 'vm',
-        controller: function (horseService, dropdownService) {
+        controller: function (horseService, dropdownService, $state) {
             var vm = this;
 
             vm.horse = {};
@@ -54,7 +54,14 @@
                    }
                
             }
-            
+
+            $(document).ready(function () {
+                $('select').formSelect();
+            });
+
+            $(document).ready(function () {
+                $('.datepicker').datepicker();
+            });
           
             // Dropdowns
             dropdownService.getAllSires()
@@ -113,20 +120,10 @@
             };
 
 
-
-
-            //  update - put
-            //vm.submit = function (horse) {
-            //    horseService.updateHorse(vm.horse)
-            //        .then(function () {
-            //            horseService.getHorse(vm.horseId);
-            //        });
-            //};
-
             vm.submit = function (horse) {
                 horseService.updateHorse(vm.horse)
                     .then(function () {
-                        horseService.getHorse(vm.horseId)
+                        $state.go("horse", {horseId: vm.horse.Id});
                     }, function (error) {
                         console.log(error);
                         if (error.data.ModelState) {

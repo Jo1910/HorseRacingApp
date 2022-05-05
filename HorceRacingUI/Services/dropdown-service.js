@@ -69,6 +69,22 @@
                 });
         }
 
+        // Get all contacts 
+        self.getAllContacts = function () {
+            return $http.get(apiBase + 'Dropdown/GetContacts')
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
+        // Get all ratings
+        self.getAllRatings = function () {
+            return $http.get(apiBase + 'Dropdown/GetRatings')
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
         return this;
     });
 })();

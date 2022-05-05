@@ -26,6 +26,8 @@ namespace HorseRacing.Models
         public Nullable<int> CountryId { get; set; }
         public Nullable<int> AcquisitionId { get; set; }
 
+        public Nullable<int> RatingId { get; set; }
+
         public int SexId { get; set; }
 
         [ForeignKey("DamId")]

@@ -11,7 +11,6 @@
                 .then(function (result) {
                     return result.data;
                 });
-
         }
 
         // Get horse by id - get method
@@ -26,7 +25,14 @@
             return $http.get(apiBase + 'Horse/GetEdit/' + horseId)
                 .then(function (result) {
                     return result.data;
-                })
+                });
+        }
+
+        self.getRateHorse = function (horseId) {
+            return $http.get(apiBase + '/Horse/GetToRate/' + horseId)
+                .then(function (result) {
+                    return result.data;
+                });
         }
 
         // Create horse - post method
@@ -34,32 +40,38 @@
             return $http.post(apiBase + 'Horse/Post', horse)
                 .then(function (result) {
                     return result.data;
-                })
+                });
         }       
 
-        //self.createHorse = function (horse) {
-        //    return $http.post(apiBase + 'Horse/Post', horse)
-        //        .success(function (result) {
-        //            return result.data;
-        //        })
-        //        .error(function (response) {
-        //            console.log("Saving failed " + JSON.stringify(response));
-        //        });
-        //}
 
         // Update horse - put method
         self.updateHorse = function (horse) {
-            console.log(horse);
             return $http.put(apiBase + 'Horse/Put/?id='+horse.Id, horse)
                 .then(function (result) {
                     return result.data;
                 });
         }
-   
+
 
         // Delete horse - delete method
         self.deleteHorse = function (horseId) {
             return $http.delete(apiBase + 'Horse/Delete/' + horseId)
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
+        // Create rating
+        self.createRating = function (rating) {
+            return $http.post(apiBase + 'Horse/PostRating', rating)
+                .then(function (result) {
+                    return result.data;
+                });
+        }
+
+        // Get ratings
+        self.getLastRating = function (horseId) {
+            return $http.get(apiBase + 'Horse/GetRatings/' + horseId)
                 .then(function (result) {
                     return result.data;
                 });

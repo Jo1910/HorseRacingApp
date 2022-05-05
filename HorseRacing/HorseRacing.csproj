@@ -167,17 +167,22 @@
     <Compile Include="Models\ApplicaitonContext.cs" />
     <Compile Include="Models\Category.cs" />
     <Compile Include="Models\Colour.cs" />
+    <Compile Include="Models\Contact.cs" />
+    <Compile Include="Models\ContactType.cs" />
     <Compile Include="Models\Country.cs" />
     <Compile Include="Models\Gender.cs" />
     <Compile Include="Models\Horse.cs" />
+    <Compile Include="Models\Rating.cs" />
     <Compile Include="Models\Sex.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\Admin\CreateGenderVM.cs" />
     <Compile Include="ViewModels\Admin\GetGenderVM.cs" />
     <Compile Include="ViewModels\Admin\ShowGendersVM.cs" />
     <Compile Include="ViewModels\Horses\CreateHorseVM.cs" />
+    <Compile Include="ViewModels\Horses\CreateRatingVM.cs" />
     <Compile Include="ViewModels\Horses\DropDownDataVM.cs" />
     <Compile Include="ViewModels\Horses\EditHorseVM.cs" />
+    <Compile Include="ViewModels\Horses\GetRatingVM.cs" />
     <Compile Include="ViewModels\Horses\HorseListVM.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -21,6 +21,7 @@ namespace HorseRacing.Controllers
     {
         private readonly ApplicationContext db = new ApplicationContext();
         // GET api/<controller>
+        //int? pageNumber = 0
         [HttpGet]
         public IHttpActionResult GetAll(int ? pageNumber = 0)
         {
@@ -50,6 +51,9 @@ namespace HorseRacing.Controllers
            
             return Ok(query);
         }
+
+        
+
 
         // GET api/<controller>/5
         //[HttpGet]
@@ -109,6 +113,27 @@ namespace HorseRacing.Controllers
 
         }
 
+        //Get the last rating for a horse
+        [HttpGet]
+        public IHttpActionResult GetRatings(int? id)
+        {
+            var query = db.Ratings
+                .Include("Contact")
+                .Include("Horse")
+                .Where(x => x.HorseId == id)
+                .OrderByDescending(x => x.RatingDate)
+                .Take(1)
+                .Select(x => new GetRatingVM
+                {
+                    Name = x.Name,
+                    ContactName = x.Contact.Name,
+                    RatingDate = x.RatingDate,
+                    HorseId = x.HorseId,
+                    Note = x.Note,
+                }).FirstOrDefault();
+            return Ok(query);
+        }
+
         [HttpGet]
         public IHttpActionResult GetEdit(int? id)
         {
@@ -138,6 +163,7 @@ namespace HorseRacing.Controllers
 
             return Ok(query);
         }
+
 
 
         // POST api/<controller>
@@ -170,8 +196,31 @@ namespace HorseRacing.Controllers
 
         //}
 
+        // Create ratings
+        [HttpPost]
+        public void PostRating([FromBody] CreateRatingVM rating)
+        {
+            var newRating = new Rating()
+            {
+                Name = rating.Name,
+                RatingDate = rating.RatingDate,
+                ContactId = rating.ContactId,
+                HorseId = rating.HorseId,
+                Note = rating.Note
+            };
+            db.Ratings.Add(newRating);
 
-
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
+        
+        // Create a horse
         [HttpPost]
         public IHttpActionResult Post([FromBody] CreateHorseVM horse)
         {

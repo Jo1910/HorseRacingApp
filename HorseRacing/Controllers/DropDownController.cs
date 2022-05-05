@@ -51,6 +51,7 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+        
 
         // Get colours dropdown
         [HttpGet]
@@ -132,6 +133,31 @@ namespace HorseRacing.Controllers
                     Name = x.Name
                 }).ToList();
             return Ok(query);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetContacts()
+        {
+            var query = db.Contacts
+                .Select(x => new DropDownDataVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+        }
+
+        [HttpGet]
+        public IHttpActionResult GetRatings()
+        {
+            var query = db.Ratings
+                .Select(x => new CreateRatingVM
+                {
+                    Id = x.Id,
+                    Name = x.Name
+                }).ToList();
+            return Ok(query);
+
         }
     }
 }

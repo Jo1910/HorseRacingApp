@@ -19,6 +19,10 @@
         public virtual DbSet<Gender> Genders { get; set; }
         public virtual DbSet<Horse> Horses { get; set; }
         public virtual DbSet<Sex> Sexes { get; set; }
+        public virtual DbSet<Contact> Contacts { get; set; }
+        public virtual DbSet<ContactType> ContactTypes { get; set; }
+        public virtual DbSet<Rating> Ratings { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Horse>()

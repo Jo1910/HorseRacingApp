@@ -74,10 +74,13 @@
     <Content Include="Components\Admin\Gender\gender-component.js" />
     <Content Include="Components\Admin\Gender\gender-list-component.js" />
     <Content Include="Components\create-horse-component.js" />
+    <Content Include="Components\create-rating-component.js" />
+    <Content Include="Components\delete-horse-component.js" />
     <Content Include="Components\edit-horse-component.js" />
     <Content Include="Components\home-component.js" />
     <Content Include="Components\horse-component.js" />
     <Content Include="Components\horse-list-component.js" />
+    <Content Include="Components\last-rating-component.js" />
     <Content Include="Components\main-component.js" />
     <Content Include="Components\manage-horse.js" />
     <Content Include="Components\navbar-component.js" />
@@ -100,10 +103,13 @@
     <Content Include="Templates\Admin\Gender\gender-component.html" />
     <Content Include="Templates\Admin\Gender\gender-list-component.html" />
     <Content Include="Templates\create-horse-component.html" />
+    <Content Include="Templates\create-rating-component.html" />
+    <Content Include="Templates\delete-horse-component.html" />
     <Content Include="Templates\edit-horse-component.html" />
     <Content Include="Templates\home-component.html" />
     <Content Include="Templates\horse-component.html" />
     <Content Include="Templates\horse-list-component.html" />
+    <Content Include="Templates\last-rating-component.html" />
     <Content Include="Templates\main-component.html" />
     <Content Include="Templates\manage-horse.html" />
     <Content Include="Templates\navbar-component.html" />

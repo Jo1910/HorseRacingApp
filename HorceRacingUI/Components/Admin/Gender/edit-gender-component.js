@@ -47,7 +47,7 @@
             vm.submit = function (gender) {
                 adminService.updateGender(vm.gender)
                     .then(function () {
-                        $state.go("genders");
+                        $state.go('gender', {genderId: vm.gender.Id});
                     //    adminService.getGender(vm.genderId)
                     });
             }

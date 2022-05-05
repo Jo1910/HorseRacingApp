@@ -37,7 +37,7 @@
             },
             {
                 name: 'genders',
-                url: 'admin/genders',
+                url: '/admin/genders',
                 template: '<gender-list></gender-list>'
             },
             {
@@ -52,12 +52,12 @@
             },
             {
                 name: 'createGender',
-                url: 'admin/genders/create',
+                url: '/admin/genders/create',
                 template: '<create-gender></create-gender>'
             },
             {
                 name: 'editGender',
-                url: 'admin/gender/edit/{genderId}',
+                url: '/admin/gender/edit/{genderId}',
                 resolve: {
                     genderId: function ($stateParams) {
                         return $stateParams.genderId;
@@ -91,6 +91,16 @@
                 template: '<edit horse-id="$resolve.horseId"></edit>'
             },
             {
+                name: 'deleteHorse',
+                url: '/horse/delete/{horseId}',
+                resolve: {
+                    horseId: function ($stateParams) {
+                        return $stateParams.horseId;
+                    }
+                },
+                template: '<delete-horse horse-id="$resolve.horseId"></delete-horse>'
+            },
+            {
                 name: 'create',
                 url: '/horse/create',
                 template: '<create></create>'
@@ -106,16 +116,31 @@
                 template: '<delete></delete>'
             },
             {
+                name: 'rating',
+                url: '/horse/rating/{horseId}',
+                resolve: {
+                    horseId: function ($stateParams) {
+                        return $stateParams.horseId;
+                    }
+                },
+                template: '<last-rating horse-id="$resolve.horseId"></last-rating>'
+            },
+            {
+                name: 'rateHorse',
+                url: '/rating',
+                template: '<create-rating></create-rating>'
+            },
+            {
                 name: 'manage',
                 url: '/manage/{horseId}',
                 resolve: {
                     horseId: function ($stateParams) {
                         return $stateParams.horseId;
                     }
-                    ,
-                    template: '<manage></manage>'
+                },
+                template: '<manage></manage>'
 
-                }
+                
             }
 
         ];

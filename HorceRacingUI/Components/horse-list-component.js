@@ -20,8 +20,9 @@
                     console.log(horses);
                 });
             }
-           
+
+
         },
         templateUrl: '/Templates/horse-list-component.html'
-    })
+    });
 })();

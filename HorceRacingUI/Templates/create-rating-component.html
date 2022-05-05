@@ -1,0 +1,81 @@
+﻿<div>
+    <navbar></navbar>
+    <div class="container">
+        <div class="row">
+            <form class="col s12" name="ratingForm">
+                <div class="row">
+
+                     <!--Horses-->
+                    <div class="col l6 m6 s12">
+                        <label for="horses">Horses</label>
+                        <select class="browser-default"
+                                id="horse"
+                                ng-model="vm.rating.HorseId"
+                                ng-options="x.Id as x.Name for x in vm.horses">
+                            <option value="" selected>-- Select Horse -- </option>
+                        </select>
+                    </div>
+
+                    <!-- Contacts -->
+                    <div class="col l6 m6 s12">
+                        <label for="contacts">Contacts</label>
+                        <select class="browser-default"
+                                id="contact"
+                                ng-model="vm.rating.ContactId"
+                                ng-options="x.Id as x.Name for x in vm.contacts">
+                            <option value="" selected>-- Select Contact --</option>
+                        </select>
+                    </div>
+
+                    <!-- Date -->
+                    <div class="input-field col l6 m6 s12">
+                        <input type="date" id="date" class=" white-text"
+                               ng-model="vm.rating.RatingDate" />
+                        <label for="ratingDate">Rating Date</label>
+                    </div>
+
+                    <!-- Ratings -->
+                    <div class="col l6 m6 s12">
+                        <label for="ratings">Ratings</label>
+                        <select class="browser-default"
+                                id="rating"
+                                ng-model="vm.rating.Name">
+                            <option value="" selected>-- Select Rating --</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+
+                        </select>
+                    </div>
+
+                    <!-- Note -->
+                    <div class="col s6 m6 s12">
+                        <label for="notes">Notes</label>
+                        <textarea typeof="text"
+                                  class="white-text"
+                                  id="notes"
+                                  ng-model="vm.rating.Note">
+                        </textarea>
+                    </div>
+
+                    <!-- Save button -->
+                    <div class="col s6 m6 s12">
+                        <button type="submit"
+                                class="btn-large waves-effect waves-light"
+                                ng-click="vm.saveRating()">
+                            Save
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+    </div>
+</div>

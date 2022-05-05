@@ -2,6 +2,9 @@
     'use strict';
 
     angular.module('horseApp').component('createGender', {
+        bindings: {
+            genderId: '<'
+        },
         controllerAs: 'vm',
         controller: function (adminService, dropdownService, $state) {
 
@@ -14,6 +17,8 @@
             vm.saveGender = function (gender) {
                 adminService.createGender(vm.gender)
                     .then(function () {
+                        //$state.go('gender', { genderId: vm.gender.Id });
+
                         $state.go("admin");
                     });
             }

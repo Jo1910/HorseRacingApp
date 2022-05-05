@@ -1,9 +1,10 @@
 ﻿<div>
     <navbar></navbar>
   <div class="container" style="width: 100%;">
-    <div class="buttonContainer">
-        <button ui-sref="create" class="btn">Create New Horse</button>
-    </div>
+      <div class="buttonContainer">
+          <button ui-sref="create" class="btn">Create New Horse</button>
+          <button ui-sref="rateHorse" class="btn">Rate a horse</button>
+      </div>
 
 
     <div ng-if="vm.horses == null">
@@ -13,7 +14,7 @@
         <table class="responsive-table horses-table">
             <thead>
                 <tr>
-                    <th>Id</th>
+                    <!--<th>Id</th>-->
                     <th>Name</th>
                     <th>Date Of Birth</th>
                     <th>Dam</th>
@@ -27,7 +28,7 @@
             </thead>
             <tbody>
                 <tr ng-repeat="x in vm.horses">
-                    <td>{{x.Id}}</td>
+                    <!--<td>{{x.Id}}</td>-->
                     <td><a ui-sref="horse ({horseId: x.Id})">{{x.Name}}</a></td>
                     <td>{{x.DateOfBirth | date: "dd-MM-yyyy"}}</td>
                     <td>{{x.DamName}}</td>
@@ -44,7 +45,5 @@
 
     </div>
   </div>
-
-
 
 </div>

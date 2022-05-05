@@ -9,6 +9,7 @@
         controller: function (horseService, $state, $filter) {
             var vm = this;
             vm.horse = null;
+            vm.rating = {};
 
 
             // function to get a horse by Id
@@ -17,10 +18,11 @@
                     horseService.getHorse(vm.horseId)
                         .then(function (horse) {
                             vm.horse = horse;
-                            console.log(horse);
                         });
+
                 }
             }
+
 
             // function to delete a horse
             vm.deleteHorse = function () {

@@ -1,39 +1,37 @@
 ﻿<div>
-  <navbar></navbar>
-  <div class="container">
-      <div class="row">
-          <div class="col l6 m6 s12 collection-container">
-              <ul class="collection with-header indigo-text">
-                  <li class="collection-header indigo-text"><h4>Horse Details</h4></li>
-                  <li class="collection-item"><span class="title-span">Id: </span>{{vm.horse.Id}}</li>
-                  <li class="collection-item"><span class="title-span">Name: </span>{{vm.horse.Name}}</li>
-                  <li class="collection-item"><span class="title-span">Date of Birth: </span>{{vm.horse.DateOfBirth | date: "dd-MM-yyyy" }}</li>
-                  <li class="collection-item"><span class="title-span">Dam: </span>{{vm.horse.DamName}}</li>
-                  <li class="collection-item"><span class="title-span">Sire: </span>{{vm.horse.SireName}}</li>
-                  <li class="collection-item"><span class="title-span">Colour: </span>{{vm.horse.ColourName}}</li>
-                  <li class="collection-item"><span class="title-span">Category: </span>{{vm.horse.CategoryName}}</li>
-                  <li class="collection-item"><span class="title-span">Country: </span>{{vm.horse.CountryName}}</li>
-                  <li class="collection-item"><span class="title-span">Acquisition: </span>{{vm.horse.AcquisitionName}}</li>
-              </ul>
-          </div>
+    <navbar></navbar>
+    <div class="container">
+        <div class="row">
+            <div class="col l6 m6 s12 collection-container">
+                <ul class="collection with-header indigo-text">
+                    <li class="collection-header indigo-text"><h4>Horse Details</h4></li>
+                    <li class="collection-item"><span class="title-span">Id: </span>{{vm.horse.Id}}</li>
+                    <li class="collection-item"><span class="title-span">Name: </span>{{vm.horse.Name}}</li>
+                    <li class="collection-item"><span class="title-span">Date of Birth: </span>{{vm.horse.DateOfBirth | date: "dd-MM-yyyy" }}</li>
+                    <li class="collection-item"><span class="title-span">Dam: </span>{{vm.horse.DamName}}</li>
+                    <li class="collection-item"><span class="title-span">Sire: </span>{{vm.horse.SireName}}</li>
+                    <li class="collection-item"><span class="title-span">Colour: </span>{{vm.horse.ColourName}}</li>
+                    <li class="collection-item"><span class="title-span">Category: </span>{{vm.horse.CategoryName}}</li>
+                    <li class="collection-item"><span class="title-span">Country: </span>{{vm.horse.CountryName}}</li>
+                    <li class="collection-item"><span class="title-span">Acquisition: </span>{{vm.horse.AcquisitionName}}</li>
+                </ul>
+            </div>
 
-          <div class="col l6 m6 s12 button-container">
-              <div class="edit-button">
-                  <a class="btn-large waves-effect waves-light" ui-sref="edit ({horseId: vm.horse.Id})"><i class="fa fa-pencil-square-o"></i>Edit {{vm.horse.Name}}</a>
-              </div>
-              <div class="delete-button">
-                  <a class="btn-large waves-effect waves-light red" ng-click="vm.deleteHorse()"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete {{vm.horse.Name}}</a>
-              </div>
-          </div>
-      </div>
+            <div class="col l6 m6 s12">
+                <last-rating horse-id=vm.horseId></last-rating>
+            </div>
+        </div>
 
 
-    <!--<div>
-        <button ui-sref="edit ({horseId: vm.horse.Id})" class="btn btn-edit">Edit Horse</button>
+        <div class="button-container">
+            <div class="edit-button">
+                <a class="btn-large waves-effect waves-light" ui-sref="edit ({horseId: vm.horse.Id})"><i class="fa fa-pencil-square-o"></i>Edit {{vm.horse.Name}}</a>
+            </div>
+            <div class="delete-button">
+                <a class="btn-large waves-effect waves-light red" ui-sref="deleteHorse ({horseId: vm.horse.Id})"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete {{vm.horse.Name}}</a>
+            </div>
+
+        </div>
     </div>
-    <div>
-        <button type="submit" ng-click="vm.deleteHorse()" class="btn btn-danger btn-delete">Delete Horse</button>
-    </div>-->
-
-  </div>
 </div>
+
