@@ -125,10 +125,20 @@
                 },
                 template: '<last-rating horse-id="$resolve.horseId"></last-rating>'
             },
+            //{
+            //    name: 'rateHorse',
+            //    url: '/horse/create-rating',
+            //    template: '<rate-horse></rate-horse>'
+            //},
             {
                 name: 'rateHorse',
-                url: '/rating',
-                template: '<create-rating></create-rating>'
+                url: '/horse/rating/create/{horseId}',
+                resolve: {
+                    horseId: function ($stateParams) {
+                        return $stateParams.horseId;
+                    }
+                },
+                template: '<create-rating horse-id="$resolve.horseId"></create-rating>'
             },
             {
                 name: 'manage',

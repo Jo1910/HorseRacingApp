@@ -17,25 +17,19 @@
 
             $('.datepicker').datepicker();
 
-            // Get horse to rate
+
+            // function to get a horse by Id
             vm.$onInit = function () {
+                console.log("asd", vm.horseId);
                 if (vm.horseId) {
-                    horseService.getRateHorse(vm.horseId)
+                    horseService.getHorse(vm.horseId)
                         .then(function (horse) {
                             vm.horse = horse;
-                            vm.originalHorse = angular.copy(horse);
-                            //if (vm.horse.Id) {
-                            //    vm.title = "Edit horse: " + vm.horse.Name;
-                            //}
-                            //else {
-                            //    vm.title = "New Horse";
-                            //}
-                            console.log(horse);
+                            vm.rating.HorseId = angular.copy(vm.horse.Id);
                         });
                 }
-
             }
-
+           
             vm.saveRating = function () {
                 horseService.createRating(vm.rating)
                     .then(function () {

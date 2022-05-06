@@ -19,7 +19,6 @@
                         .then(function (horse) {
                             vm.horse = horse;
                         });
-
                 }
             }
 
@@ -37,6 +36,8 @@
                 }
 
             }
+
+        
         },
 
         templateUrl: '/Templates/horse-component.html'

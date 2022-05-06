@@ -2,6 +2,8 @@
     <navbar></navbar>
     <div class="container">
         <div class="row">
+            <!--<a ui-sref="rateHorse({horseId: vm.horse.Id})">Rate this horse</a>-->
+
             <div class="col l6 m6 s12 collection-container">
                 <ul class="collection with-header indigo-text">
                     <li class="collection-header indigo-text"><h4>Horse Details</h4></li>
@@ -19,6 +21,7 @@
 
             <div class="col l6 m6 s12">
                 <last-rating horse-id=vm.horseId></last-rating>
+                <rate-horse horse-id=vm.horseId></rate-horse>
             </div>
         </div>
 

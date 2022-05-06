@@ -76,6 +76,14 @@
                     return result.data;
                 });
         }
+
+        // Get horse to rate
+        self.getHorseToRate = function (horseId) {
+            return $http.get(apiBase + 'Horse/GetHorseToRate/' + horseId)
+                .then(function (result) {
+                    return result.data;
+                });
+        }
        
 
         return this;

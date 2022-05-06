@@ -196,6 +196,19 @@ namespace HorseRacing.Controllers
 
         //}
 
+        // Get horse to rate
+        [HttpGet]
+        public IHttpActionResult GetHorseToRate(int? id)
+        {
+            var query = db.Ratings
+               .Select(x => new CreateRatingVM
+               {
+                   Id = x.Id,
+                   Name = x.Name
+               }).FirstOrDefault(x => x.Id == id);
+            return Ok(query);
+        }
+
         // Create ratings
         [HttpPost]
         public void PostRating([FromBody] CreateRatingVM rating)

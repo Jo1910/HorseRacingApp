@@ -13,9 +13,21 @@
             <form class="col s12 horseForm" name="horseForm">
                 <div class="row">
                     <!-- Name -->
-                    <div class="input-field col l6 m6 s12">
-                        <input class="white-text validate" placeholder="Name" id="name" type="text"
+                    <div class="input-field col l6 m6 s12"
+                         ng-class="{'has-error': horseForm.horseName.$invalid && horseForm.horseName.$dirty}">
+                        <input class="white-text validate" placeholder="Name" id="name" type="text" name="horseName"
                                ng-model="vm.horse.Name" />
+                        <span class="has-error white-text">
+                            <span ng-show="horseForm.horseName.$error.required">
+                                Horse name is required.
+                            </span>
+                            <span ng-show="horseForm.horseName.$error.minlength">
+                                Horse name must be at least 2 characters.
+                            </span>
+                            <span ng-show="horseForm.horseName.$error.maxlength">
+                                Horse name cannot exceed 50 characters in length.
+                            </span>
+                        </span>
                     </div>
 
                     <!-- Date of birth -->
