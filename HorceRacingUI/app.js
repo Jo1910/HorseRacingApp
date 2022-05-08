@@ -125,11 +125,6 @@
                 },
                 template: '<last-rating horse-id="$resolve.horseId"></last-rating>'
             },
-            //{
-            //    name: 'rateHorse',
-            //    url: '/horse/create-rating',
-            //    template: '<rate-horse></rate-horse>'
-            //},
             {
                 name: 'rateHorse',
                 url: '/horse/rating/create/{horseId}',

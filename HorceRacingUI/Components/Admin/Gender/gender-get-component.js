@@ -16,7 +16,6 @@
                     adminService.getGender(vm.genderId)
                         .then(function (gender) {
                             vm.gender = gender;
-                            console.log(gender);
                         });
                 }
             }
@@ -28,12 +27,11 @@
                     adminService.deleteGender(vm.genderId)
                         .then(function () {
                             $state.go("genders");
-                            console.log("Row deleted.");
                         });
                 }
             }
         },
 
-        templateUrl: '/Templates/Admin/Gender/gender-component.html'
+        templateUrl: '/Templates/Admin/Gender/gender-get-component.html'
     });
 })();

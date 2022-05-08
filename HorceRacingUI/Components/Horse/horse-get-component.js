@@ -30,7 +30,6 @@
                     horseService.deleteHorse(vm.horseId)
                         .then(function () {
                             $state.go("horses");
-                            console.log("Row deleted.");
                         });
 
                 }
@@ -40,7 +39,7 @@
         
         },
 
-        templateUrl: '/Templates/horse-component.html'
+        templateUrl: '/Templates/Horse/horse-get-component.html'
 
     });
 

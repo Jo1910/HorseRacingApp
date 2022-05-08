@@ -2,15 +2,39 @@
     <navbar></navbar>
     <div class="container">
         <h2>Rate {{vm.horse.Name}}</h2>
+
+        <div>
+            <ul>
+                <li ng-repeat="e in vm.errors">{{e}}</li>
+            </ul>
+        </div>
+
         <div class="row">
+
+            <!-- Error container-->
+            <div class="error-container">
+                <div class="has-error red-text text-lighten-3">
+                    <span ng-show="ratingForm.contact.$error.required">
+                        Contact name is required.
+                    </span> <br />
+                    <span ng-show="ratingForm.rating.$error.required">
+                        Rating is required.
+                    </span> <br />
+                    <span ng-show="ratingForm.date.$error.required">
+                        Date is required.
+                    </span> <br /><br />
+                </div>
+            </div>
+
             <form class="col s12" name="ratingForm">
                 <div class="row">
 
-                     <!--Horses-->
+                    <!--Horses-->
                     <div class="col l12 m12 s12">
                         <label for="horses">Horse</label>
                         <select class="browser-default"
                                 id="horse"
+                                name="horse"
                                 ng-model="vm.rating.HorseId"
                                 ng-options="x.Id as x.Name for x in vm.horses">
                             <option value="" selected>{{vm.horse.Name}}</option>
@@ -18,20 +42,23 @@
                     </div>
 
                     <!-- Contacts -->
-                    <div class="col l12 m12 s12">
+                    <div class="col l12 m12 s12"
+                         ng-class="{'has-error': ratingForm.contact.$invalid && ratingForm.contact.$dirty}">
                         <label for="contacts">Rated By*</label>
                         <select class="browser-default"
                                 id="contact"
+                                name="contact"
                                 ng-model="vm.rating.ContactId"
-                                ng-options="x.Id as x.Name for x in vm.contacts">
+                                ng-options="x.Id as x.Name for x in vm.contacts"
+                                required>
                             <option value="" selected>-- Select Contact --</option>
                         </select>
                     </div>
 
                     <!-- Date -->
                     <div class="input-field col l12 m12 s12">
-                        <input type="date" id="date" class=" white-text"
-                               ng-model="vm.rating.RatingDate"/>
+                        <input type="date" id="date" class=" white-text" name="date"
+                               ng-model="vm.rating.RatingDate" required />
                         <label for="ratingDate">Date*</label>
                     </div>
 
@@ -40,7 +67,9 @@
                         <label for="ratings">Rating*</label>
                         <select class="browser-default"
                                 id="rating"
-                                ng-model="vm.rating.Name">
+                                name="rating"
+                                ng-model="vm.rating.Name"
+                                required>
                             <option value="" selected>-- Select Rating --</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -62,7 +91,6 @@
                         <textarea typeof="text"
                                   class="white-text"
                                   rows="10"
-                                 
                                   id="notes"
                                   ng-model="vm.rating.Note">
                         </textarea>
@@ -72,7 +100,8 @@
                     <div class="col s12 m12 s12">
                         <button type="submit"
                                 class="btn-large waves-effect waves-light"
-                                ng-click="vm.saveRating()">
+                                ng-click="vm.saveRating()"
+                                ng-disabled="ratingForm.$invalid">
                             Save
                         </button>
                     </div>

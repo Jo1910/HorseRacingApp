@@ -12,7 +12,6 @@
             vm.$onInit = function () {
                 adminService.showGenders().then(function (genders) {
                     vm.genders = genders;
-                    console.log(genders);
                 });
             }
         },

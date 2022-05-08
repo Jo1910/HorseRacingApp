@@ -26,10 +26,9 @@
             dropdownService.getAllSexes()
                 .then(function (sexes) {
                     vm.sexes = sexes;
-                    console.log(sexes);
                 });
         },
-        templateUrl: '/Templates/Admin/Gender/create-gender-component.html'
+        templateUrl: '/Templates/Admin/Gender/gender-create-component.html'
     })
         
 })();

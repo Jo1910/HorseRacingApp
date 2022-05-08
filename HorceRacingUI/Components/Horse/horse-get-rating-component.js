@@ -15,11 +15,10 @@
                     horseService.getLastRating(vm.horseId)
                         .then(function (rating) {
                             vm.rating = rating;
-                            console.log(rating);
                         });
                 }
             }
         },
-        templateUrl: 'Templates/last-rating-component.html'
+        templateUrl: 'Templates/Horse/horse-get-rating-component.html'
     });
 })();

@@ -6,14 +6,11 @@
             horseId: '<',
         },
         controllerAs: 'vm',
-        controller: function (horseService, dropdownService, $state) {
+        controller: function (horseService, dropdownService, $state, $filter) {
             var vm = this;
 
             vm.horse = {};
 
-            vm.horse.DateOfBirth = new Date(vm.horse.DateOfBirth);
-
-            //vm.horse.dateOfBirth = $filter('date')(vm.horse.DateOfBirth, 'yyyy-MM-dd');
             vm.colours = [];
             vm.categories = [];
             vm.genders = [];
@@ -22,19 +19,6 @@
             vm.horses = [];
             vm.dams = [];
             vm.sires = [];
-
-            // Ui bootstrap datepicker
-            vm.today = function () {
-                vm.horse.DateOfBirth = new Date();
-            }
-            vm.dateFormat = "MM/dd/yyyy";
-            vm.today();
-            vm.showCalendar = function ($event) {
-                vm.showDatepicker = true;
-            };
-            vm.showDatepicker = false;
-            var maxDate = new Date();
-            vm.max = maxDate;
 
             // get horse to edit
             vm.$onInit = function () {
@@ -49,67 +33,63 @@
                             else {
                                 vm.title = "New Horse";
                             }
-                            console.log(horse);
                         });
-                   }
-               
+                }
+
             }
 
-            $(document).ready(function () {
-                $('select').formSelect();
-            });
+
 
             $(document).ready(function () {
-                $('.datepicker').datepicker();
+                $('.datepicker').datepicker({
+                    onOpen: function () {
+                        var instance = M.Datepicker.getInstance($('.datepicker'));
+                        instance.options.maxDate = new Date();
+                    }
+                });
             });
-          
+
+
+
             // Dropdowns
             dropdownService.getAllSires()
                 .then(function (sires) {
                     vm.sires = sires;
-                    console.log(sires);
                 });
 
             dropdownService.getAllDams()
                 .then(function (dams) {
                     vm.dams = dams;
-                    console.log(dams);
                 });
 
             dropdownService.getAllColours()
                 .then(function (colours) {
                     vm.colours = colours;
-                    console.log(colours);
                 });
 
             dropdownService.getAllCategories()
                 .then(function (categories) {
                     vm.categories = categories;
-                    console.log(categories);
                 });
 
             horseService.getAllHorses()
                 .then(function (horses) {
                     vm.horses = horses;
-                    console.log(horses);
                 });
 
             dropdownService.getAllGenders()
                 .then(function (genders) {
                     vm.genders = genders;
-                    console.log(genders);
                 });
 
             dropdownService.getAllCountries()
                 .then(function (countries) {
                     vm.countries = countries;
-                    console.log(countries);
                 });
 
             dropdownService.getAllAcquisitions()
                 .then(function (acquisitions) {
                     vm.acquisitions = acquisitions;
-                    console.log(acquisitions);
                 });
 
 
@@ -123,7 +103,7 @@
             vm.submit = function (horse) {
                 horseService.updateHorse(vm.horse)
                     .then(function () {
-                        $state.go("horse", {horseId: vm.horse.Id});
+                        $state.go("horse", { horseId: vm.horse.Id });
                     }, function (error) {
                         console.log(error);
                         if (error.data.ModelState) {
@@ -138,9 +118,9 @@
                     });
             }
 
-           
+
         },
-        templateUrl: '/Templates/edit-horse-component.html'
+        templateUrl: '/Templates/Horse/horse-edit-component.html'
 
     });
 })();

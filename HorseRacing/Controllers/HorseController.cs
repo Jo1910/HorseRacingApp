@@ -11,17 +11,11 @@ using System.Web.Http.Cors;
 
 namespace HorseRacing.Controllers
 {
-    //[RoutePrefix("api/Horse")]
-
-    //[EnableCors(origins: "*", headers: "*", methods: "*")]
-    //[DisableCors]
-    //[EnableCorsAttribute("*", "*", "*")]
-    //[EnableCorsAttribute("*", "*", "GET, PUT, POST, DELETE, OPTIONS")]
     public class HorseController : ApiController
     {
         private readonly ApplicationContext db = new ApplicationContext();
         // GET api/<controller>
-        //int? pageNumber = 0
+
         [HttpGet]
         public IHttpActionResult GetAll(int ? pageNumber = 0)
         {
@@ -53,35 +47,7 @@ namespace HorseRacing.Controllers
         }
 
         
-
-
-        // GET api/<controller>/5
-        //[HttpGet]
-        //public IHttpActionResult Get(int? id)
-        //{
-        //    var query = db.Horses
-        //        .Include("Colour")
-        //        .Include("Category")
-        //        .Include("Gender")
-        //        .Include("Country")
-        //        .Include("Acquisition")
-        //        .Select(x => new HorseListVM
-        //        {
-        //            Id = x.Id,
-        //            Name = x.Name,
-        //            DateOfBirth = x.DateOfBirth,
-        //            DamName = x.Dam.Name,
-        //            SireName = x.Sire.Name,
-        //            ColourName = x.Colour.Name,
-        //            CategoryName = x.Category.Name,
-        //            CountryName = x.Country.Name,
-        //            GenderName = x.Gender.Name,
-        //            AcquisitionName = x.Acquisition.Name
-        //        }).FirstOrDefault(x => x.Id == id);
-        
-        //    return Ok(query);
-        //}
-
+        // Get a horse by id
         [HttpGet]
         public IHttpActionResult Get(int? id)
         {
@@ -134,6 +100,7 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+        // Get a horse to edit
         [HttpGet]
         public IHttpActionResult GetEdit(int? id)
         {
@@ -164,55 +131,15 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
-
-
-        // POST api/<controller>
-        //[HttpPost]
-        //public void Post([FromBody] CreateHorseVM horse)
-        //{
-
-        //    var horseToAdd = new Horse()
-        //    {
-        //        Name = horse.Name,
-        //        DateOfBirth = horse.DateOfBirth,
-        //        DamId = horse.DamId,
-        //        SireId = horse.SireId,
-        //        ColourId = horse.ColourId,
-        //        CategoryId = horse.CategoryId,
-        //        CountryId = horse.CountryId,
-        //        GenderId = horse.GenderId,
-        //        AcquisitionId = horse.AcquisitionId
-        //    };
-        //    db.Horses.Add(horseToAdd);
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-
-        //}
-
-        // Get horse to rate
-        [HttpGet]
-        public IHttpActionResult GetHorseToRate(int? id)
-        {
-            var query = db.Ratings
-               .Select(x => new CreateRatingVM
-               {
-                   Id = x.Id,
-                   Name = x.Name
-               }).FirstOrDefault(x => x.Id == id);
-            return Ok(query);
-        }
-
-        // Create ratings
+        
+        // Create rating
         [HttpPost]
-        public void PostRating([FromBody] CreateRatingVM rating)
+        public IHttpActionResult PostRating([FromBody] CreateRatingVM rating)
         {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest();
+            }
             var newRating = new Rating()
             {
                 Name = rating.Name,
@@ -231,6 +158,7 @@ namespace HorseRacing.Controllers
             {
                 throw ex;
             }
+            return Created<Rating>(Request.RequestUri + newRating.Id.ToString(), newRating);
         }
         
         // Create a horse
@@ -268,36 +196,7 @@ namespace HorseRacing.Controllers
 
         }
 
-        //[HttpPut]
-        //public void Put([FromBody] EditHorseVM horse)
-        //{
-        //    var query = db.Horses.FirstOrDefault(x => x.Id == horse.Id);
-        //    if (query == null)
-        //    {
-        //        throw new Exception("Horse does not exist.");
-        //    }
-        //    query.Id = horse.Id;
-        //    query.Name = horse.Name;
-        //    query.DateOfBirth = horse.DateOfBirth;
-        //    query.DamId = horse.DamId;
-        //    query.SireId = horse.SireId;
-        //    query.ColourId = horse.ColourId;
-        //    query.CategoryId = horse.CategoryId;
-        //    query.CountryId = horse.CountryId;  
-        //    query.GenderId = horse.GenderId;
-        //    query.AcquisitionId = horse.AcquisitionId;
-
-        //    try
-        //    {
-        //        db.SaveChanges();
-
-        //    }
-        //    catch(Exception ex)
-        //    {
-        //        throw ex;
-        //    }
-        //}
-
+        // Update horse
         [HttpPut] 
         public IHttpActionResult Put([FromBody] EditHorseVM horse)
         {
@@ -334,7 +233,7 @@ namespace HorseRacing.Controllers
         }
 
 
-        // DELETE api/<controller>/5
+        // Delete horse
         public void Delete(int id)
         {
             Horse horse = db.Horses.Find(id);

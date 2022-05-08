@@ -27,6 +27,6 @@
             }
         },
 
-        templateUrl: '/Templates/delete-horse-component.html'
+        templateUrl: '/Templates/Horse/horse-delete-component.html'
     })
 })();

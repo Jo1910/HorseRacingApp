@@ -72,6 +72,10 @@ th {
     color: #a6a6a6;
 }
 
+.collection-container .move-right {
+    float: right;
+}
+
 .btn {
     font-weight: 800;
     background-color: rgb(242, 243, 250);
@@ -88,10 +92,20 @@ th {
        
 }
 
+
 .buttonContainer {
     margin-top: 30px;
+    margin-left: 30px;
 }
 
+.button-container a {
+    margin-bottom: 10px;
+    margin-left: 20px;
+}
+
+.button-container .btn-large {
+    width: 200px;
+}
 .createForm {
     width: 80%;
 }

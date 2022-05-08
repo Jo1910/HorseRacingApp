@@ -20,7 +20,6 @@
 
             // function to get a horse by Id
             vm.$onInit = function () {
-                console.log("asd", vm.horseId);
                 if (vm.horseId) {
                     horseService.getHorse(vm.horseId)
                         .then(function (horse) {
@@ -30,6 +29,7 @@
                 }
             }
            
+
             vm.saveRating = function () {
                 horseService.createRating(vm.rating)
                     .then(function () {
@@ -40,17 +40,15 @@
             horseService.getAllHorses()
                 .then(function (horses) {
                     vm.horses = horses;
-                    console.log(horses);
                 });
 
             dropdownService.getAllContacts()
                 .then(function (contacts) {
                     vm.contacts = contacts;
-                    console.log(contacts);
                 });
 
 
         },
-        templateUrl: '/Templates/create-rating-component.html'
+        templateUrl: '/Templates/Horse/horse-create-rating-component.html'
     });
 })();

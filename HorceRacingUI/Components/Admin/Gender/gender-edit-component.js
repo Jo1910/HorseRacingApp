@@ -41,19 +41,17 @@
             dropdownService.getAllSexes()
                 .then(function (sexes) {
                     vm.sexes = sexes;
-                    console.log(sexes);
                 });
 
             vm.submit = function (gender) {
                 adminService.updateGender(vm.gender)
                     .then(function () {
                         $state.go('gender', {genderId: vm.gender.Id});
-                    //    adminService.getGender(vm.genderId)
                     });
             }
 
         },
 
-        templateUrl: '/Templates/Admin/Gender/edit-gender-component.html'
+        templateUrl: '/Templates/Admin/Gender/gender-edit-component.html'
     });
 })();

@@ -1,0 +1,17 @@
+﻿<div>
+    <div class="row">
+        <div class="col l12 m12 s12 collection-container">
+            <ul class="collection with-header indigo-text">
+                <li class="collection-header indigo-text">
+                    <h4 style="text-align: center;">
+                        Ratings:
+                    </h4>
+                </li>
+                <li class="collection-item"><i class="fa fa-user" aria-hidden="true"></i><span class="title-span">Rated By: </span><span class="move-right">{{vm.rating.ContactName}}</span></li>
+                <li class="collection-item"><i class="fa fa-calendar-o" aria-hidden="true"></i><span class="title-span">Date: </span><span class="move-right">{{vm.rating.RatingDate | date: "dd-MM-yyyy"}}</span></li>
+                <li class="collection-item"><i class="fa fa-star" aria-hidden="true"></i><span class="title-span">Rating: </span><span class="move-right">{{vm.rating.Name}}</span></li>
+                <li class="collection-item"><i class="fa fa-sticky-note" aria-hidden="true"></i><span class="title-span">Notes: </span><span class="move-right">{{vm.rating.Note}}</span></li>
+            </ul>
+        </div>
+    </div>
+</div>

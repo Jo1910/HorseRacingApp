@@ -1,0 +1,34 @@
+﻿<div>
+    <navbar></navbar>
+    <div class="container">
+        <div class="row">
+
+            <div class="col l6 m6 s12 collection-container">
+                <ul class="collection with-header indigo-text">
+                    <li class="collection-header indigo-text"><h4 style="text-align: center">Horse Details</h4></li>
+                    <li class="collection-item"><span class="title-span">Id: </span><span class="move-right">{{vm.horse.Id}}</span></li>
+                    <li class="collection-item"><span class="title-span">Name: </span><span class="move-right">{{vm.horse.Name}}</span></li>
+                    <li class="collection-item"><span class="title-span">Date of Birth: </span><span class="move-right">{{vm.horse.DateOfBirth | date: "dd-MM-yyyy" }}</span></li>
+                    <li class="collection-item"><span class="title-span">Dam: </span><span class="move-right">{{vm.horse.DamName}}</span></li>
+                    <li class="collection-item"><span class="title-span">Sire: </span><span class="move-right">{{vm.horse.SireName}}</span></li>
+                    <li class="collection-item"><span class="title-span">Colour: </span><span class="move-right">{{vm.horse.ColourName}}</span></li>
+                    <li class="collection-item"><span class="title-span">Category: </span><span class="move-right">{{vm.horse.CategoryName}}</span></li>
+                    <li class="collection-item"><span class="title-span">Country: </span><span class="move-right">{{vm.horse.CountryName}}</span></li>
+                    <li class="collection-item"><span class="title-span">Acquisition: </span><span class="move-right">{{vm.horse.AcquisitionName}}</span></li>
+                </ul>
+            </div>
+
+            <div class="col l6 m6 s12">
+                <last-rating horse-id=vm.horseId></last-rating>
+            </div>
+
+            <div class="button-container">
+                <a ui-sref="rateHorse ({horseId: vm.horse.Id})" class="btn-large waves-effect waves-light orange"><i class="fa fa-plus" aria-hidden="true"></i>Rate {{vm.horse.Name}}</a>
+                <a class="btn-large waves-effect waves-light" ui-sref="edit ({horseId: vm.horse.Id})"><i class="fa fa-pencil-square-o"></i>Edit {{vm.horse.Name}}</a>
+                <a class="btn-large waves-effect waves-light red" ui-sref="deleteHorse ({horseId: vm.horse.Id})"><i class="fa fa-trash-o" aria-hidden="true"></i>Delete {{vm.horse.Name}}</a>
+            </div>
+
+        </div>
+    </div>
+</div>
+

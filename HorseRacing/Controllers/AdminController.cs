@@ -13,8 +13,8 @@ namespace HorseRacing.Controllers
     {
 
         private readonly ApplicationContext db = new ApplicationContext();
-        // GET api/<controller>
 
+        // Get all genders
         [HttpGet]
         public IHttpActionResult ShowGenders(int? pageNumber = 0)
         {
@@ -32,6 +32,7 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+        // Get gender by id
         [HttpGet]
         public IHttpActionResult GetGender(int? id)
         {
@@ -51,6 +52,7 @@ namespace HorseRacing.Controllers
             return Ok(query);
         }
 
+        // Get gender to edit
         [HttpGet]
         public IHttpActionResult GetEdit(int? id)
         {
@@ -70,7 +72,7 @@ namespace HorseRacing.Controllers
         }
 
         
-        // POST api/<controller>
+        // Create gender
         [HttpPost]
         public void Post([FromBody] CreateGenderVM gender)
         {
@@ -91,7 +93,7 @@ namespace HorseRacing.Controllers
             }
         }
 
-        // PUT api/<controller>/5
+        // Update gender
         [HttpPut]
         public void Put(int id, [FromBody] CreateGenderVM gender)
         {
